@@ -1,0 +1,7 @@
+cisco:
+  hosts:
+    cisco_catalyst_9000:
+      ansible_host: #IP
+      ansible_user: #nom d'user
+      ansible_password: #mdp
+      #ansible_network_os: ios

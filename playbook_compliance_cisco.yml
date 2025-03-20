@@ -1,0 +1,16 @@
+-name: Récupération de la configuration sur la machine
+  hosts: all
+  gather_facts: no
+  cisco.ios.ios_command:
+    commands: show running-config
+    register: running_config
+
+  -name: affichage du show run
+   debug:
+    var: running_config 
+
+  -name: Sauvegarde de la config 
+   copy:
+    content: "{{ running_config.stdout[0] }}"
+    dest: "./config/{{ inventory_hostname }}_running_config.txt"
+
