@@ -5,7 +5,7 @@ gather_facts: yes
 tasks:
   -name: Affichage de la technologie de l'appareil
     debug:
-      var: ansible_network_os
+      msg: "{{ansible_network_os}}"
   
   -name: Appareils Cisco
     include_role:
