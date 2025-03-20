@@ -1,7 +1,8 @@
 -name: Détection de la technologie de l'appareil réseau
-  -hosts: all
-    gather_facts: yes
+-hosts: all
+gather_facts: yes
 
+tasks:
   -name: Affichage de la technologie de l'appareil
     debug:
       var: ansible_network_os
