@@ -1,19 +1,19 @@
--name: Détection de la technologie de l'appareil réseau
--hosts: all
-gather_facts: yes
+- name: Détection de la technologie de l'appareil réseau
+- hosts: all
+  gather_facts: yes
 
-tasks:
-  -name: Affichage de la technologie de l'appareil
-  debug:
+  tasks:
+  - name: Affichage de la technologie de l'appareil
+    debug:
       msg: "{{ansible_network_os}}"
   
-  -name: Appareils Cisco
-  include_role:
-    name: cisco
+  - name: Appareils Cisco
+    include_role:
+      name: cisco
     when: ansible_network_os == 'ios'
-  
-  -name: Appareils Pfsense
-  include_role:
-    name: pfsense
+    
+  - name: Appareils Pfsense
+    include_role:
+      name: pfsense
     when: ansible_network_os == 'pfsense'
 
