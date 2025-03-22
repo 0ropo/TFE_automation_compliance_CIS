@@ -4,16 +4,16 @@ gather_facts: yes
 
 tasks:
   -name: Affichage de la technologie de l'appareil
-    debug:
+  debug:
       msg: "{{ansible_network_os}}"
   
   -name: Appareils Cisco
-    include_role:
-      name: cisco
+  include_role:
+    name: cisco
     when: ansible_network_os == 'ios'
   
   -name: Appareils Pfsense
-    include_role:
-      name: pfsense
+  include_role:
+    name: pfsense
     when: ansible_network_os == 'pfsense'
 
