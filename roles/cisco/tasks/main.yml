@@ -26,7 +26,7 @@
 - name: Sauvegarde de la config 
   copy:
     content: "{{ running_config.stdout[0] }}"
-    dest: "{{ansible_config_file}}/config/{{ inventory_hostname }}_running_config.txt"
+    dest: "{{ansible_config_file}}/../config/{{ inventory_hostname }}_running_config.txt"
   
 - name: Comparaison avec la template CIS
   copy:
