@@ -2,33 +2,37 @@
 ---
 # tasks file for roles/cisco
 
--name: Récupération de la configuration sur la machine
+- name: Récupération de la configuration sur la machine
 
-hosts: switchs
-  #gather_facts: no
+  hosts: routers
+  gather_facts: no
   #connection:local
-become: yes
-vars:
+  become: yes
+
+  vars:
     cli:
       username: "{{ ansible_user }}"
       password: "{{ ansible_password }}"
       timeout: 100
-tasks:
-  cisco.ios.ios_command:
-    provider: "{{ cli }}"
-    commands: show running-config
+  
+  tasks:
+  - name: récupération de la configuration sur la machine
+
+    cisco.ios.ios_command:
+     provider: "{{ cli }}"
+     commands: show running-config
     register: running_config
 
-  -name: affichage du show run
-   debug:
+  - name: affichage du show run
+    debug:
     var: running_config 
 
-  -name: Sauvegarde de la config 
-   copy:
-    content: "{{ running_config.stdout[0] }}"
-    dest: "./config/{{ inventory_hostname }}_running_config.txt"
-  
-  -name: Comparaison avec la template CIS
+  - name: Sauvegarde de la config 
     copy:
-    src: "./config/{{ inventory_hostname }}_running_config.txt"
-    dest: "./roles/cisco/templates/" #ajouter nom de la template CIS que je choisirai
+      content: "{{ running_config.stdout[0] }}"
+      dest: "./config/{{ inventory_hostname }}_running_config.txt"
+  
+  - name: Comparaison avec la template CIS
+    copy:
+      src: "./config/{{ inventory_hostname }}_running_config.txt"
+      dest: "./roles/cisco/templates/cis-17.txt"
