@@ -3,13 +3,10 @@
 # tasks file for roles/cisco
 
 - name: Tâche appareil cisco
-
-  hosts: routers
-  gather_facts: no
   #connection:local
   become: yes
 
-  vars:
+  set_fact:
     cli:
       username: "{{ ansible_user }}"
       password: "{{ ansible_password }}"
@@ -19,8 +16,8 @@
   - name: récupération de la configuration sur la machine
 
     cisco.ios.ios_command:
-     provider: "{{ cli }}"
-     commands: show running-config
+     #provider: "{{ cli }}"
+      commands: show running-config
     register: running_config
 
   - name: affichage du show run
