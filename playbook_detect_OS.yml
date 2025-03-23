@@ -1,5 +1,5 @@
 - name: Détection de la technologie de l'appareil réseau
-- hosts: all
+  hosts: routers
   gather_facts: yes
 
   tasks:

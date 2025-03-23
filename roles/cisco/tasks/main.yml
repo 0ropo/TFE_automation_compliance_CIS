@@ -31,4 +31,4 @@ tasks:
   -name: Comparaison avec la template CIS
     copy:
     src: "./config/{{ inventory_hostname }}_running_config.txt"
-    dest: "./roles/cisco/templates/" #ajouter nom de la template
+    dest: "./roles/cisco/templates/" #ajouter nom de la template CIS que je choisirai
