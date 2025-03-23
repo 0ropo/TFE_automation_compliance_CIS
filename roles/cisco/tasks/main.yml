@@ -14,10 +14,10 @@
   
 - name: récupération de la configuration sur la machine
 
-    cisco.ios.ios_command:
+  cisco.ios.ios_command:
      #provider: "{{ cli }}"
-      commands: show running-config
-    register: running_config
+    commands: show running-config
+  register: running_config
 
 - name: affichage du show run
   debug:
