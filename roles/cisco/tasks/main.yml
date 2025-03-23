@@ -2,7 +2,7 @@
 ---
 # tasks file for roles/cisco
 
-- name: Récupération de la configuration sur la machine
+- name: Tâche appareil cisco
 
   hosts: routers
   gather_facts: no
