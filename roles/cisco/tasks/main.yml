@@ -4,7 +4,7 @@
 
 - name: Tâche appareil cisco
   #connection:local
-  become: yes
+  #become: yes
 
   set_fact:
     cli:
@@ -12,24 +12,23 @@
       password: "{{ ansible_password }}"
       timeout: 100
   
-  tasks:
-  - name: récupération de la configuration sur la machine
+- name: récupération de la configuration sur la machine
 
     cisco.ios.ios_command:
      #provider: "{{ cli }}"
       commands: show running-config
     register: running_config
 
-  - name: affichage du show run
-    debug:
+- name: affichage du show run
+  debug:
     var: running_config 
 
-  - name: Sauvegarde de la config 
-    copy:
-      content: "{{ running_config.stdout[0] }}"
-      dest: "./config/{{ inventory_hostname }}_running_config.txt"
+- name: Sauvegarde de la config 
+  copy:
+    content: "{{ running_config.stdout[0] }}"
+    dest: "./config/{{ inventory_hostname }}_running_config.txt"
   
-  - name: Comparaison avec la template CIS
-    copy:
-      src: "./config/{{ inventory_hostname }}_running_config.txt"
-      dest: "./roles/cisco/templates/cis-17.txt"
+- name: Comparaison avec la template CIS
+  copy:
+    src: "./config/{{ inventory_hostname }}_running_config.txt"
+    dest: "./roles/cisco/templates/cis-17.txt"
