@@ -1,0 +1,13 @@
+Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
+
+{% for line in ref_cis_ios17%}
+
+{% if line.commande in host_config %}
+    La ligne : ({{line.titre}}:{{line.commande}}) est présente dans la config de l'appareil.✅
+{% endif %}
+
+{% else %}
+    La ligne : ({{line.titre}}:{{line.commande}}) n'est pas présente dans la config de l'appareil ❌
+{% endelse %}
+
+{% endfor %}

@@ -1,3 +1,5 @@
 #SPDX-License-Identifier: MIT-0
 ---
 # vars file for roles/cisco
+
+ref_cis_ios17: "{{lookup('file', (ansible_config_file | dirname) + '/cis_ios17.yml)'| from_yaml }}"
