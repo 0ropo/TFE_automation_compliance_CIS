@@ -29,9 +29,12 @@
     dest: "{{ansible_config_file | dirname}}/config/{{ inventory_hostname }}_running_config.txt"
   
 - name: Destination du rapport CIS
+
   set_fact:
     host_config: "{{lookup('file','/config/' + inventory_hostname + '_running_config.txt')}}"
     #ref_cis: "{{lookup('file', (ansible_config_file | dirname) + '/cis_ios17.yml)'| from_yaml }}"
+
+- name: Génération du rapport
   ansible.builtin.template:
     src : "{{ template_rapport }}"
     dest : "{{ ansible_config_file | dirname }}/rapport/{{ inventory_hostname }}_rapport.txt"
