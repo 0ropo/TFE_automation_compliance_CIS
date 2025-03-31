@@ -2,4 +2,4 @@
 ---
 # vars file for roles/cisco
 
- template_rapport: "{{lookup('file', (ansible_config_file | dirname) + '/cis_ios17.yml)'| from_yaml }}"
+ ref_cis_ios17: "{{lookup('file', (ansible_config_file | dirname) + '/cis_ios17.yml)'| from_yaml }}"
