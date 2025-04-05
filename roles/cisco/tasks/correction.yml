@@ -1,0 +1,17 @@
+- name: Corriger la configuration sur base de ce qui est écrit dans le rapport
+  vars_prompt:
+    - name: validation
+      prompt: "Corriger la configuration sur base de ce qui est écrit dans le rapport ? (yes/no)"
+      private: no
+
+- name: Création du fichier de correction de la configuration
+  ansible.builtin.template:
+    src: "{{ ansible_config_file | dirname }}/roles/cisco/templates/template_correctif.jinja"
+    dest : "{{ ansible_config_file | dirname }}/correctif/{{ inventory_hostname }}_correctif.txt"
+  set_fact:
+    missing_commands: "{{ lookup('file', (ansible_config_file | dirname) + '/correctif/' + inventory_hostname + '_correctif.txt') }}"
+
+- name: Correction de la configuration
+  cisco.ios.ios_command:
+    commands: "{{missing_commands}}"
+  when: validation == "yes"
