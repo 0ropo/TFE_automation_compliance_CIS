@@ -48,7 +48,7 @@
 
 - name: Correction de la configuration
   set_fact:
-    missing_commands: "{{ ansible_config_file | dirname }}/roles/cisco/templates/template_correctif.jinja"}}"
+    missing_commands: "{{ ansible_config_file | dirname }}/roles/cisco/templates/template_correctif.jinja"
   cisco.ios.ios_command:
     commandes: "{{missing_commands}}"
   loop: "{{missing_commands}}"
