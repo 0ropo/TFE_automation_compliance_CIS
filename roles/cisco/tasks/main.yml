@@ -47,9 +47,11 @@
       private: no
 
 - name: Correction de la configuration
+  ansible.builtin.template:
+    src: "{{ ansible_config_file | dirname }}/roles/cisco/templates/template_correctif.jinja"
+    dest : "{{ ansible_config_file | dirname }}/correctif/{{ inventory_hostname }}_correctif.txt"
   set_fact:
-    missing_commands: "{{ ansible_config_file | dirname }}/roles/cisco/templates/template_correctif.jinja"
+    missing_commands: "{{ lookup('file', (ansible_config_file | dirname) + '/correctif/' + inventory_hostname + '_correctif.txt') }}"
   cisco.ios.ios_command:
-    commandes: "{{missing_commands}}"
-  loop: "{{missing_commands}}"
+    commands: "{{missing_commands}}"
   when: validation == "yes"
