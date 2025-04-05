@@ -40,4 +40,16 @@
     src : "{{ ansible_config_file | dirname }}/roles/cisco/templates/template_rapport.jinja"
     dest : "{{ ansible_config_file | dirname }}/rapport/{{ inventory_hostname }}_rapport.txt"
   
+- name: validation
+  vars_prompt:
+    - name: "Corriger la configuration sur base de ce qui est écrit dans le rapport"
+      prompt: "Corriger la configuration sur base de ce qui est écrit dans le rapport ?"
+      private: no
 
+- name: Correction de la configuration
+  set_fact:
+    missing_commands: "{{ ansible_config_file | dirname }}/roles/cisco/templates/template_correctif.jinja"}}"
+  cisco.ios.ios_command:
+    commandes: "{{missing_commands}}"
+  loop: "{{missing_commands}}"
+  when: validation == "yes"
