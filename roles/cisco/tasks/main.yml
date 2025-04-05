@@ -40,10 +40,10 @@
     src : "{{ ansible_config_file | dirname }}/roles/cisco/templates/template_rapport.jinja"
     dest : "{{ ansible_config_file | dirname }}/rapport/{{ inventory_hostname }}_rapport.txt"
   
-- name: validation
+- name: Corriger la configuration sur base de ce qui est écrit dans le rapport
   vars_prompt:
-    - name: "Corriger la configuration sur base de ce qui est écrit dans le rapport"
-      prompt: "Corriger la configuration sur base de ce qui est écrit dans le rapport ?"
+    - name: validation
+      prompt: "Corriger la configuration sur base de ce qui est écrit dans le rapport ? (yes/no)"
       private: no
 
 - name: Correction de la configuration
