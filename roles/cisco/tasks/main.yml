@@ -16,7 +16,10 @@
 - name: récupération de la configuration sur la machine
   include_tasks: rapport.yml
 
-
+- name: Demander la confirmation pour appliquer les modifs sur la config
+  pause:
+    prompt: "Voulez-vous appliquer les modifications sur la configuration ? (yes/no)"
+  register: validation
 - name: Correction de tout le fichier de configuration sur la machine
   include_tasks: correction.yml
   when: validation == "yes"
