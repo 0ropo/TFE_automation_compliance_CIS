@@ -20,6 +20,11 @@
   pause:
     prompt: "Voulez-vous appliquer les modifications sur la configuration ? (yes/no)"
   register: validation
+
+- name: Variable de débug pour validation
+  debug:
+    var: validation
+
 - name: Correction de tout le fichier de configuration sur la machine
   include_tasks: correction.yml
   when: validation == "yes"
