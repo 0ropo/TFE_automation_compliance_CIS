@@ -16,11 +16,6 @@
 - name: récupération de la configuration sur la machine
   include_tasks: rapport.yml
 
-- name: Corriger la configuration sur base de ce qui est écrit dans le rapport
-  vars_prompt:
-    - name: validation
-      prompt: "Corriger la configuration sur base de ce qui est écrit dans le rapport ? (yes/no)"
-      private: no
 
 - name: Correction de tout le fichier de configuration sur la machine
   include_tasks: correction.yml
