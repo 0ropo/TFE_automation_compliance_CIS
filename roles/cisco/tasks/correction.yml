@@ -2,6 +2,8 @@
   ansible.builtin.template:
     src: "{{ ansible_config_file | dirname }}/roles/cisco/templates/template_correctif.jinja"
     dest : "{{ ansible_config_file | dirname }}/correctif/{{ inventory_hostname }}_correctif.txt"
+
+- name: Récupération du fichier des commandes manquantes sur la machine
   set_fact:
     missing_commands: "{{ lookup('file', (ansible_config_file | dirname) + '/correctif/' + inventory_hostname + '_correctif.txt') }}"
 
