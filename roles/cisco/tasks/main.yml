@@ -27,4 +27,4 @@
 
 - name: Correction de tout le fichier de configuration sur la machine
   include_tasks: correction.yml
-  when: validation == "yes"
+  when: validation.user_input == "yes"

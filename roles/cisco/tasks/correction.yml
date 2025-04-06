@@ -13,4 +13,4 @@
 - name: Correction de la configuration
   cisco.ios.ios_command:
     commands: "{{missing_commands.splitlines()}}"
-  when: validation == "yes"
+  when: validation.user_input == "yes"
