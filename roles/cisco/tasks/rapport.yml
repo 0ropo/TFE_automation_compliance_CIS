@@ -1,5 +1,5 @@
 
-- name: Tâche connexion appareil cisco
+#- name: Tâche connexion appareil cisco
   #connection:local
   #become: yes
 
