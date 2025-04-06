@@ -2,11 +2,7 @@
   hosts: routers
   gather_facts: yes
 
-- name: Corriger la configuration sur base de ce qui est écrit dans le rapport
-  vars_prompt:
-    - name: validation
-      prompt: "Corriger la configuration sur base de ce qui est écrit dans le rapport ? (yes/no)"
-      private: no
+
 
   tasks:
   - name: Affichage de la technologie de l'appareil
@@ -23,3 +19,8 @@
       name: pfsense
     when: ansible_network_os == 'pfsense'
 
+- name: Corriger la configuration sur base de ce qui est écrit dans le rapport
+  vars_prompt:
+    - name: validation
+      prompt: "Corriger la configuration sur base de ce qui est écrit dans le rapport ? (yes/no)"
+      private: no

@@ -5,6 +5,7 @@
 - name: Tâche connexion appareil cisco
   #connection:local
   #become: yes
+  hosts: "{{ ansible_host }}"
 
   set_fact:
     cli:
