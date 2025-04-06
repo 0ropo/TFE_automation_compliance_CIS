@@ -1,6 +1,5 @@
 {% for line in ref_cis_ios17 %}
 {% if line.commande not in host_config %}
-{{% append line.commande to missing_commands %}}
 {{line.commande}}
 {% endif %}
 {% endfor %}
