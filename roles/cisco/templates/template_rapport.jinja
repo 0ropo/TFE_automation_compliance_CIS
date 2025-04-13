@@ -4,7 +4,7 @@ Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
 {% set count_ko = 0 %}
 {% set count_level1 = 0 %}
 {% set count_level2 = 0 %}
-{% set lines_numbers = len(ref_cis_ios17) %}
+{% set lines_numbers = ref_cis_ios17 | length %}
 
 {% for line in ref_cis_ios17 %}
 
@@ -21,7 +21,6 @@ Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
 
     {% else %}
     La ligne : ({{line.titre}}:{{line.commande}}) n'est pas présente dans la config de l'appareil ❌
-    {{% append line.commande to missing_commands %}}
 {% endif %}
 
 
