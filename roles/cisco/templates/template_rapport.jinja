@@ -17,7 +17,7 @@ Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
             {% set count_level2 = count_level2 + 1 %}
     {% endif %}
 
-    {% set count_ok+=1 %}
+    {% set count_ok= count_ok + 1 %}
 
     {% else %}
     La ligne : ({{line.titre}}:{{line.commande}}) n'est pas présente dans la config de l'appareil ❌
