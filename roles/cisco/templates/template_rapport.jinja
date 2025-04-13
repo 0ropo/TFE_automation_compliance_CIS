@@ -14,7 +14,7 @@ Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
     {% if line.level==1 %}
         {% set count_level1 = count_level1 + 1 %}
         {% else %}
-        {% set count_level2 = count_level2 + 1 %}
+            {% set count_level2 = count_level2 + 1 %}
     {% endif %}
 
     {% set count_ok+=1 %}
