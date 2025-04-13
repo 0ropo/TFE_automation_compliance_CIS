@@ -2,3 +2,6 @@ cis_pdf
 .venv
 mon_env
 lua
+convert_pdf copy.py
+playbook_correct.py
+convert_pdfcopy2.py

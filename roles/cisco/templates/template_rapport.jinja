@@ -1,15 +1,33 @@
 Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
 
-{% for line in ref_cis_ios17%}
+{% set count_ok = 0 %}
+{% set count_ko = 0 %}
+{% set count_level1 = 0 %}
+{% set count_level2 = 0 %}
+{% set lines_numbers = len(ref_cis_ios17) %}
+
+{% for line in ref_cis_ios17 %}
 
 {% if line.commande in host_config %}
-    La ligne : ({{line.titre}}:{{line.commande}}) est présente dans la config de l'appareil.✅
+    La ligne : ({{line.titre}}:{{line.commande}}) de niveau {{line.level}} est présente dans la config de l'appareil.✅
+
+    {% if line.level==1 %}
+        {% set count_level1 = count_level1 + 1 %}
+        {% else %}
+        {% set count_level2 = count_level2 + 1 %}
+    {% endif %}
+
+    {% set count_ok+=1 %}
 
     {% else %}
     La ligne : ({{line.titre}}:{{line.commande}}) n'est pas présente dans la config de l'appareil ❌
-
+    {{% append line.commande to missing_commands %}}
 {% endif %}
 
 
 
 {% endfor %}
+Il y'a {{ count_ok }} commande de présent sur {{ lines_numbers }} dans la config.
+Il y'a {{ count_level1 }} commande de niveau 1 de présent sur {{ lines_numbers }}.
+Il y'a {{ count_level2 }} commande de niveau 2 de présent sur {{ lines_numbers }}.
+
