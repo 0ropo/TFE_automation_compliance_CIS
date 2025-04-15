@@ -18,13 +18,19 @@
 
 - name: Demander la confirmation pour appliquer les modifs sur la config
   pause:
-    prompt: "Voulez-vous appliquer les modifications sur la configuration ? (yes/no)"
-  register: validation
+    prompt: "Voulez-vous appliquer les toutes les corrections sur la configuration ? (yes/no)"
+  register: correction_auto
 
-- name: Variable de débug pour validation
-  debug:
-    var: validation
 
 - name: Correction de tout le fichier de configuration sur la machine
   include_tasks: correction.yml
-  when: validation.user_input == "yes"
+  when: correction_auto.user_input == "yes"
+
+- name: Cherry-pick sur les corrections ?
+  pause:
+    prompt: "Voulez-vous choisir les lignes à corriger dans la configuration ? (yes/no)"
+    register: cherry_pick
+
+- name: Lancement du cherry-pick
+  include_tasks: cherry-pick.yml
+  when: cherry_pick.user_input == "yes"
