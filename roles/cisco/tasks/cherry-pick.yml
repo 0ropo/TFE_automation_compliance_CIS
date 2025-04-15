@@ -11,4 +11,3 @@
 - name: Appliquer la modification sur la configuration
   cisco.ios.ios_command:
     commands: "{{ titre_num['command'] }}"
-  when: user_titre_num is defined
