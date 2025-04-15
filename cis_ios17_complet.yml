@@ -2,6 +2,7 @@
   titre_texte: Enable 'aaa new-model'
   automated_or_manual: Automated
   level: Level 1
+  commande: aaa new-model
   description: This command enables the AAA access control system.
   rationale: 'Authentication, authorization and accounting (AAA) services provide
     an authoritative
@@ -33,6 +34,7 @@
   titre_texte: Enable 'aaa authentication login'
   automated_or_manual: Automated
   level: Level 1
+  commande: aaa authentication login
   description: Sets authentication, authorization and accounting (AAA) authentication
     at login.
   rationale: 'Using AAA authentication for interactive management access to the device
@@ -65,6 +67,7 @@
   titre_texte: Enable 'aaa authentication enable default'
   automated_or_manual: Automated
   level: Level 1
+  commande: aaa authentication enable default
   description: 'Authenticates users who access privileged EXEC mode when they use
     the enable
 
@@ -96,6 +99,7 @@
   titre_texte: Set 'login authentication for 'line vty'
   automated_or_manual: Automated
   level: Level 1
+  commande: login authentication for
   description: Authenticates users who access the router or switch remotely through
     the VTY port.
   rationale: 'Using AAA authentication for interactive management access to the device
@@ -129,6 +133,7 @@
   titre_texte: Set 'login authentication for 'ip http'
   automated_or_manual: Automated
   level: Level 1
+  commande: login authentication for
   description: 'If account management functions are not automatically enforced, an
     attacker could gain
 
@@ -234,6 +239,7 @@
   titre_texte: Set 'aaa accounting connection'
   automated_or_manual: Automated
   level: Level 2
+  commande: aaa accounting connection
   description: 'Provides information about all outbound connections made from the
     network access
 
@@ -268,6 +274,7 @@
   titre_texte: Set 'aaa accounting exec'
   automated_or_manual: Automated
   level: Level 2
+  commande: aaa accounting exec
   description: Runs accounting for the EXEC shell session.
   rationale: 'Authentication, authorization and accounting (AAA) systems provide an
     authoritative
@@ -301,6 +308,7 @@
   titre_texte: Set 'aaa accounting network'
   automated_or_manual: Automated
   level: Level 2
+  commande: aaa accounting network
   description: Runs accounting for all network-related service requests.
   rationale: 'Authentication, authorization and accounting (AAA) systems provide an
     authoritative
@@ -332,6 +340,7 @@
   titre_texte: Set 'aaa accounting system'
   automated_or_manual: Automated
   level: Level 2
+  commande: aaa accounting system
   description: 'Performs accounting for all system-level events not associated with
     users, such as
 
@@ -366,6 +375,7 @@
   titre_texte: Set 'privilege 1' for local users
   automated_or_manual: Automated
   level: Level 1
+  commande: privilege 1
   description: 'Sets the privilege level for the user.
 
     Selects the Secure Shell (SSH) protocol.'
@@ -412,6 +422,7 @@
   titre_texte: Set 'no exec' for 'line aux 0'
   automated_or_manual: Automated
   level: Level 1
+  commande: no exec
   description: The 'no exec' command restricts a line to outgoing connections only.
   rationale: 'Unused ports should be disabled, if not required, since they provide
     a potential access
@@ -449,6 +460,7 @@
   titre_texte: Create 'access-list' for use with 'line vty'
   automated_or_manual: Automated
   level: Level 1
+  commande: access-list
   description: 'Access lists control the transmission of packets on an interface,
     control Virtual Terminal
 
@@ -493,6 +505,7 @@
   titre_texte: Set 'access-class' for 'line vty'
   automated_or_manual: Automated
   level: Level 1
+  commande: access-class
   description: 'The ''access-class'' setting restricts incoming and outgoing connections
     between a
 
@@ -626,6 +639,7 @@
   titre_texte: Set 'transport input none' for 'line aux 0'
   automated_or_manual: Automated
   level: Level 1
+  commande: transport input none
   description: 'When you want to allow only an outgoing connection on a line, use
     the no exec
 
@@ -661,6 +675,7 @@
   titre_texte: Set 'http Secure-server' limit
   automated_or_manual: Automated
   level: Level 1
+  commande: http Secure-server
   description: 'Device management includes the ability to control the number of administrators
     and
 
@@ -725,6 +740,7 @@
   titre_texte: Set the 'banner-text' for 'banner exec'
   automated_or_manual: Automated
   level: Level 1
+  commande: banner-text
   description: 'This command specifies a message to be displayed when an EXEC process
     is created
 
@@ -789,6 +805,7 @@
   titre_texte: Set the 'banner-text' for 'banner login'
   automated_or_manual: Automated
   level: Level 1
+  commande: banner-text
   description: 'Follow the banner login command with one or more blank spaces and
     a delimiting
 
@@ -849,6 +866,7 @@
   titre_texte: Set the 'banner-text' for 'banner motd'
   automated_or_manual: Automated
   level: Level 1
+  commande: banner-text
   description: 'This MOTD banner is displayed to all terminals connected and is useful
     for sending
 
@@ -908,6 +926,7 @@
   titre_texte: Set the 'banner-text' for 'webauth banner'
   automated_or_manual: Automated
   level: Level 1
+  commande: banner-text
   description: 'This banner is displayed to all terminals connected and is useful
     for sending messages
 
@@ -968,6 +987,7 @@
   titre_texte: Set 'password' for 'enable secret'
   automated_or_manual: Automated
   level: Level 1
+  commande: password
   description: 'Enable secret password type 5 and enable secret password type 5 must
     be migrated to
 
@@ -1142,6 +1162,7 @@
   titre_texte: Enable 'service password-encryption'
   automated_or_manual: Automated
   level: Level 1
+  commande: service password-encryption
   description: 'When password encryption is enabled, the encrypted form of the passwords
     is
 
@@ -1174,6 +1195,7 @@
   titre_texte: Set 'username secret' for all local users
   automated_or_manual: Automated
   level: Level 1
+  commande: username secret
   description: 'Username secret password type 5 and enable secret password type 5
     must be migrated
 
@@ -1351,6 +1373,7 @@
   titre_texte: Unset 'private' for 'snmp-server community'
   automated_or_manual: Automated
   level: Level 1
+  commande: private
   description: An SNMP community string permits read-only access to all objects.
   rationale: 'The default community string "private" is well known. Using easy to
     guess, well known
@@ -1369,6 +1392,7 @@
   titre_texte: Unset 'public' for 'snmp-server community'
   automated_or_manual: Automated
   level: Level 1
+  commande: public
   description: 'An SNMP community string permits read-only access to all objects.
 
     Specifies read-write access. Authorized management stations can both retrieve
@@ -1406,6 +1430,7 @@
   titre_texte: Set the ACL for each 'snmp-server community'
   automated_or_manual: Automated
   level: Level 1
+  commande: snmp-server community
   description: 'This feature specifies a list of IP addresses that are allowed to
     use the community string
 
@@ -1441,6 +1466,7 @@
   titre_texte: Create an 'access-list' for use with SNMP
   automated_or_manual: Automated
   level: Level 1
+  commande: access-list
   description: 'You can use access lists to control the transmission of packets on
     an interface, control
 
@@ -1470,6 +1496,7 @@
   titre_texte: Set 'snmp-server host' when using SNMP
   automated_or_manual: Automated
   level: Level 1
+  commande: snmp-server host
   description: SNMP notifications can be sent as traps to authorized management systems.
   rationale: 'If SNMP is enabled for device management and device alerts are required,
     then ensure
@@ -1486,6 +1513,7 @@
   titre_texte: Set 'snmp-server enable traps snmp'
   automated_or_manual: Automated
   level: Level 1
+  commande: snmp-server enable traps snmp
   description: 'SNMP notifications can be sent as traps to authorized management systems.
 
     Specifies authentication of a packet with encryption when using SNMPv3
@@ -1556,6 +1584,7 @@
   titre_texte: Configure Login Block
   automated_or_manual: Automated
   level: Level 2
+  commande: null
   description: 'All login parameters are disabled by default. You must issue the login
     block-for
 
@@ -1606,6 +1635,7 @@
   titre_texte: AutoSecure
   automated_or_manual: Automated
   level: Level 2
+  commande: null
   description: 'The AutoSecure feature secures a router by using a single CLI command
     to disable
 
@@ -1746,6 +1776,7 @@
   titre_texte: Configuring Kerberos
   automated_or_manual: Automated
   level: Level 2
+  commande: null
   description: 'Kerberos is a secret-key network authentication protocol, developed
     at the
 
@@ -1848,6 +1879,7 @@
   titre_texte: Configure Web interface
   automated_or_manual: Automated
   level: Level 2
+  commande: null
   description: 'Web-based authentication is an ingress-only feature.
 
     You can configure web-based authentication only on access ports. Web-based
@@ -2072,6 +2104,7 @@
   titre_texte: Set 'no cdp run'
   automated_or_manual: Automated
   level: Level 1
+  commande: no cdp run
   description: Disable Cisco Discovery Protocol (CDP) service at device level.
   rationale: 'The Cisco Discovery Protocol is a proprietary protocol that Cisco devices
     use to identify
@@ -2101,6 +2134,7 @@
   titre_texte: Set 'no ip bootp server'
   automated_or_manual: Automated
   level: Level 1
+  commande: no ip bootp server
   description: Disable the Bootstrap Protocol (BOOTP) service on your routing device.
   rationale: 'BootP allows a router to issue IP addresses. This should be disabled
     unless there is a
@@ -2120,6 +2154,7 @@
   titre_texte: Set 'no service dhcp'
   automated_or_manual: Automated
   level: Level 1
+  commande: no service dhcp
   description: 'Disable the Dynamic Host Configuration Protocol (DHCP) server and
     relay agent
 
@@ -2150,6 +2185,7 @@
   titre_texte: Set 'no ip identd'
   automated_or_manual: Automated
   level: Level 1
+  commande: no ip identd
   description: Disable the identification (identd) server.
   rationale: 'Identification protocol enables identifying a user''s transmission control
     protocol (TCP)
@@ -2171,6 +2207,7 @@
   titre_texte: Set 'service tcp-keepalives-in'
   automated_or_manual: Automated
   level: Level 1
+  commande: service tcp-keepalives-in
   description: Generate keepalive packets on idle incoming network connections.
   rationale: 'Stale connections use resources and could potentially be hijacked to
     gain illegitimate
@@ -2201,6 +2238,7 @@
   titre_texte: Set 'service tcp-keepalives-out'
   automated_or_manual: Automated
   level: Level 1
+  commande: service tcp-keepalives-out
   description: Generate keepalive packets on idle outgoing network connections.
   rationale: 'Stale connections use resources and could potentially be hijacked to
     gain illegitimate
@@ -2231,6 +2269,7 @@
   titre_texte: Set 'no service pad'
   automated_or_manual: Automated
   level: Level 1
+  commande: no service pad
   description: Disable X.25 Packet Assembler/Disassembler (PAD) service.
   rationale: 'If the PAD service is not necessary, disable the service to prevent
     intruders from
@@ -2247,6 +2286,7 @@
   titre_texte: Set 'logging enable'
   automated_or_manual: Automated
   level: Level 1
+  commande: logging enable
   description: Enable logging of system messages.
   rationale: 'Logging provides a chronological record of activities on the Cisco device
     and allows
@@ -2269,6 +2309,7 @@
   titre_texte: Set 'buffer size' for 'logging buffered'
   automated_or_manual: Automated
   level: Level 1
+  commande: buffer size
   description: Enable system message logging to a local buffer.
   rationale: 'The device can copy and store log messages to an internal memory buffer.
     The
@@ -2288,6 +2329,7 @@
   titre_texte: Set 'logging console critical'
   automated_or_manual: Automated
   level: Level 1
+  commande: logging console critical
   description: 'Verify logging to device console is enabled and limited to a rational
     severity level to
 
@@ -2361,6 +2403,7 @@
   titre_texte: Set IP address for 'logging host'
   automated_or_manual: Automated
   level: Level 1
+  commande: logging host
   description: Log system messages and debug output to a remote host.
   rationale: 'Cisco routers can send their log messages to a Unix-style Syslog service.
     A syslog
@@ -2394,6 +2437,7 @@
   titre_texte: Set 'logging trap informational'
   automated_or_manual: Automated
   level: Level 1
+  commande: logging trap informational
   description: Limit messages logged to the syslog servers based on severity level
     informational.
   rationale: 'This determines the severity of messages that will generate simple network
@@ -2415,6 +2459,7 @@
   titre_texte: Set 'service timestamps debug datetime'
   automated_or_manual: Automated
   level: Level 1
+  commande: service timestamps debug datetime
   description: 'Configure the system to apply a time stamp to debugging messages or
     system logging
 
@@ -2442,6 +2487,7 @@
   titre_texte: Set 'logging source interface'
   automated_or_manual: Automated
   level: Level 1
+  commande: logging source interface
   description: Specify the source IPv4 or IPv6 address of system logging packets
   rationale: 'This is required so that the router sends log messages to the logging
     server from a
@@ -2464,6 +2510,7 @@
   titre_texte: Set 'login success/failure logging'
   automated_or_manual: Automated
   level: Level 2
+  commande: login success/failure logging
   description: 'Without generating audit records that are specific to the security
     and mission needs of
 
@@ -2608,6 +2655,7 @@
   titre_texte: Set 'ip address' for 'ntp server'
   automated_or_manual: Automated
   level: Level 1
+  commande: ip address
   description: 'Use this command if you want to allow the system to synchronize the
     system software
 
@@ -2640,6 +2688,7 @@
   titre_texte: Create a single 'interface loopback'
   automated_or_manual: Automated
   level: Level 2
+  commande: interface loopback
   description: Configure a single loopback interface.
   rationale: 'Software-only loopback interface that emulates an interface that is
     always up. It is a
@@ -2669,6 +2718,7 @@
   titre_texte: Set AAA 'source-interface'
   automated_or_manual: Automated
   level: Level 2
+  commande: source-interface
   description: Force AAA to use the IP address of a specified interface for all outgoing
     AAA packets
   rationale: 'This is required so that the AAA server (RADIUS or TACACS+) can easily
@@ -2692,6 +2742,7 @@
   titre_texte: Set 'ntp source' to Loopback Interface
   automated_or_manual: Automated
   level: Level 2
+  commande: ntp source
   description: 'Use a particular source address in Network Time Protocol (NTP) packets.
 
     Specify the IP address of an interface as the source address for TFTP connections.'
@@ -2733,6 +2784,7 @@
   titre_texte: Set 'no ip source-route'
   automated_or_manual: Automated
   level: Level 1
+  commande: no ip source-route
   description: Disable the handling of IP datagrams with source routing header options.
   rationale: 'Source routing is a feature of IP whereby individual packets can specify
     routes. This
@@ -2754,6 +2806,7 @@
   titre_texte: Set 'no ip proxy-arp'
   automated_or_manual: Automated
   level: Level 2
+  commande: no ip proxy-arp
   description: Disable proxy ARP on all interfaces.
   rationale: 'Address Resolution Protocol (ARP) provides resolution between IP and
     MAC
@@ -2801,6 +2854,7 @@
   titre_texte: Set 'no interface tunnel'
   automated_or_manual: Automated
   level: Level 1
+  commande: no interface tunnel
   description: Verify no tunnel interfaces are defined.
   rationale: 'Tunnel interfaces should not exist in general. They can be used for
     malicious purposes.
@@ -2822,6 +2876,7 @@
   titre_texte: Set 'ip verify unicast source reachable-via'
   automated_or_manual: Automated
   level: Level 1
+  commande: ip verify unicast source reachable-via
   description: 'Examines incoming packets to determine whether the source address
     is in the
 

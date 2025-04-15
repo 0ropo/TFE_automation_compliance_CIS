@@ -9,7 +9,7 @@ Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
 {% for line in ref_cis_ios17 %}
 
 {% if line.titre_texte in host_config %}
-    La ligne : ({{line.titre}}:{{line.titre_texte}}) de niveau {{line.level}} est présente dans la config de l'appareil.✅
+    La ligne : ({{line.titre}}:{{line.commande}}) de niveau {{line.level}} est présente dans la config de l'appareil.✅
 
     {% if line.level==1 %}
         {% set count_level1 = count_level1 + 1 %}
@@ -20,7 +20,7 @@ Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
     {% set count_ok= count_ok + 1 %}
 
     {% else %}
-    La ligne : ({{line.titre}}:{{line.titre_texte}}) n'est pas présente dans la config de l'appareil ❌
+    La ligne : ({{line.titre}}:{{line.commande}}) n'est pas présente dans la config de l'appareil ❌
 {% endif %}
 
 
