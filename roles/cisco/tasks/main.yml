@@ -29,7 +29,7 @@
 - name: Cherry-pick sur les corrections ?
   pause:
     prompt: "Voulez-vous choisir les lignes à corriger dans la configuration ? (yes/no)"
-    register: cherry_pick
+  register: cherry_pick
 
 - name: Lancement du cherry-pick
   include_tasks: cherry-pick.yml
