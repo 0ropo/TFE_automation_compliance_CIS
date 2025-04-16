@@ -12,6 +12,7 @@
     prompt: "Êtes-vous certain d'appliquer les modifications sur la configuration ? (yes/no)"
   register: validation
 
+// à modifier
 - name: Correction de la configuration
   cisco.ios.ios_command:
     commands: "{{missing_commands.splitlines()}}"
