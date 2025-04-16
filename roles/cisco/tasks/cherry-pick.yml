@@ -9,7 +9,7 @@
 
 - name: Récupération du titre de la commande
   set_fact:
-    titre_num: "{{cis_rules | selectattr('titre', 'equalto', user_titre_num) | list | first}}"
+    titre_num: "{{cis_rules | selectattr('titre', 'equalto', user_titre_num) }}"
   
 - name: Appliquer la modification sur la configuration
   cisco.ios.ios_command:
