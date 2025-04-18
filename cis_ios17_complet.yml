@@ -1,4 +1,5 @@
-- titre: 1.1.1
+1.1.1:
+  titre: 1.1.1
   titre_texte: Enable 'aaa new-model'
   automated_or_manual: Automated
   level: Level 1
@@ -30,7 +31,8 @@
   audit: show running-config | inc aaa new-model
   remediation: aaa new-model
   default_value: AAA is not enabled.
-- titre: 1.1.2
+1.1.2:
+  titre: 1.1.2
   titre_texte: Enable 'aaa authentication login'
   automated_or_manual: Automated
   level: Level 1
@@ -63,7 +65,8 @@
   audit: show running-config | incl aaa authentication login
   remediation: aaa authentication login {default | aaa_list_name} [passwd-
   default_value: AAA authentication at login is disabled.
-- titre: 1.1.3
+1.1.3:
+  titre: 1.1.3
   titre_texte: Enable 'aaa authentication enable default'
   automated_or_manual: Automated
   level: Level 1
@@ -95,7 +98,8 @@
   audit: show running-config | incl aaa authentication enable
   remediation: aaa authentication enable default {method1} enable
   default_value: By default, fallback to the local database is disabled.
-- titre: 1.1.4
+1.1.4:
+  titre: 1.1.4
   titre_texte: Set 'login authentication for 'line vty'
   automated_or_manual: Automated
   level: Level 1
@@ -129,7 +133,8 @@
   default_value: 'Login authentication is not enabled.
 
     Uses the default set with aaa authentication login.'
-- titre: 1.1.5
+1.1.5:
+  titre: 1.1.5
   titre_texte: Set 'login authentication for 'ip http'
   automated_or_manual: Automated
   level: Level 1
@@ -235,7 +240,8 @@
 
 
     Page 27'
-- titre: 1.1.7
+1.1.7:
+  titre: 1.1.7
   titre_texte: Set 'aaa accounting connection'
   automated_or_manual: Automated
   level: Level 2
@@ -270,7 +276,8 @@
   audit: show running-config | incl aaa accounting connection
   remediation: aaa accounting connection {default | list-name | guarantee-
   default_value: AAA accounting is not enabled.
-- titre: 1.1.8
+1.1.8:
+  titre: 1.1.8
   titre_texte: Set 'aaa accounting exec'
   automated_or_manual: Automated
   level: Level 2
@@ -304,7 +311,8 @@
   audit: show running-config | incl aaa accounting exec
   remediation: aaa accounting exec {default | list-name | guarantee-first}
   default_value: AAA accounting is not enabled.
-- titre: 1.1.9
+1.1.9:
+  titre: 1.1.9
   titre_texte: Set 'aaa accounting network'
   automated_or_manual: Automated
   level: Level 2
@@ -336,7 +344,8 @@
   audit: show running-config | incl aaa accounting network
   remediation: aaa accounting network {default | list-name | guarantee-
   default_value: AAA accounting is not enabled.
-- titre: 1.1.10
+1.1.10:
+  titre: 1.1.10
   titre_texte: Set 'aaa accounting system'
   automated_or_manual: Automated
   level: Level 2
@@ -371,7 +380,8 @@
   audit: show running-config | incl aaa accounting system
   remediation: aaa accounting system {default | list-name | guarantee-
   default_value: AAA accounting is not enabled.
-- titre: 1.2.1
+1.2.1:
+  titre: 1.2.1
   titre_texte: Set 'privilege 1' for local users
   automated_or_manual: Automated
   level: Level 1
@@ -418,7 +428,8 @@
 
     transport input ssh'
   default_value: null
-- titre: 1.2.3
+1.2.3:
+  titre: 1.2.3
   titre_texte: Set 'no exec' for 'line aux 0'
   automated_or_manual: Automated
   level: Level 1
@@ -456,7 +467,8 @@
 
     no exec'
   default_value: null
-- titre: 1.2.4
+1.2.4:
+  titre: 1.2.4
   titre_texte: Create 'access-list' for use with 'line vty'
   automated_or_manual: Automated
   level: Level 1
@@ -501,7 +513,8 @@
 
     deny ip any any log'
   default_value: null
-- titre: 1.2.5
+1.2.5:
+  titre: 1.2.5
   titre_texte: Set 'access-class' for 'line vty'
   automated_or_manual: Automated
   level: Level 1
@@ -635,7 +648,8 @@
 
     exec-timeout <<span>timeout_in_minutes>'
   default_value: null
-- titre: 1.2.9
+1.2.9:
+  titre: 1.2.9
   titre_texte: Set 'transport input none' for 'line aux 0'
   automated_or_manual: Automated
   level: Level 1
@@ -671,7 +685,8 @@
 
     transport input none'
   default_value: null
-- titre: 1.2.10
+1.2.10:
+  titre: 1.2.10
   titre_texte: Set 'http Secure-server' limit
   automated_or_manual: Automated
   level: Level 1
@@ -736,7 +751,8 @@
   default_value: 'disabled
 
     Page 56'
-- titre: 1.3.1
+1.3.1:
+  titre: 1.3.1
   titre_texte: Set the 'banner-text' for 'banner exec'
   automated_or_manual: Automated
   level: Level 1
@@ -801,7 +817,8 @@
   audit: sh running-config | beg banner exec
   remediation: banner exec c
   default_value: No banner is set by default
-- titre: 1.3.2
+1.3.2:
+  titre: 1.3.2
   titre_texte: Set the 'banner-text' for 'banner login'
   automated_or_manual: Automated
   level: Level 1
@@ -862,7 +879,8 @@
   audit: show running-config | beg banner login
   remediation: banner login c
   default_value: No banner is set by default
-- titre: 1.3.3
+1.3.3:
+  titre: 1.3.3
   titre_texte: Set the 'banner-text' for 'banner motd'
   automated_or_manual: Automated
   level: Level 1
@@ -922,7 +940,8 @@
   audit: sh running-config | beg banner motd
   remediation: banner motd c
   default_value: No banner is set by default
-- titre: 1.3.4
+1.3.4:
+  titre: 1.3.4
   titre_texte: Set the 'banner-text' for 'webauth banner'
   automated_or_manual: Automated
   level: Level 1
@@ -983,7 +1002,8 @@
   audit: show ip admission auth-proxy-banner http
   remediation: ip admission auth-proxy-banner http {banner-text | filepath}
   default_value: No banner is set by default
-- titre: 1.4.1
+1.4.1:
+  titre: 1.4.1
   titre_texte: Set 'password' for 'enable secret'
   automated_or_manual: Automated
   level: Level 1
@@ -1158,7 +1178,8 @@
   audit: sh run | incl enable secret
   remediation: enable secret 9 {ENABLE_SECRET_PASSWORD}
   default_value: No enable secret password setup by default
-- titre: 1.4.2
+1.4.2:
+  titre: 1.4.2
   titre_texte: Enable 'service password-encryption'
   automated_or_manual: Automated
   level: Level 1
@@ -1191,7 +1212,8 @@
   audit: sh run | incl service password-encryption
   remediation: service password-encryption
   default_value: Service password encryption is not set by default
-- titre: 1.4.3
+1.4.3:
+  titre: 1.4.3
   titre_texte: Set 'username secret' for all local users
   automated_or_manual: Automated
   level: Level 1
@@ -1369,7 +1391,8 @@
 
     no snmp-server'
   default_value: No passwords are set by default
-- titre: 1.5.2
+1.5.2:
+  titre: 1.5.2
   titre_texte: Unset 'private' for 'snmp-server community'
   automated_or_manual: Automated
   level: Level 1
@@ -1388,7 +1411,8 @@
   audit: show snmp community
   remediation: no snmp-server community {private}
   default_value: null
-- titre: 1.5.3
+1.5.3:
+  titre: 1.5.3
   titre_texte: Unset 'public' for 'snmp-server community'
   automated_or_manual: Automated
   level: Level 1
@@ -1426,7 +1450,8 @@
 
     no snmp-server community {<em>write_community_string</em>}'
   default_value: null
-- titre: 1.5.5
+1.5.5:
+  titre: 1.5.5
   titre_texte: Set the ACL for each 'snmp-server community'
   automated_or_manual: Automated
   level: Level 1
@@ -1462,7 +1487,8 @@
   default_value: 'No ACL is set for SNMP
 
     Page 85'
-- titre: 1.5.6
+1.5.6:
+  titre: 1.5.6
   titre_texte: Create an 'access-list' for use with SNMP
   automated_or_manual: Automated
   level: Level 1
@@ -1492,7 +1518,8 @@
 
     access-list deny any log'
   default_value: SNMP does not use an access list.
-- titre: 1.5.7
+1.5.7:
+  titre: 1.5.7
   titre_texte: Set 'snmp-server host' when using SNMP
   automated_or_manual: Automated
   level: Level 1
@@ -1509,7 +1536,8 @@
   audit: show run | incl snmp-server
   remediation: snmp-server host {ip_address} {trap_community_string}
   default_value: A recipient is not specified to receive notifications.
-- titre: 1.5.8
+1.5.8:
+  titre: 1.5.8
   titre_texte: Set 'snmp-server enable traps snmp'
   automated_or_manual: Automated
   level: Level 1
@@ -1580,7 +1608,8 @@
     No SNMP server groups are configured.
 
     SNMP username as not set by default.'
-- titre: 1.6.1
+1.6.1:
+  titre: 1.6.1
   titre_texte: Configure Login Block
   automated_or_manual: Automated
   level: Level 2
@@ -1631,7 +1660,8 @@
 
     (config)login delay {**seconds**}'
   default_value: no login-block enabled
-- titre: 1.6.2
+1.6.2:
+  titre: 1.6.2
   titre_texte: AutoSecure
   automated_or_manual: Automated
   level: Level 2
@@ -1772,7 +1802,8 @@
   default_value: 'AutoSecure not configured
 
     Page 101'
-- titre: 1.6.3
+1.6.3:
+  titre: 1.6.3
   titre_texte: Configuring Kerberos
   automated_or_manual: Automated
   level: Level 2
@@ -1875,7 +1906,8 @@
 
     (config)kerberos realm {dns-domain | host} {kerberos-realm}'
   default_value: no kerberos enabled
-- titre: 1.6.4
+1.6.4:
+  titre: 1.6.4
   titre_texte: Configure Web interface
   automated_or_manual: Automated
   level: Level 2
@@ -2100,7 +2132,8 @@
     SSH is not enabled by default. When enabled, SSH operates in compatibility mode
 
     (versions 1 and 2 supported).'
-- titre: 2.1.2
+2.1.2:
+  titre: 2.1.2
   titre_texte: Set 'no cdp run'
   automated_or_manual: Automated
   level: Level 1
@@ -2130,7 +2163,8 @@
   remediation: no cdp run
   default_value: Enabled on all platforms except the Cisco 10000 Series Edge Services
     Router
-- titre: 2.1.3
+2.1.3:
+  titre: 2.1.3
   titre_texte: Set 'no ip bootp server'
   automated_or_manual: Automated
   level: Level 1
@@ -2150,7 +2184,8 @@
   audit: show run | incl bootp
   remediation: ip dhcp bootp ignore
   default_value: Enabled
-- titre: 2.1.4
+2.1.4:
+  titre: 2.1.4
   titre_texte: Set 'no service dhcp'
   automated_or_manual: Automated
   level: Level 1
@@ -2181,7 +2216,8 @@
     the DHCP
 
     server.'
-- titre: 2.1.5
+2.1.5:
+  titre: 2.1.5
   titre_texte: Set 'no ip identd'
   automated_or_manual: Automated
   level: Level 1
@@ -2203,7 +2239,8 @@
   audit: show run | incl identd
   remediation: no ip identd
   default_value: Disabled by default
-- titre: 2.1.6
+2.1.6:
+  titre: 2.1.6
   titre_texte: Set 'service tcp-keepalives-in'
   automated_or_manual: Automated
   level: Level 1
@@ -2234,7 +2271,8 @@
   audit: show run | incl service tcp
   remediation: service tcp-keepalives-in
   default_value: Disabled by default.
-- titre: 2.1.7
+2.1.7:
+  titre: 2.1.7
   titre_texte: Set 'service tcp-keepalives-out'
   automated_or_manual: Automated
   level: Level 1
@@ -2265,7 +2303,8 @@
   audit: show run | incl service tcp
   remediation: service tcp-keepalives-out
   default_value: Disabled by default.
-- titre: 2.1.8
+2.1.8:
+  titre: 2.1.8
   titre_texte: Set 'no service pad'
   automated_or_manual: Automated
   level: Level 1
@@ -2282,7 +2321,8 @@
   audit: show run | incl service pad
   remediation: no service pad
   default_value: Enabled by default.
-- titre: 2.2.1
+2.2.1:
+  titre: 2.2.1
   titre_texte: Set 'logging enable'
   automated_or_manual: Automated
   level: Level 1
@@ -2305,7 +2345,8 @@
 
     end'
   default_value: Logging is not enabled/
-- titre: 2.2.2
+2.2.2:
+  titre: 2.2.2
   titre_texte: Set 'buffer size' for 'logging buffered'
   automated_or_manual: Automated
   level: Level 1
@@ -2325,7 +2366,8 @@
   audit: show run | incl logging buffered
   remediation: logging buffered [<em>log_buffer_size</em>]
   default_value: No logging buffer is set by default
-- titre: 2.2.3
+2.2.3:
+  titre: 2.2.3
   titre_texte: Set 'logging console critical'
   automated_or_manual: Automated
   level: Level 1
@@ -2399,7 +2441,8 @@
 
 
     Page 139'
-- titre: 2.2.4
+2.2.4:
+  titre: 2.2.4
   titre_texte: Set IP address for 'logging host'
   automated_or_manual: Automated
   level: Level 1
@@ -2433,7 +2476,8 @@
   audit: sh log | incl logging host
   remediation: logging host {syslog_server}
   default_value: System logging messages are not sent to any remote host.
-- titre: 2.2.5
+2.2.5:
+  titre: 2.2.5
   titre_texte: Set 'logging trap informational'
   automated_or_manual: Automated
   level: Level 1
@@ -2455,7 +2499,8 @@
   audit: sh log | incl trap logging
   remediation: logging trap informational
   default_value: Disabled
-- titre: 2.2.6
+2.2.6:
+  titre: 2.2.6
   titre_texte: Set 'service timestamps debug datetime'
   automated_or_manual: Automated
   level: Level 1
@@ -2483,7 +2528,8 @@
   audit: sh run | incl service timestamps
   remediation: service timestamps debug datetime {<em>msec</em>} show-
   default_value: Time stamps are applied to debug and logging messages.
-- titre: 2.2.7
+2.2.7:
+  titre: 2.2.7
   titre_texte: Set 'logging source interface'
   automated_or_manual: Automated
   level: Level 1
@@ -2506,7 +2552,8 @@
   audit: sh run | incl logging source
   remediation: logging source-interface loopback
   default_value: The wildcard interface address is used.
-- titre: 2.2.8
+2.2.8:
+  titre: 2.2.8
   titre_texte: Set 'login success/failure logging'
   automated_or_manual: Automated
   level: Level 2
@@ -2651,7 +2698,8 @@
 
 
     Page 158'
-- titre: 2.3.2
+2.3.2:
+  titre: 2.3.2
   titre_texte: Set 'ip address' for 'ntp server'
   automated_or_manual: Automated
   level: Level 1
@@ -2684,7 +2732,8 @@
 
     ntp server {ntp server vrf [vrf name] ip address}'
   default_value: No servers are configured by default.
-- titre: 2.4.1
+2.4.1:
+  titre: 2.4.1
   titre_texte: Create a single 'interface loopback'
   automated_or_manual: Automated
   level: Level 2
@@ -2714,7 +2763,8 @@
 
     ip address <<em>loopback_ip_address</em>>'
   default_value: There are no loopback interfaces defined by default.
-- titre: 2.4.2
+2.4.2:
+  titre: 2.4.2
   titre_texte: Set AAA 'source-interface'
   automated_or_manual: Automated
   level: Level 2
@@ -2738,7 +2788,8 @@
 
     ip tacacs source-interface {loopback_interface_number}'
   default_value: null
-- titre: 2.4.3
+2.4.3:
+  titre: 2.4.3
   titre_texte: Set 'ntp source' to Loopback Interface
   automated_or_manual: Automated
   level: Level 2
@@ -2780,7 +2831,8 @@
     The address of the closest interface to the destination is selected as the source
 
     address.'
-- titre: 3.1.1
+3.1.1:
+  titre: 3.1.1
   titre_texte: Set 'no ip source-route'
   automated_or_manual: Automated
   level: Level 1
@@ -2802,7 +2854,8 @@
   audit: sh run | incl ip source-route
   remediation: no ip source-route
   default_value: Enabled by default
-- titre: 3.1.2
+3.1.2:
+  titre: 3.1.2
   titre_texte: Set 'no ip proxy-arp'
   automated_or_manual: Automated
   level: Level 2
@@ -2850,7 +2903,8 @@
   default_value: 'Enabled
 
     Page 173'
-- titre: 3.1.3
+3.1.3:
+  titre: 3.1.3
   titre_texte: Set 'no interface tunnel'
   automated_or_manual: Automated
   level: Level 1
@@ -2872,7 +2926,8 @@
   audit: sh ip int brief | incl tunnel
   remediation: no interface tunnel {<em>instance</em>}
   default_value: No tunnel interfaces are defined
-- titre: 3.1.4
+3.1.4:
+  titre: 3.1.4
   titre_texte: Set 'ip verify unicast source reachable-via'
   automated_or_manual: Automated
   level: Level 1

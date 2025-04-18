@@ -1,66 +1,102 @@
+
 from pypdf import PdfReader
 import re
 import yaml
 
-# === PARAMÈTRES ===
-PDF_FILE = "./cis_pdf/cis_iosxe17.pdf"
-OUTPUT_YAML = "cis_iosxe17_descriptions_only.yml"
+PDF_FILE = "./cis_pdf/cis_ios17.pdf"
+OUTPUT_YAML = "cis_ios17_complet.yml"
 
-# === CONFIGURATION DES REGEX ===
 rule_title_pattern = re.compile(r"^(\d+\.\d+\.\d+)\s+(.*?)\s+\((Automated|Manual)\)$")
-description_pattern = re.compile(r"^Description\s*:?$", re.IGNORECASE)
-section_end_pattern = re.compile(r"^(Rationale|Impact|Audit|Remediation|Default Value|References)\s*:?$", re.IGNORECASE)
+section_start_pattern = re.compile(r"^(Description|Rationale|Impact|Audit|Remediation|Default Value|References)\s*:?$", re.IGNORECASE)
+level_pattern = re.compile(r"Level\s+(1|2)", re.IGNORECASE)
+commande_extract_pattern = re.compile(r"'([^']+)'")
 
-# === INITIALISATION ===
+def extract_commands_only(lines):
+    cmds = []
+    for l in lines:
+        if "#" in l:
+            cmd = l.split("#", 1)[1].strip()
+            if cmd:
+                cmds.append(cmd)
+    return cmds
+
 reader = PdfReader(PDF_FILE)
 contenu_final = []
 current_rule = None
-collect_description = False
-description_lines = []
+current_section = None
+section_data = {
+    "Description": [],
+    "Rationale": [],
+    "Impact": [],
+    "Audit": [],
+    "Remediation": [],
+    "Default Value": []
+}
+level = None
 
-# === TRAITEMENT DES PAGES ===
 for page in reader.pages:
     lines = page.extract_text().split("\n")
     for line in lines:
         line = line.strip()
 
-        # Détection d'une nouvelle règle
         match = rule_title_pattern.match(line)
         if match:
             if current_rule:
-                current_rule["description"] = "\n".join(description_lines).strip() if description_lines else None
+                for key in section_data:
+                    value = section_data[key]
+                    if key in ["Audit", "Remediation"]:
+                        cmds = extract_commands_only(value)
+                        current_rule[key.lower()] = "\n".join(cmds).strip() or None
+                    else:
+                        current_rule[key.lower().replace(" ", "_")] = "\n".join(value).strip() or None
+                current_rule["level"] = level
                 contenu_final.append(current_rule)
+
+            titre_texte = match.group(2)
+            commande_match = commande_extract_pattern.search(titre_texte)
+            commande = commande_match.group(1).strip() if commande_match else None
 
             current_rule = {
                 "titre": match.group(1),
-                "titre_texte": match.group(2),
-                "description": None
+                "titre_texte": titre_texte,
+                "automated_or_manual": match.group(3),
+                "level": None,
+                "commande": commande
             }
-            description_lines = []
-            collect_description = False
+            section_data = {k: [] for k in section_data}
+            level = None
+            current_section = None
             continue
 
-        # Détection du début de la description
-        if description_pattern.match(line):
-            collect_description = True
+        if not level:
+            level_match = level_pattern.search(line)
+            if level_match:
+                level = f"Level {level_match.group(1)}"
+
+        section_match = section_start_pattern.match(line)
+        if section_match:
+            new_section = section_match.group(1)
+            current_section = new_section if new_section != "References" else None
             continue
 
-        # Détection de la fin de la section description
-        if section_end_pattern.match(line):
-            collect_description = False
-            continue
+        if current_section and current_section in section_data:
+            section_data[current_section].append(line)
 
-        # Collecte des lignes de description
-        if collect_description:
-            description_lines.append(line)
-
-# Ajouter la dernière règle
 if current_rule:
-    current_rule["description"] = "\n".join(description_lines).strip() if description_lines else None
+    for key in section_data:
+        value = section_data[key]
+        if key in ["Audit", "Remediation"]:
+            cmds = extract_commands_only(value)
+            current_rule[key.lower()] = "\n".join(cmds).strip() or None
+        else:
+            current_rule[key.lower().replace(" ", "_")] = "\n".join(value).strip() or None
+    current_rule["level"] = level
     contenu_final.append(current_rule)
 
-# === SAUVEGARDE ===
-with open(OUTPUT_YAML, "w", encoding="utf-8") as f:
-    yaml.dump(contenu_final, f, sort_keys=False, allow_unicode=True)
+# Création du dictionnaire indexé par "titre"
+rules_dict = {item["titre"]: item for item in contenu_final}
 
-print(f"{len(contenu_final)} règles extraites avec description. Fichier sauvegardé dans : {OUTPUT_YAML}")
+with open(OUTPUT_YAML, "w", encoding="utf-8") as f:
+    yaml.dump(rules_dict, f, sort_keys=False, allow_unicode=True)
+
+print(f"{len(rules_dict)} règles enregistrées dans un dictionnaire indexé par 'titre'.")
