@@ -5,7 +5,7 @@
 
 - name: debug
   debug:
-    msg: "{{(cis_rules | map(attribute='titre') | list | selectattr('titre', 'equalto', user_titre_num | trim)) }}" 
+    msg: "{{(cis_rules | selectattr('titre', 'equalto', user_titre_num | trim)) }}" 
 
 - name: Récupération du titre de la commande
   set_fact:
