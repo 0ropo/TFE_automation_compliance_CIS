@@ -12,5 +12,5 @@
     titre_num: "{{cis_rules[user_titre_num.user_input]}}"
   
 - name: Appliquer la modification sur la configuration
-  cisco.ios.ios_command:
+  cisco.ios.ios_config:
     commands: "{{ titre_num['commande'] }}"
