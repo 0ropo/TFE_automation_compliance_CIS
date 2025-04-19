@@ -5,12 +5,12 @@
 
 - name: debug
   debug:
-    msg: "{{(cis_rules[user_titre_num]}}" 
+    msg: "{{cis_rules[user_titre_num]}}" 
 
 - name: Récupération du titre de la commande
   set_fact:
-    titre_num: "{{(cis_rules[user_titre_num] }}"
+    titre_num: "{{cis_rules[user_titre_num]}}"
   
 - name: Appliquer la modification sur la configuration
   cisco.ios.ios_command:
-    commands: "{{ titre_num['command'] }}"
+    commands: "{{ titre_num['commande'] }}"
