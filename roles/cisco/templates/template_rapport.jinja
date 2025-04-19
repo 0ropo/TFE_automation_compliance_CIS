@@ -4,14 +4,14 @@ Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
 {% set count_ko = 0 %}
 {% set count_level1 = 0 %}
 {% set count_level2 = 0 %}
-{% set lines_numbers = ref_cis_ios17 | length %}
+{% set objs_numbers = ref_cis_ios17 | length %}
 
-{% for line in ref_cis_ios17 %}
+{% for obj in ref_cis_ios17 %}
 
-{% if line.titre_texte in host_config %}
-    La ligne : ({{line.titre}}:{{line.commande}}) de niveau {{line.level}} est présente dans la config de l'appareil.✅
+{% if ref_cis_ios17.obj.titre_texte in host_config %}
+    La ligne : ({{ref_cis_ios17.obj.titre}}:{{ref_cis_ios17.obj.commande}}) de niveau {{ref_cis_ios17.obj.level}} est présente dans la config de l'appareil.✅
 
-    {% if line.level==1 %}
+    {% if ref_cis_ios17.obj.level==1 %}
         {% set count_level1 = count_level1 + 1 %}
         {% else %}
             {% set count_level2 = count_level2 + 1 %}
@@ -20,13 +20,13 @@ Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
     {% set count_ok= count_ok + 1 %}
 
     {% else %}
-    La ligne : ({{line.titre}}:{{line.commande}}) n'est pas présente dans la config de l'appareil ❌
+    La ligne : ({{ref_cis_ios17.obj.titre}}:{{ref_cis_ios17.obj.commande}}) n'est pas présente dans la config de l'appareil ❌
 {% endif %}
 
 
 
 {% endfor %}
-Il y'a {{ count_ok }} titre_texte de présent sur {{ lines_numbers }} dans la config.
-Il y'a {{ count_level1 }} titre_texte de niveau 1 de présent sur {{ lines_numbers }}.
-Il y'a {{ count_level2 }} titre_texte de niveau 2 de présent sur {{ lines_numbers }}.
+Il y'a {{ count_ok }} titre_texte de présent sur {{ objs_numbers }} dans la config.
+Il y'a {{ count_level1 }} titre_texte de niveau 1 de présent sur {{ objs_numbers }}.
+Il y'a {{ count_level2 }} titre_texte de niveau 2 de présent sur {{ objs_numbers }}.
 
