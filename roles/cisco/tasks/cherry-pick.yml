@@ -10,12 +10,17 @@
 
 - name: debug
   debug:
-    msg: "{{titre_num | map('extract', cis_rules)}}"
+    msg: "{{titre_num | map('extract', cis_rules) | map(attribute='commande') | reject('equalto', None) | list }}"
 
 - name: Récupération de la commande à partir du titre
   set_fact:
     commandes: "{{titre_num | map('extract', cis_rules) | map(attribute='commande') | reject('equalto', None) | list }}"
-  
+
+- name: debug
+  debug:
+    msg: "{{titre_num | map('extract', cis_rules)}}"
+
+
 - name: Appliquer la modification sur la configuration
   cisco.ios.ios_config:
     commands: "{{ commandes }}"
