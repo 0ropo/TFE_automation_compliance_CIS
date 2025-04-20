@@ -8,6 +8,10 @@
   set_fact:
     titre_num: "{{ user_titre_num.user_input.split(',') | map('trim') | list }}"
 
+- name: debug
+  debug:
+    msg: "{{titre_num | map('extract', cis_rules)}}"
+
 - name: Récupération de la commande à partir du titre
   set_fact:
     commandes: "{{titre_num | map('extract', cis_rules) | map(attribute='commande') | reject('equalto', None) | list }}"
