@@ -19,7 +19,7 @@
 - name: Récupération des paramètres pour une commande (laisser vide si pas de paramètres)
   pause:
     prompt: "Veuillez entrer les paramètres de la commande (laisser vide si pas de paramètres)"
-  register: "{{ user_params }}"
+  register: user_params
 
 - name: Concat commande et paramètres
   set_fact:
