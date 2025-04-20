@@ -1,16 +1,17 @@
 - name: Cherry-picking des commandes à ajouter en fonction de leurs numéros/titres
   pause:
-    prompt: "Veuillez enter le numéro de la commande manquante à corriger"
+    prompt: "Veuillez enter le numéro de la commande manquante à corriger(ex: 1.1.1,1.2.3)"
   register: user_titre_num
 
-- name: debug
-  debug:
-    msg: "{{cis_rules[user_titre_num.user_input]}}" 
 
-- name: Récupération du titre de la commande
+- name: Convertir les titres en liste
   set_fact:
-    titre_num: "{{cis_rules[user_titre_num.user_input]}}"
+    titre_num: "{{ user_titre_num.user_input.split(',') | map('trim') | list }}"
+
+- name: Récupération de la commande à partir du titre
+  set_fact:
+    commandes: "{{titre_num | map('extract', cis_rules) | map(attribute='commande') | reject('equalto', None) | list }}"
   
 - name: Appliquer la modification sur la configuration
   cisco.ios.ios_config:
-    commands: "{{ titre_num['commande'] }}"
+    commands: "{{ commandes }}"
