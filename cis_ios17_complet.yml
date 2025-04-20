@@ -1,8 +1,9 @@
 1.1.1:
-  rule_number: 1.1.1
-  title: Enable 'aaa new-model'
-  assessment: Automated
-  primary_command: aaa new-model
+  titre: 1.1.1
+  titre_texte: Enable 'aaa new-model'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: aaa new-model
   description: This command enables the AAA access control system.
   rationale: 'Authentication, authorization and accounting (AAA) services provide
     an authoritative
@@ -29,13 +30,13 @@
     accounting requirements.'
   audit: show running-config | inc aaa new-model
   remediation: aaa new-model
-  default_value: AAA is not enabled.
-  level: Level 1
+  default_value: null
 1.1.2:
-  rule_number: 1.1.2
-  title: Enable 'aaa authentication login'
-  assessment: Automated
-  primary_command: aaa authentication login
+  titre: 1.1.2
+  titre_texte: Enable 'aaa authentication login'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: aaa authentication login
   description: Sets authentication, authorization and accounting (AAA) authentication
     at login.
   rationale: 'Using AAA authentication for interactive management access to the device
@@ -63,13 +64,13 @@
     passwords, challenges and responses, and which token technologies will be used.'
   audit: show running-config | incl aaa authentication login
   remediation: aaa authentication login {default | aaa_list_name} [passwd-
-  default_value: AAA authentication at login is disabled.
-  level: Level 1
+  default_value: null
 1.1.3:
-  rule_number: 1.1.3
-  title: Enable 'aaa authentication enable default'
-  assessment: Automated
-  primary_command: aaa authentication enable default
+  titre: 1.1.3
+  titre_texte: Enable 'aaa authentication enable default'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: aaa authentication enable default
   description: 'Authenticates users who access privileged EXEC mode when they use
     the enable
 
@@ -96,13 +97,13 @@
     technologies.'
   audit: show running-config | incl aaa authentication enable
   remediation: aaa authentication enable default {method1} enable
-  default_value: By default, fallback to the local database is disabled.
-  level: Level 1
+  default_value: null
 1.1.4:
-  rule_number: 1.1.4
-  title: Set 'login authentication for 'line vty'
-  assessment: Automated
-  primary_command: 'login authentication for '
+  titre: 1.1.4
+  titre_texte: Set 'login authentication for 'line vty'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: login authentication for
   description: Authenticates users who access the router or switch remotely through
     the VTY port.
   rationale: 'Using AAA authentication for interactive management access to the device
@@ -129,15 +130,13 @@
   remediation: 'line vty {line-number} [<em>ending-line-number]
 
     login authentication {default | aaa_list_name}'
-  default_value: 'Login authentication is not enabled.
-
-    Uses the default set with aaa authentication login.'
-  level: Level 1
+  default_value: null
 1.1.5:
-  rule_number: 1.1.5
-  title: Set 'login authentication for 'ip http'
-  assessment: Automated
-  primary_command: 'login authentication for '
+  titre: 1.1.5
+  titre_texte: Set 'login authentication for 'ip http'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: login authentication for
   description: 'If account management functions are not automatically enforced, an
     attacker could gain
 
@@ -193,57 +192,13 @@
     (config)ip http authentication {default | _aaa\_list\_name_}
 
     aaa accounting commands 15 {default | list-name | guarantee-'
-  default_value: 'Login authentication is not enabled.
-
-    Uses the default set with aaa authentication login.
-
-    AAA accounting is disabled.
-
-    Additional Information:
-
-    Valid privilege level entries are integers from 0 through 15.
-
-    Page 26
-
-    CIS Controls:
-
-    Controls
-
-    Version Control IG 1 IG 2 IG 3
-
-    v8
-
-    4.1 Establish and Maintain a Secure Configuration Process
-
-    Establish and maintain a secure configuration process for enterprise assets
-
-    (end-user devices, including portable and mobile, non-computing/IoT devices, and
-
-    servers) and software (operating systems and applications). Review and update
-
-    documentation annually, or when significant enterprise changes occur that could
-
-    impact this Safeguard.
-
-    ● ● ●
-
-    v7
-
-    5.1 Establish Secure Configurations
-
-    Maintain documented, standard security configuration standards for all
-
-    authorized operating systems and software.
-
-    ● ● ●
-
-    Page 27'
-  level: Level 1
+  default_value: null
 1.1.7:
-  rule_number: 1.1.7
-  title: Set 'aaa accounting connection'
-  assessment: Automated
-  primary_command: aaa accounting connection
+  titre: 1.1.7
+  titre_texte: Set 'aaa accounting connection'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: aaa accounting connection
   description: 'Provides information about all outbound connections made from the
     network access
 
@@ -273,13 +228,13 @@
     records for exceptions, remediate issues, and report findings regularly.'
   audit: show running-config | incl aaa accounting connection
   remediation: aaa accounting connection {default | list-name | guarantee-
-  default_value: AAA accounting is not enabled.
-  level: Level 2
+  default_value: null
 1.1.8:
-  rule_number: 1.1.8
-  title: Set 'aaa accounting exec'
-  assessment: Automated
-  primary_command: aaa accounting exec
+  titre: 1.1.8
+  titre_texte: Set 'aaa accounting exec'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: aaa accounting exec
   description: Runs accounting for the EXEC shell session.
   rationale: 'Authentication, authorization and accounting (AAA) systems provide an
     authoritative
@@ -308,13 +263,13 @@
     for exceptions, remediate issues, and report findings.'
   audit: show running-config | incl aaa accounting exec
   remediation: aaa accounting exec {default | list-name | guarantee-first}
-  default_value: AAA accounting is not enabled.
-  level: Level 2
+  default_value: null
 1.1.9:
-  rule_number: 1.1.9
-  title: Set 'aaa accounting network'
-  assessment: Automated
-  primary_command: aaa accounting network
+  titre: 1.1.9
+  titre_texte: Set 'aaa accounting network'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: aaa accounting network
   description: Runs accounting for all network-related service requests.
   rationale: 'Authentication, authorization and accounting (AAA) systems provide an
     authoritative
@@ -341,13 +296,13 @@
     these records for exceptions, remediate issues, and report findings.'
   audit: show running-config | incl aaa accounting network
   remediation: aaa accounting network {default | list-name | guarantee-
-  default_value: AAA accounting is not enabled.
-  level: Level 2
+  default_value: null
 1.1.10:
-  rule_number: 1.1.10
-  title: Set 'aaa accounting system'
-  assessment: Automated
-  primary_command: aaa accounting system
+  titre: 1.1.10
+  titre_texte: Set 'aaa accounting system'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: aaa accounting system
   description: 'Performs accounting for all system-level events not associated with
     users, such as
 
@@ -377,13 +332,13 @@
     and report findings regularly.'
   audit: show running-config | incl aaa accounting system
   remediation: aaa accounting system {default | list-name | guarantee-
-  default_value: AAA accounting is not enabled.
-  level: Level 2
+  default_value: null
 1.2.1:
-  rule_number: 1.2.1
-  title: Set 'privilege 1' for local users
-  assessment: Automated
-  primary_command: privilege 1
+  titre: 1.2.1
+  titre_texte: Set 'privilege 1' for local users
+  automated_or_manual: Automated
+  level: Level 1
+  commande: privilege 1
   description: 'Sets the privilege level for the user.
 
     Selects the Secure Shell (SSH) protocol.'
@@ -426,12 +381,12 @@
 
     transport input ssh'
   default_value: null
-  level: Level 1
 1.2.3:
-  rule_number: 1.2.3
-  title: Set 'no exec' for 'line aux 0'
-  assessment: Automated
-  primary_command: no exec
+  titre: 1.2.3
+  titre_texte: Set 'no exec' for 'line aux 0'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: no exec
   description: The 'no exec' command restricts a line to outgoing connections only.
   rationale: 'Unused ports should be disabled, if not required, since they provide
     a potential access
@@ -465,12 +420,12 @@
 
     no exec'
   default_value: null
-  level: Level 1
 1.2.4:
-  rule_number: 1.2.4
-  title: Create 'access-list' for use with 'line vty'
-  assessment: Automated
-  primary_command: access-list
+  titre: 1.2.4
+  titre_texte: Create 'access-list' for use with 'line vty'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: access-list
   description: 'Access lists control the transmission of packets on an interface,
     control Virtual Terminal
 
@@ -511,12 +466,12 @@
 
     deny ip any any log'
   default_value: null
-  level: Level 1
 1.2.5:
-  rule_number: 1.2.5
-  title: Set 'access-class' for 'line vty'
-  assessment: Automated
-  primary_command: access-class
+  titre: 1.2.5
+  titre_texte: Set 'access-class' for 'line vty'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: access-class
   description: 'The ''access-class'' setting restricts incoming and outgoing connections
     between a
 
@@ -646,12 +601,12 @@
 
     exec-timeout <<span>timeout_in_minutes>'
   default_value: null
-  level: Level 1
 1.2.9:
-  rule_number: 1.2.9
-  title: Set 'transport input none' for 'line aux 0'
-  assessment: Automated
-  primary_command: transport input none
+  titre: 1.2.9
+  titre_texte: Set 'transport input none' for 'line aux 0'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: transport input none
   description: 'When you want to allow only an outgoing connection on a line, use
     the no exec
 
@@ -683,12 +638,12 @@
 
     transport input none'
   default_value: null
-  level: Level 1
 1.2.10:
-  rule_number: 1.2.10
-  title: Set 'http Secure-server' limit
-  assessment: Automated
-  primary_command: http Secure-server
+  titre: 1.2.10
+  titre_texte: Set 'http Secure-server' limit
+  automated_or_manual: Automated
+  level: Level 1
+  commande: http Secure-server
   description: 'Device management includes the ability to control the number of administrators
     and
 
@@ -746,15 +701,13 @@
   impact: null
   audit: show run | inc ip http secure-server
   remediation: ip http max-connections 2
-  default_value: 'disabled
-
-    Page 56'
-  level: Level 1
+  default_value: null
 1.3.1:
-  rule_number: 1.3.1
-  title: Set the 'banner-text' for 'banner exec'
-  assessment: Automated
-  primary_command: banner-text
+  titre: 1.3.1
+  titre_texte: Set the 'banner-text' for 'banner exec'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: banner-text
   description: 'This command specifies a message to be displayed when an EXEC process
     is created
 
@@ -814,13 +767,13 @@
     their networks by using a ''banner-text'' for the banner exec command.'
   audit: sh running-config | beg banner exec
   remediation: banner exec c
-  default_value: No banner is set by default
-  level: Level 1
+  default_value: null
 1.3.2:
-  rule_number: 1.3.2
-  title: Set the 'banner-text' for 'banner login'
-  assessment: Automated
-  primary_command: banner-text
+  titre: 1.3.2
+  titre_texte: Set the 'banner-text' for 'banner login'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: banner-text
   description: 'Follow the banner login command with one or more blank spaces and
     a delimiting
 
@@ -876,13 +829,13 @@
     their networks by using a ''banner-text'' for the banner login command.'
   audit: show running-config | beg banner login
   remediation: banner login c
-  default_value: No banner is set by default
-  level: Level 1
+  default_value: null
 1.3.3:
-  rule_number: 1.3.3
-  title: Set the 'banner-text' for 'banner motd'
-  assessment: Automated
-  primary_command: banner-text
+  titre: 1.3.3
+  titre_texte: Set the 'banner-text' for 'banner motd'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: banner-text
   description: 'This MOTD banner is displayed to all terminals connected and is useful
     for sending
 
@@ -937,13 +890,13 @@
     their networks by using a ''banner-text'' for the banner motd command.'
   audit: sh running-config | beg banner motd
   remediation: banner motd c
-  default_value: No banner is set by default
-  level: Level 1
+  default_value: null
 1.3.4:
-  rule_number: 1.3.4
-  title: Set the 'banner-text' for 'webauth banner'
-  assessment: Automated
-  primary_command: banner-text
+  titre: 1.3.4
+  titre_texte: Set the 'banner-text' for 'webauth banner'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: banner-text
   description: 'This banner is displayed to all terminals connected and is useful
     for sending messages
 
@@ -999,13 +952,13 @@
     their networks by using a ''banner-text'' for the banner motd command.'
   audit: show ip admission auth-proxy-banner http
   remediation: ip admission auth-proxy-banner http {banner-text | filepath}
-  default_value: No banner is set by default
-  level: Level 1
+  default_value: null
 1.4.1:
-  rule_number: 1.4.1
-  title: Set 'password' for 'enable secret'
-  assessment: Automated
-  primary_command: password
+  titre: 1.4.1
+  titre_texte: Set 'password' for 'enable secret'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: password
   description: 'Enable secret password type 5 and enable secret password type 5 must
     be migrated to
 
@@ -1175,13 +1128,13 @@
     ''enabling secret'' setting, which enforces a one-way cryptographic hash (MD5).'
   audit: sh run | incl enable secret
   remediation: enable secret 9 {ENABLE_SECRET_PASSWORD}
-  default_value: No enable secret password setup by default
-  level: Level 1
+  default_value: null
 1.4.2:
-  rule_number: 1.4.2
-  title: Enable 'service password-encryption'
-  assessment: Automated
-  primary_command: service password-encryption
+  titre: 1.4.2
+  titre_texte: Enable 'service password-encryption'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: service password-encryption
   description: 'When password encryption is enabled, the encrypted form of the passwords
     is
 
@@ -1209,13 +1162,13 @@
     be treated like clear-text.'
   audit: sh run | incl service password-encryption
   remediation: service password-encryption
-  default_value: Service password encryption is not set by default
-  level: Level 1
+  default_value: null
 1.4.3:
-  rule_number: 1.4.3
-  title: Set 'username secret' for all local users
-  assessment: Automated
-  primary_command: username secret
+  titre: 1.4.3
+  titre_texte: Set 'username secret' for all local users
+  automated_or_manual: Automated
+  level: Level 1
+  commande: username secret
   description: 'Username secret password type 5 and enable secret password type 5
     must be migrated
 
@@ -1388,13 +1341,13 @@
   remediation: 'username {{em}LOCAL_USERNAME{/em}} secret
 
     no snmp-server'
-  default_value: No passwords are set by default
-  level: Level 1
+  default_value: null
 1.5.2:
-  rule_number: 1.5.2
-  title: Unset 'private' for 'snmp-server community'
-  assessment: Automated
-  primary_command: private
+  titre: 1.5.2
+  titre_texte: Unset 'private' for 'snmp-server community'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: private
   description: An SNMP community string permits read-only access to all objects.
   rationale: 'The default community string "private" is well known. Using easy to
     guess, well known
@@ -1409,12 +1362,12 @@
   audit: show snmp community
   remediation: no snmp-server community {private}
   default_value: null
-  level: Level 1
 1.5.3:
-  rule_number: 1.5.3
-  title: Unset 'public' for 'snmp-server community'
-  assessment: Automated
-  primary_command: public
+  titre: 1.5.3
+  titre_texte: Unset 'public' for 'snmp-server community'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: public
   description: 'An SNMP community string permits read-only access to all objects.
 
     Specifies read-write access. Authorized management stations can both retrieve
@@ -1448,12 +1401,12 @@
 
     no snmp-server community {<em>write_community_string</em>}'
   default_value: null
-  level: Level 1
 1.5.5:
-  rule_number: 1.5.5
-  title: Set the ACL for each 'snmp-server community'
-  assessment: Automated
-  primary_command: snmp-server community
+  titre: 1.5.5
+  titre_texte: Set the ACL for each 'snmp-server community'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: snmp-server community
   description: 'This feature specifies a list of IP addresses that are allowed to
     use the community string
 
@@ -1482,15 +1435,13 @@
     organization.'
   audit: show run | incl snmp-server community
   remediation: snmp-server community <<em>community_string</em>> ro
-  default_value: 'No ACL is set for SNMP
-
-    Page 85'
-  level: Level 1
+  default_value: null
 1.5.6:
-  rule_number: 1.5.6
-  title: Create an 'access-list' for use with SNMP
-  assessment: Automated
-  primary_command: access-list
+  titre: 1.5.6
+  titre_texte: Create an 'access-list' for use with SNMP
+  automated_or_manual: Automated
+  level: Level 1
+  commande: access-list
   description: 'You can use access lists to control the transmission of packets on
     an interface, control
 
@@ -1515,13 +1466,13 @@
   remediation: 'access-list <<em>snmp_acl_number</em>> permit
 
     access-list deny any log'
-  default_value: SNMP does not use an access list.
-  level: Level 1
+  default_value: null
 1.5.7:
-  rule_number: 1.5.7
-  title: Set 'snmp-server host' when using SNMP
-  assessment: Automated
-  primary_command: snmp-server host
+  titre: 1.5.7
+  titre_texte: Set 'snmp-server host' when using SNMP
+  automated_or_manual: Automated
+  level: Level 1
+  commande: snmp-server host
   description: SNMP notifications can be sent as traps to authorized management systems.
   rationale: 'If SNMP is enabled for device management and device alerts are required,
     then ensure
@@ -1533,13 +1484,13 @@
     named systems to reduce unauthorized access.'
   audit: show run | incl snmp-server
   remediation: snmp-server host {ip_address} {trap_community_string}
-  default_value: A recipient is not specified to receive notifications.
-  level: Level 1
+  default_value: null
 1.5.8:
-  rule_number: 1.5.8
-  title: Set 'snmp-server enable traps snmp'
-  assessment: Automated
-  primary_command: snmp-server enable traps snmp
+  titre: 1.5.8
+  titre_texte: Set 'snmp-server enable traps snmp'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: snmp-server enable traps snmp
   description: 'SNMP notifications can be sent as traps to authorized management systems.
 
     Specifies authentication of a packet with encryption when using SNMPv3
@@ -1601,17 +1552,13 @@
     snmp-server group {<em>group_name</em>} v3 priv
 
     snmp-server user {user_name} {group_name} v3 auth sha'
-  default_value: 'SNMP notifications are disabled.
-
-    No SNMP server groups are configured.
-
-    SNMP username as not set by default.'
-  level: Level 1
+  default_value: null
 1.6.1:
-  rule_number: 1.6.1
-  title: Configure Login Block
-  assessment: Automated
-  primary_command: null
+  titre: 1.6.1
+  titre_texte: Configure Login Block
+  automated_or_manual: Automated
+  level: Level 2
+  commande: null
   description: 'All login parameters are disabled by default. You must issue the login
     block-for
 
@@ -1657,13 +1604,13 @@
     (config)login quiet-mode access class {**acl-name | acl-number**}
 
     (config)login delay {**seconds**}'
-  default_value: no login-block enabled
-  level: Level 2
+  default_value: null
 1.6.2:
-  rule_number: 1.6.2
-  title: AutoSecure
-  assessment: Automated
-  primary_command: null
+  titre: 1.6.2
+  titre_texte: AutoSecure
+  automated_or_manual: Automated
+  level: Level 2
+  commande: null
   description: 'The AutoSecure feature secures a router by using a single CLI command
     to disable
 
@@ -1797,15 +1744,13 @@
     (config)enable password {password | [encryption-type ] encrypted-
 
     security authentication failure rate {**threshold-rate**} log'
-  default_value: 'AutoSecure not configured
-
-    Page 101'
-  level: Level 2
+  default_value: null
 1.6.3:
-  rule_number: 1.6.3
-  title: Configuring Kerberos
-  assessment: Automated
-  primary_command: null
+  titre: 1.6.3
+  titre_texte: Configuring Kerberos
+  automated_or_manual: Automated
+  level: Level 2
+  commande: null
   description: 'Kerberos is a secret-key network authentication protocol, developed
     at the
 
@@ -1903,13 +1848,13 @@
     (config)kerberos server {kerberos-realm {hostname | ip-address}}
 
     (config)kerberos realm {dns-domain | host} {kerberos-realm}'
-  default_value: no kerberos enabled
-  level: Level 2
+  default_value: null
 1.6.4:
-  rule_number: 1.6.4
-  title: Configure Web interface
-  assessment: Automated
-  primary_command: null
+  titre: 1.6.4
+  titre_texte: Configure Web interface
+  automated_or_manual: Automated
+  level: Level 2
+  commande: null
   description: 'Web-based authentication is an ingress-only feature.
 
     You can configure web-based authentication only on access ports. Web-based
@@ -2007,12 +1952,12 @@
 
     (config)ip admission max-login-attempts {number}'
   default_value: null
-  level: Level 2
 2.1.1.1.1:
-  rule_number: 2.1.1.1.1
-  title: Set the 'hostname'
-  assessment: Automated
-  primary_command: hostname
+  titre: 2.1.1.1.1
+  titre_texte: Set the 'hostname'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: hostname
   description: The hostname is used in prompts and default configuration filenames.
   rationale: The domain name is prerequisite for setting up SSH.
   impact: 'Organizations should plan the enterprise network and identify an appropriate
@@ -2021,13 +1966,13 @@
     for each router.'
   audit: sh run | incl hostname
   remediation: hostname {<em>router_name</em>}
-  default_value: The default hostname is Router.
-  level: Level 1
+  default_value: null
 2.1.1.1.2:
-  rule_number: 2.1.1.1.2
-  title: Set the 'ip domain-name'
-  assessment: Automated
-  primary_command: ip domain-name
+  titre: 2.1.1.1.2
+  titre_texte: Set the 'ip domain-name'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: ip domain-name
   description: 'Define a default domain name that the Cisco IOS software uses to complete
     unqualified
 
@@ -2099,19 +2044,13 @@
     ip ssh time-out [<em>60</em>]
 
     ip ssh authentication-retries [<em>3</em>]'
-  default_value: 'No domain is set.
-
-    RSA key pairs do not exist.
-
-    SSH in not enabled by default.
-
-    SSH is not enabled by default. When set, the default value is 3.'
-  level: Level 1
+  default_value: null
 2.1.1.2:
-  rule_number: 2.1.1.2
-  title: Set version 2 for 'ip ssh version'
-  assessment: Automated
-  primary_command: ip ssh version
+  titre: 2.1.1.2
+  titre_texte: Set version 2 for 'ip ssh version'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: ip ssh version
   description: Specify the version of Secure Shell (SSH) to be run on a router
   rationale: 'SSH Version 1 has been subject to a number of serious vulnerabilities
     and is no longer
@@ -2134,16 +2073,13 @@
     in use.'
   audit: sh ip ssh
   remediation: ip ssh version 2
-  default_value: 'SSH is not enabled by default. When enabled, SSH operates in compatibility
-    mode
-
-    (versions 1 and 2 supported).'
-  level: Level 1
+  default_value: null
 2.1.2:
-  rule_number: 2.1.2
-  title: Set 'no cdp run'
-  assessment: Automated
-  primary_command: no cdp run
+  titre: 2.1.2
+  titre_texte: Set 'no cdp run'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: no cdp run
   description: Disable Cisco Discovery Protocol (CDP) service at device level.
   rationale: 'The Cisco Discovery Protocol is a proprietary protocol that Cisco devices
     use to identify
@@ -2167,14 +2103,13 @@
     unnecessary protocols.'
   audit: show cdp
   remediation: no cdp run
-  default_value: Enabled on all platforms except the Cisco 10000 Series Edge Services
-    Router
-  level: Level 1
+  default_value: null
 2.1.3:
-  rule_number: 2.1.3
-  title: Set 'no ip bootp server'
-  assessment: Automated
-  primary_command: no ip bootp server
+  titre: 2.1.3
+  titre_texte: Set 'no ip bootp server'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: no ip bootp server
   description: Disable the Bootstrap Protocol (BOOTP) service on your routing device.
   rationale: 'BootP allows a router to issue IP addresses. This should be disabled
     unless there is a
@@ -2189,13 +2124,13 @@
     unnecessary protocols such as ''ip bootp server''.'
   audit: show run | incl bootp
   remediation: ip dhcp bootp ignore
-  default_value: Enabled
-  level: Level 1
+  default_value: null
 2.1.4:
-  rule_number: 2.1.4
-  title: Set 'no service dhcp'
-  assessment: Automated
-  primary_command: no service dhcp
+  titre: 2.1.4
+  titre_texte: Set 'no service dhcp'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: no service dhcp
   description: 'Disable the Dynamic Host Configuration Protocol (DHCP) server and
     relay agent
 
@@ -2218,16 +2153,13 @@
     unnecessary protocols such as the Dynamic Host Configuration Protocol (DHCP).'
   audit: show run | incl dhcp
   remediation: <strong>no service dhcp</strong>
-  default_value: 'Enabled by default, but also requires a DHCP pool to be set to activate
-    the DHCP
-
-    server.'
-  level: Level 1
+  default_value: null
 2.1.5:
-  rule_number: 2.1.5
-  title: Set 'no ip identd'
-  assessment: Automated
-  primary_command: no ip identd
+  titre: 2.1.5
+  titre_texte: Set 'no ip identd'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: no ip identd
   description: Disable the identification (identd) server.
   rationale: 'Identification protocol enables identifying a user''s transmission control
     protocol (TCP)
@@ -2244,13 +2176,13 @@
     unnecessary protocols such as the identification protocol (identd).'
   audit: show run | incl identd
   remediation: no ip identd
-  default_value: Disabled by default
-  level: Level 1
+  default_value: null
 2.1.6:
-  rule_number: 2.1.6
-  title: Set 'service tcp-keepalives-in'
-  assessment: Automated
-  primary_command: service tcp-keepalives-in
+  titre: 2.1.6
+  titre_texte: Set 'service tcp-keepalives-in'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: service tcp-keepalives-in
   description: Generate keepalive packets on idle incoming network connections.
   rationale: 'Stale connections use resources and could potentially be hijacked to
     gain illegitimate
@@ -2276,13 +2208,13 @@
     the use of ''tcp-keepalives-in'' command.'
   audit: show run | incl service tcp
   remediation: service tcp-keepalives-in
-  default_value: Disabled by default.
-  level: Level 1
+  default_value: null
 2.1.7:
-  rule_number: 2.1.7
-  title: Set 'service tcp-keepalives-out'
-  assessment: Automated
-  primary_command: service tcp-keepalives-out
+  titre: 2.1.7
+  titre_texte: Set 'service tcp-keepalives-out'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: service tcp-keepalives-out
   description: Generate keepalive packets on idle outgoing network connections.
   rationale: 'Stale connections use resources and could potentially be hijacked to
     gain illegitimate
@@ -2308,13 +2240,13 @@
     the use of ''tcp-keepalives-out'' command.'
   audit: show run | incl service tcp
   remediation: service tcp-keepalives-out
-  default_value: Disabled by default.
-  level: Level 1
+  default_value: null
 2.1.8:
-  rule_number: 2.1.8
-  title: Set 'no service pad'
-  assessment: Automated
-  primary_command: no service pad
+  titre: 2.1.8
+  titre_texte: Set 'no service pad'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: no service pad
   description: Disable X.25 Packet Assembler/Disassembler (PAD) service.
   rationale: 'If the PAD service is not necessary, disable the service to prevent
     intruders from
@@ -2326,13 +2258,13 @@
     policy restricting unnecessary services such as the ''PAD'' service.'
   audit: show run | incl service pad
   remediation: no service pad
-  default_value: Enabled by default.
-  level: Level 1
+  default_value: null
 2.2.1:
-  rule_number: 2.2.1
-  title: Set 'logging enable'
-  assessment: Automated
-  primary_command: logging enable
+  titre: 2.2.1
+  titre_texte: Set 'logging enable'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: logging enable
   description: Enable logging of system messages.
   rationale: 'Logging provides a chronological record of activities on the Cisco device
     and allows
@@ -2350,13 +2282,13 @@
     logging enable
 
     end'
-  default_value: Logging is not enabled/
-  level: Level 1
+  default_value: null
 2.2.2:
-  rule_number: 2.2.2
-  title: Set 'buffer size' for 'logging buffered'
-  assessment: Automated
-  primary_command: buffer size
+  titre: 2.2.2
+  titre_texte: Set 'buffer size' for 'logging buffered'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: buffer size
   description: Enable system message logging to a local buffer.
   rationale: 'The device can copy and store log messages to an internal memory buffer.
     The
@@ -2371,13 +2303,13 @@
     enforce such policies by enabling the ''logging buffered'' command.'
   audit: show run | incl logging buffered
   remediation: logging buffered [<em>log_buffer_size</em>]
-  default_value: No logging buffer is set by default
-  level: Level 1
+  default_value: null
 2.2.3:
-  rule_number: 2.2.3
-  title: Set 'logging console critical'
-  assessment: Automated
-  primary_command: logging console critical
+  titre: 2.2.3
+  titre_texte: Set 'logging console critical'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: logging console critical
   description: 'Verify logging to device console is enabled and limited to a rational
     severity level to
 
@@ -2402,56 +2334,13 @@
     messages to be effective.'
   audit: show run | incl logging console
   remediation: logging console critical
-  default_value: 'Tthe default is to log all messages
-
-    Additional Information:
-
-    The console is a slow display device. In message storms some logging messages
-    may
-
-    be silently dropped when the console queue becomes full. Set severity levels
-
-    accordingly.
-
-    Page 138
-
-    CIS Controls:
-
-    Controls
-
-    Version Control IG 1 IG 2 IG 3
-
-    v8
-
-    8.5 Collect Detailed Audit Logs
-
-    Configure detailed audit logging for enterprise assets containing sensitive data.
-
-    Include event source, date, username, timestamp, source addresses, destination
-
-    addresses, and other useful elements that could assist in a forensic investigation.
-
-    ● ●
-
-    v7
-
-    6.3 Enable Detailed Logging
-
-    Enable system logging to include detailed information such as an event source,
-
-    date, user, timestamp, source addresses, destination addresses, and other useful
-
-    elements.
-
-    ● ●
-
-    Page 139'
-  level: Level 1
+  default_value: null
 2.2.4:
-  rule_number: 2.2.4
-  title: Set IP address for 'logging host'
-  assessment: Automated
-  primary_command: logging host
+  titre: 2.2.4
+  titre_texte: Set IP address for 'logging host'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: logging host
   description: Log system messages and debug output to a remote host.
   rationale: 'Cisco routers can send their log messages to a Unix-style Syslog service.
     A syslog
@@ -2480,13 +2369,13 @@
     process.'
   audit: sh log | incl logging host
   remediation: logging host {syslog_server}
-  default_value: System logging messages are not sent to any remote host.
-  level: Level 1
+  default_value: null
 2.2.5:
-  rule_number: 2.2.5
-  title: Set 'logging trap informational'
-  assessment: Automated
-  primary_command: logging trap informational
+  titre: 2.2.5
+  titre_texte: Set 'logging trap informational'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: logging trap informational
   description: Limit messages logged to the syslog servers based on severity level
     informational.
   rationale: 'This determines the severity of messages that will generate simple network
@@ -2503,13 +2392,13 @@
     process.'
   audit: sh log | incl trap logging
   remediation: logging trap informational
-  default_value: Disabled
-  level: Level 1
+  default_value: null
 2.2.6:
-  rule_number: 2.2.6
-  title: Set 'service timestamps debug datetime'
-  assessment: Automated
-  primary_command: service timestamps debug datetime
+  titre: 2.2.6
+  titre_texte: Set 'service timestamps debug datetime'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: service timestamps debug datetime
   description: 'Configure the system to apply a time stamp to debugging messages or
     system logging
 
@@ -2532,13 +2421,13 @@
     date and time on entries sent to the logging host and enforces the logging process.'
   audit: sh run | incl service timestamps
   remediation: service timestamps debug datetime {<em>msec</em>} show-
-  default_value: Time stamps are applied to debug and logging messages.
-  level: Level 1
+  default_value: null
 2.2.7:
-  rule_number: 2.2.7
-  title: Set 'logging source interface'
-  assessment: Automated
-  primary_command: logging source interface
+  titre: 2.2.7
+  titre_texte: Set 'logging source interface'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: logging source interface
   description: Specify the source IPv4 or IPv6 address of system logging packets
   rationale: 'This is required so that the router sends log messages to the logging
     server from a
@@ -2556,13 +2445,13 @@
     the logging host and enforces the logging process.'
   audit: sh run | incl logging source
   remediation: logging source-interface loopback
-  default_value: The wildcard interface address is used.
-  level: Level 1
+  default_value: null
 2.2.8:
-  rule_number: 2.2.8
-  title: Set 'login success/failure logging'
-  assessment: Automated
-  primary_command: login success/failure logging
+  titre: 2.2.8
+  titre_texte: Set 'login success/failure logging'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: login success/failure logging
   description: 'Without generating audit records that are specific to the security
     and mission needs of
 
@@ -2582,12 +2471,12 @@
 
     end'
   default_value: null
-  level: Level 2
 2.3.1.1:
-  rule_number: 2.3.1.1
-  title: Set 'ntp authenticate'
-  assessment: Automated
-  primary_command: ntp authenticate
+  titre: 2.3.1.1
+  titre_texte: Set 'ntp authenticate'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: ntp authenticate
   description: Enable NTP authentication.
   rationale: 'Using authenticated NTP ensures the Cisco device only permits time updates
     from
@@ -2602,13 +2491,13 @@
     authentication between NTP hosts.'
   audit: show run | include ntp
   remediation: ntp authenticate
-  default_value: NTP authentication is not enabled.
-  level: Level 2
+  default_value: null
 2.3.1.2:
-  rule_number: 2.3.1.2
-  title: Set 'ntp authentication-key'
-  assessment: Automated
-  primary_command: ntp authentication-key
+  titre: 2.3.1.2
+  titre_texte: Set 'ntp authentication-key'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: ntp authentication-key
   description: Define an authentication key for Network Time Protocol (NTP).
   rationale: 'Using an authentication key provides a higher degree of security as
     only authenticated
@@ -2623,13 +2512,13 @@
     enforces encrypted authentication between NTP hosts.'
   audit: show run | include ntp authentication-key
   remediation: ntp authentication-key {ntp_key_id} md5 {ntp_key_hash}
-  default_value: No authentication key is defined for NTP.
-  level: Level 2
+  default_value: null
 2.3.1.3:
-  rule_number: 2.3.1.3
-  title: Set the 'ntp trusted-key'
-  assessment: Automated
-  primary_command: ntp trusted-key
+  titre: 2.3.1.3
+  titre_texte: Set the 'ntp trusted-key'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: ntp trusted-key
   description: 'Ensure you authenticate the identity of a system to which Network
     Time Protocol (NTP)
 
@@ -2650,13 +2539,13 @@
     encrypted authentication between NTP hosts.'
   audit: show run | include ntp trusted-key
   remediation: ntp trusted-key {ntp_key_id}
-  default_value: Authentication of the identity of the system is disabled.
-  level: Level 2
+  default_value: null
 2.3.1.4:
-  rule_number: 2.3.1.4
-  title: Set 'key' for each 'ntp server'
-  assessment: Automated
-  primary_command: key
+  titre: 2.3.1.4
+  titre_texte: Set 'key' for each 'ntp server'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: key
   description: Specifies the authentication key for NTP.
   rationale: 'This authentication feature provides protection against accidentally
     synchronizing the
@@ -2674,49 +2563,13 @@
     encrypted authentication between NTP hosts.'
   audit: show run | include ntp server
   remediation: ntp server {<em>ntp-server_ip_address</em>}{key
-  default_value: 'No NTP key is set by default
-
-    CIS Controls:
-
-    Controls
-
-    Version Control IG 1 IG 2 IG 3
-
-    v8
-
-    8.4 Standardize Time Synchronization
-
-    Standardize time synchronization. Configure at least two synchronized time
-
-    sources across enterprise assets, where supported.
-
-    ● ●
-
-    Page 157
-
-    Controls
-
-    Version Control IG 1 IG 2 IG 3
-
-    v7
-
-    6.1 Utilize Three Synchronized Time Sources
-
-    Use at least three synchronized time sources from which all servers and
-
-    network devices retrieve time information on a regular basis so that timestamps
-
-    in logs are consistent.
-
-    ● ●
-
-    Page 158'
-  level: Level 2
+  default_value: null
 2.3.2:
-  rule_number: 2.3.2
-  title: Set 'ip address' for 'ntp server'
-  assessment: Automated
-  primary_command: ip address
+  titre: 2.3.2
+  titre_texte: Set 'ip address' for 'ntp server'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: ip address
   description: 'Use this command if you want to allow the system to synchronize the
     system software
 
@@ -2744,13 +2597,13 @@
   remediation: 'ntp server {ntp-server_ip_address}
 
     ntp server {ntp server vrf [vrf name] ip address}'
-  default_value: No servers are configured by default.
-  level: Level 1
+  default_value: null
 2.4.1:
-  rule_number: 2.4.1
-  title: Create a single 'interface loopback'
-  assessment: Automated
-  primary_command: interface loopback
+  titre: 2.4.1
+  titre_texte: Create a single 'interface loopback'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: interface loopback
   description: Configure a single loopback interface.
   rationale: 'Software-only loopback interface that emulates an interface that is
     always up. It is a
@@ -2775,13 +2628,13 @@
   remediation: 'interface loopback <<em>number</em>>
 
     ip address <<em>loopback_ip_address</em>>'
-  default_value: There are no loopback interfaces defined by default.
-  level: Level 2
+  default_value: null
 2.4.2:
-  rule_number: 2.4.2
-  title: Set AAA 'source-interface'
-  assessment: Automated
-  primary_command: source-interface
+  titre: 2.4.2
+  titre_texte: Set AAA 'source-interface'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: source-interface
   description: Force AAA to use the IP address of a specified interface for all outgoing
     AAA packets
   rationale: 'This is required so that the AAA server (RADIUS or TACACS+) can easily
@@ -2801,12 +2654,12 @@
 
     ip tacacs source-interface {loopback_interface_number}'
   default_value: null
-  level: Level 2
 2.4.3:
-  rule_number: 2.4.3
-  title: Set 'ntp source' to Loopback Interface
-  assessment: Automated
-  primary_command: ntp source
+  titre: 2.4.3
+  titre_texte: Set 'ntp source' to Loopback Interface
+  automated_or_manual: Automated
+  level: Level 2
+  commande: ntp source
   description: 'Use a particular source address in Network Time Protocol (NTP) packets.
 
     Specify the IP address of an interface as the source address for TFTP connections.'
@@ -2839,17 +2692,13 @@
   remediation: 'ntp source loopback {<em>loopback_interface_number}</em>
 
     ip tftp source-interface loopback'
-  default_value: 'Source address is determined by the outgoing interface.
-
-    The address of the closest interface to the destination is selected as the source
-
-    address.'
-  level: Level 2
+  default_value: null
 3.1.1:
-  rule_number: 3.1.1
-  title: Set 'no ip source-route'
-  assessment: Automated
-  primary_command: no ip source-route
+  titre: 3.1.1
+  titre_texte: Set 'no ip source-route'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: no ip source-route
   description: Disable the handling of IP datagrams with source routing header options.
   rationale: 'Source routing is a feature of IP whereby individual packets can specify
     routes. This
@@ -2866,13 +2715,13 @@
     attacks and should be disabled.'
   audit: sh run | incl ip source-route
   remediation: no ip source-route
-  default_value: Enabled by default
-  level: Level 1
+  default_value: null
 3.1.2:
-  rule_number: 3.1.2
-  title: Set 'no ip proxy-arp'
-  assessment: Automated
-  primary_command: no ip proxy-arp
+  titre: 3.1.2
+  titre_texte: Set 'no ip proxy-arp'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: no ip proxy-arp
   description: Disable proxy ARP on all interfaces.
   rationale: 'Address Resolution Protocol (ARP) provides resolution between IP and
     MAC
@@ -2913,15 +2762,13 @@
   remediation: 'interface {interface}
 
     no ip proxy-arp'
-  default_value: 'Enabled
-
-    Page 173'
-  level: Level 2
+  default_value: null
 3.1.3:
-  rule_number: 3.1.3
-  title: Set 'no interface tunnel'
-  assessment: Automated
-  primary_command: no interface tunnel
+  titre: 3.1.3
+  titre_texte: Set 'no interface tunnel'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: no interface tunnel
   description: Verify no tunnel interfaces are defined.
   rationale: 'Tunnel interfaces should not exist in general. They can be used for
     malicious purposes.
@@ -2938,13 +2785,13 @@
     interfaces''.'
   audit: sh ip int brief | incl tunnel
   remediation: no interface tunnel {<em>instance</em>}
-  default_value: No tunnel interfaces are defined
-  level: Level 1
+  default_value: null
 3.1.4:
-  rule_number: 3.1.4
-  title: Set 'ip verify unicast source reachable-via'
-  assessment: Automated
-  primary_command: ip verify unicast source reachable-via
+  titre: 3.1.4
+  titre_texte: Set 'ip verify unicast source reachable-via'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: ip verify unicast source reachable-via
   description: 'Examines incoming packets to determine whether the source address
     is in the
 
@@ -3066,19 +2913,13 @@
     interface {external_interface}
 
     ip access-group {name | number} in'
-  default_value: 'Unicast RPF is disabled.
-
-    No access list defined
-
-    No access-group defined
-
-    Page 182'
-  level: Level 1
+  default_value: null
 3.3.1.1:
-  rule_number: 3.3.1.1
-  title: Set 'key chain'
-  assessment: Automated
-  primary_command: key chain
+  titre: 3.3.1.1
+  titre_texte: Set 'key chain'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: key chain
   description: 'Define an authentication key chain to enable authentication for routing
     protocols. A key
 
@@ -3098,13 +2939,13 @@
     protocols enforces these policies.'
   audit: sh run | sec key chain
   remediation: key chain {<em>key-chain_name</em>}
-  default_value: Not set
-  level: Level 2
+  default_value: null
 3.3.1.2:
-  rule_number: 3.3.1.2
-  title: Set 'key'
-  assessment: Automated
-  primary_command: key
+  titre: 3.3.1.2
+  titre_texte: Set 'key'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: key
   description: Configure an authentication key on a key chain.
   rationale: This is part of the routing authentication setup
   impact: 'Organizations should plan and implement enterprise security policies that
@@ -3117,12 +2958,12 @@
   audit: sh run | sec key chain
   remediation: key {<em>key-number</em>}
   default_value: null
-  level: Level 2
 3.3.1.3:
-  rule_number: 3.3.1.3
-  title: Set 'key-string'
-  assessment: Automated
-  primary_command: key-string
+  titre: 3.3.1.3
+  titre_texte: Set 'key-string'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: key-string
   description: Configure the authentication string for a key.
   rationale: This is part of the routing authentication setup
   impact: 'Organizations should plan and implement enterprise security policies that
@@ -3134,13 +2975,13 @@
     for routing protocols enforces these policies.'
   audit: sh run | sec key chain
   remediation: key-string <<em>key-string</em>>
-  default_value: Not set
-  level: Level 2
+  default_value: null
 3.3.1.4:
-  rule_number: 3.3.1.4
-  title: Set 'address-family ipv4 autonomous-system'
-  assessment: Automated
-  primary_command: address-family ipv4 autonomous-system
+  titre: 3.3.1.4
+  titre_texte: Set 'address-family ipv4 autonomous-system'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: address-family ipv4 autonomous-system
   description: Configure the EIGRP address family.
   rationale: 'Rationale: EIGRP is a true multi-protocol routing protocol and the ''address-family''
 
@@ -3158,13 +2999,13 @@
   remediation: 'router eigrp <<em>virtual-instance-name</em>>
 
     address-family ipv4 autonomous-system {<em>eigrp_as-'
-  default_value: Not set
-  level: Level 2
+  default_value: null
 3.3.1.5:
-  rule_number: 3.3.1.5
-  title: Set 'af-interface default'
-  assessment: Automated
-  primary_command: af-interface default
+  titre: 3.3.1.5
+  titre_texte: Set 'af-interface default'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: af-interface default
   description: Defines user defaults to apply to EIGRP interfaces that belong to an
     address-family.
   rationale: Part of the EIGRP address-family setup
@@ -3183,13 +3024,13 @@
     address-family ipv4 autonomous-system {<em>eigrp_as-
 
     af-interface default'
-  default_value: Not set
-  level: Level 2
+  default_value: null
 3.3.1.6:
-  rule_number: 3.3.1.6
-  title: Set 'authentication key-chain'
-  assessment: Automated
-  primary_command: authentication key-chain
+  titre: 3.3.1.6
+  titre_texte: Set 'authentication key-chain'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: authentication key-chain
   description: Configure the EIGRP address family key chain.
   rationale: This is part of the EIGRP authentication configuration
   impact: 'Organizations should plan and implement enterprise security policies that
@@ -3209,13 +3050,13 @@
     af-interface {interface-name}
 
     authentication key-chain {eigrp_key-'
-  default_value: No key chains are specified for EIGRP
-  level: Level 2
+  default_value: null
 3.3.1.7:
-  rule_number: 3.3.1.7
-  title: Set 'authentication mode md5'
-  assessment: Automated
-  primary_command: authentication mode md5
+  titre: 3.3.1.7
+  titre_texte: Set 'authentication mode md5'
+  automated_or_manual: Automated
+  level: Level 1
+  commande: authentication mode md5
   description: 'Configure authentication to prevent unapproved sources from introducing
     unauthorized
 
@@ -3238,13 +3079,13 @@
     af-interface {interface-name}
 
     authentication mode md5'
-  default_value: Not defined
-  level: Level 1
+  default_value: null
 3.3.1.8:
-  rule_number: 3.3.1.8
-  title: Set 'ip authentication key-chain eigrp'
-  assessment: Automated
-  primary_command: ip authentication key-chain eigrp
+  titre: 3.3.1.8
+  titre_texte: Set 'ip authentication key-chain eigrp'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: ip authentication key-chain eigrp
   description: 'Specify the type of authentication used in Enhanced Interior Gateway
     Routing Protocol
 
@@ -3269,13 +3110,13 @@
   remediation: 'interface {<em>interface_name</em>}
 
     ip authentication key-chain eigrp {<em>eigrp_as-'
-  default_value: Not set
-  level: Level 2
+  default_value: null
 3.3.1.9:
-  rule_number: 3.3.1.9
-  title: Set 'ip authentication mode eigrp'
-  assessment: Automated
-  primary_command: ip authentication mode eigrp
+  titre: 3.3.1.9
+  titre_texte: Set 'ip authentication mode eigrp'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: ip authentication mode eigrp
   description: 'Configure authentication to prevent unapproved sources from introducing
     unauthorized
 
@@ -3314,15 +3155,13 @@
     router ospf <<em>ospf_process-id</em>>
 
     area <<em>ospf_area-id</em>> authentication message-'
-  default_value: 'Not set
-
-    Not set'
-  level: Level 2
+  default_value: null
 3.3.2.2:
-  rule_number: 3.3.2.2
-  title: Set 'ip ospf message-digest-key md5'
-  assessment: Automated
-  primary_command: ip ospf message-digest-key md5
+  titre: 3.3.2.2
+  titre_texte: Set 'ip ospf message-digest-key md5'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: ip ospf message-digest-key md5
   description: Enable Open Shortest Path First (OSPF) Message Digest 5 (MD5) authentication.
   rationale: This is part of the OSPF authentication setup
   impact: 'Organizations should plan and implement enterprise security policies that
@@ -3338,13 +3177,13 @@
   remediation: 'interface {<em>interface_name</em>}
 
     ip ospf message-digest-key {<em>ospf_md5_key-id</em>} md5'
-  default_value: Not set
-  level: Level 2
+  default_value: null
 3.3.3.1:
-  rule_number: 3.3.3.1
-  title: Set 'key chain'
-  assessment: Automated
-  primary_command: key chain
+  titre: 3.3.3.1
+  titre_texte: Set 'key chain'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: key chain
   description: Define an authentication key chain to enable authentication for RIPv2
     routing protocols.
   rationale: This is part of the routing authentication process.
@@ -3359,13 +3198,13 @@
     restricting acceptable authentication between network devices.'
   audit: sh run | sec key chain
   remediation: key chain {<em>rip_key-chain_name</em>}
-  default_value: Not set
-  level: Level 2
+  default_value: null
 3.3.3.2:
-  rule_number: 3.3.3.2
-  title: Set 'key'
-  assessment: Automated
-  primary_command: key
+  titre: 3.3.3.2
+  titre_texte: Set 'key'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: key
   description: Configure an authentication key on a key chain.
   rationale: This is part of the routing authentication setup
   impact: 'Organizations should plan and implement enterprise security policies that
@@ -3380,12 +3219,12 @@
   audit: sh run | sec key chain
   remediation: key {<em>key-number</em>}
   default_value: null
-  level: Level 2
 3.3.3.3:
-  rule_number: 3.3.3.3
-  title: Set 'key-string'
-  assessment: Automated
-  primary_command: key-string
+  titre: 3.3.3.3
+  titre_texte: Set 'key-string'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: key-string
   description: Configure the authentication string for a key.
   rationale: This is part of the routing authentication setup
   impact: 'Organizations should plan and implement enterprise security policies that
@@ -3397,13 +3236,13 @@
     for routing protocols enforces these policies.'
   audit: sh run | sec key chain
   remediation: key-string <<em>key-string</em>>
-  default_value: Not set
-  level: Level 2
+  default_value: null
 3.3.3.4:
-  rule_number: 3.3.3.4
-  title: Set 'ip rip authentication key-chain'
-  assessment: Automated
-  primary_command: ip rip authentication key-chain
+  titre: 3.3.3.4
+  titre_texte: Set 'ip rip authentication key-chain'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: ip rip authentication key-chain
   description: 'Enable authentication for Routing Information Protocol (RIP) Version
     2 packets and to
 
@@ -3423,13 +3262,13 @@
   remediation: 'interface {<em>interface_name</em>}
 
     ip rip authentication key-chain {<em>rip_key-'
-  default_value: Not set
-  level: Level 2
+  default_value: null
 3.3.3.5:
-  rule_number: 3.3.3.5
-  title: Set 'ip rip authentication mode' to 'md5'
-  assessment: Automated
-  primary_command: ip rip authentication mode
+  titre: 3.3.3.5
+  titre_texte: Set 'ip rip authentication mode' to 'md5'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: ip rip authentication mode
   description: Configure the Interface with the RIPv2 key chain.
   rationale: This is part of the RIPv2 authentication setup
   impact: 'Organizations should plan and implement enterprise security policies that
@@ -3444,13 +3283,13 @@
   remediation: 'interface <<em>interface_name</em>>
 
     ip rip authentication mode md5'
-  default_value: Not set
-  level: Level 2
+  default_value: null
 3.3.4.1:
-  rule_number: 3.3.4.1
-  title: Set 'neighbor password'
-  assessment: Automated
-  primary_command: neighbor password
+  titre: 3.3.4.1
+  titre_texte: Set 'neighbor password'
+  automated_or_manual: Automated
+  level: Level 2
+  commande: neighbor password
   description: 'Enable message digest5 (MD5) authentication on a TCP connection between
     two BGP
 
@@ -3473,5 +3312,4 @@
   remediation: 'router bgp <<em>bgp_as-number</em>>
 
     neighbor <<em>bgp_neighbor-ip</em> | <em>peer-group-'
-  default_value: Not set
-  level: Level 2
+  default_value: null

@@ -3,7 +3,7 @@ import re
 import yaml
 
 PDF_FILE = "./cis_pdf/cis_ios17.pdf"
-OUTPUT_YAML = "cis_ios17_complet.yml"
+OUTPUT_YAML = "cis_ios17_complet2.yml"
 
 rule_title_pattern = re.compile(r"^(\d+(?:\.\d+)+)\s+(.*?)(?:\s+\((Automated|Manual)\))?$")
 
