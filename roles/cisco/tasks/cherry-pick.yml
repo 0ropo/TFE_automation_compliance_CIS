@@ -8,19 +8,23 @@
   set_fact:
     titre_num: "{{ user_titre_num.user_input.split(',') | map('trim') | list }}"
 
-- name: debug
-  debug:
-    msg: "{{titre_num | map('extract', cis_rules) | map(attribute='commande') | reject('equalto', None) | list }}"
-
 - name: Récupération de la commande à partir du titre
   set_fact:
     commandes: "{{titre_num | map('extract', cis_rules) | map(attribute='commande') | reject('equalto', None) | list }}"
 
-- name: debug
+- name: Afficher les commandes
   debug:
-    msg: "{{titre_num | map('extract', cis_rules)}}"
+    msg: "{{ commandes }}"
 
+- name: Récupération des paramètres pour une commande (laisser vide si pas de paramètres)
+  pause:
+    prompt: "Veuillez entrer les paramètres de la commande (laisser vide si pas de paramètres)"
+  register: "{{ user_params }}"
+
+- name: Concat commande et paramètres
+  set_fact:
+    commandes_param: "{{ commandes | map('regex_replace', '$', ' ' ~ user_params.user_input | default('')) | list }}"
 
 - name: Appliquer la modification sur la configuration
   cisco.ios.ios_config:
-    commands: "{{ commandes }}"
+    commands: "{{ commandes_param }}"
