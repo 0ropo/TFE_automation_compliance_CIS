@@ -7,11 +7,11 @@
   become: yes
   hosts: "{{ ansible_host }}"
 
-#  set_fact:
-#    cli:
-#      username: "{{ ansible_user }}"
-#      password: "{{ ansible_password }}"
-#      timeout: 100
+  set_fact:
+    cli:
+      username: "{{ ansible_user }}"
+      password: "{{ ansible_password }}"
+      timeout: 100
 
 - name: options taches utilisateur
   pause:
