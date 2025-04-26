@@ -3,9 +3,9 @@
 # tasks file for roles/cisco
 
 - name: Tâche connexion appareil cisco
-  #connection:local
-  #become: yes
-  #hosts: "{{ ansible_host }}"
+  connection:local
+  become: yes
+  hosts: "{{ ansible_host }}"
 
 #  set_fact:
 #    cli:
@@ -40,3 +40,4 @@
 - name: Lancement du cherry-pick
   include_tasks: cherry-pick.yml
   when: user_choice.user_input == "3"
+
