@@ -7,30 +7,36 @@
   #become: yes
   #hosts: "{{ ansible_host }}"
 
-  set_fact:
-    cli:
-      username: "{{ ansible_user }}"
-      password: "{{ ansible_password }}"
-      timeout: 100
-  
+#  set_fact:
+#    cli:
+#      username: "{{ ansible_user }}"
+#      password: "{{ ansible_password }}"
+#      timeout: 100
+
+- name: options taches utilisateur
+  pause:
+    prompt: "Voici les différentes options :\n 1. Génération du rapport de conformité \n 2. Correction automatique de la configuration\n 3. Cherry-pick sur les corrections\n 4. Quitter le script\n Veuillez entrer le numéro de l'option choisie (1, 2, 3 ou 4)"
+  register: user_choice
+
 - name: récupération de la configuration sur la machine
   include_tasks: rapport.yml
+  when: user_choice.user_input == "1"
 
-- name: Demander la confirmation pour appliquer les modifs sur la config
-  pause:
-    prompt: "Voulez-vous appliquer les toutes les corrections sur la configuration ? (yes/no)"
-  register: correction_auto
+#- name: Demander la confirmation pour appliquer les modifs sur la config
+#  pause:
+#    prompt: "Voulez-vous appliquer les toutes les corrections sur la configuration ? (yes/no)"
+#  register: correction_auto
 
 
 - name: Correction de tout le fichier de configuration sur la machine
   include_tasks: correction.yml
-  when: correction_auto.user_input == "yes"
+  when: user_choice.user_input == "2"
 
-- name: Cherry-pick sur les corrections ?
-  pause:
-    prompt: "Voulez-vous choisir les lignes à corriger dans la configuration ? (yes/no)"
-  register: cherry_pick
+#- name: Cherry-pick sur les corrections ?
+#  pause:
+#    prompt: "Voulez-vous choisir les lignes à corriger dans la configuration ? (yes/no)"
+#  register: cherry_pick
 
 - name: Lancement du cherry-pick
   include_tasks: cherry-pick.yml
-  when: cherry_pick.user_input == "yes"
+  when: user_choice.user_input == "3"

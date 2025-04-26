@@ -10,6 +10,7 @@ Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
 
 {% if obj.commande | string in host_config %}
     La ligne : ({{obj.titre}}:{{obj.commande}}) de niveau {{obj.level}} est présente dans la config de l'appareil.✅
+
     {% if obj.level==1 %}
         {% set count_level1 = count_level1 + 1 %}
         {% else %}

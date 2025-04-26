@@ -1,3 +1,5 @@
+
+
 - name: Cherry-picking des commandes à ajouter en fonction de leurs numéros/titres
   pause:
     prompt: "Veuillez enter le numéro de la commande manquante à corriger(ex: 1.1.1,1.2.3)"
@@ -12,7 +14,7 @@
   set_fact:
     commandes: "{{titre_num | map('extract', cis_rules) | map(attribute='commande') | reject('equalto', None) | list }}"
 
-- name: Afficher les commandes
+- name: Afficher les commandes users
   debug:
     msg: "{{ commandes }}"
 

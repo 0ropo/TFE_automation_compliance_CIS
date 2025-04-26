@@ -1,15 +1,10 @@
-Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
-
-{% set count_ok = 0 %}
-{% set count_ko = 0 %}
-{% set count_level1 = 0 %}
-{% set count_level2 = 0 %}
+{% set ns = namespace(count_ok=0,count_ko,count_level1=0,count_level2=0) %}
 {% set objs_numbers = ref_cis_ios17 | length %}
 
 {% for titre_num, obj in ref_cis_ios17.items() %}
 
-{% if obj.commande | string in host_config %}
-    La ligne : ({{obj.titre}}:{{obj.commande}}) de niveau {{obj.level}} est présente dans la config de l'appareil.✅
+{% if obj.commande | string not in host_config %}
+    ({{obj.titre}}:{{obj.commande}})
     {% if obj.level==1 %}
         {% set count_level1 = count_level1 + 1 %}
         {% else %}
@@ -17,9 +12,6 @@ Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
     {% endif %}
 
     {% set count_ok= count_ok + 1 %}
-
-    {% else %}
-    La ligne : ({{obj.titre}}:{{obj.commande}}) n'est pas présente dans la config de l'appareil ❌
 {% endif %}
 
 
