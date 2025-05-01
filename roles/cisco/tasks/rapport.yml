@@ -1,7 +1,7 @@
 
 #- name: Tâche connexion appareil cisco
-  #connection:local
-  #become: yes
+#  connection:local
+#  become: yes
 
 
 - name: récupération de la configuration sur la machine
