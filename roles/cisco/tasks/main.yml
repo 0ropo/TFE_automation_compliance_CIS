@@ -35,9 +35,9 @@
 #- name: Cherry-pick sur les corrections ?
 #  pause:
 #    prompt: "Voulez-vous choisir les lignes à corriger dans la configuration ? (yes/no)"
-#  register: cherry_pick
+#  register: cherry_pickaef
 
-- name: Lancement du cherry-pick
-  include_tasks: cherry-pick.yml
+- name: Lancement du cherry-pick fzf
+  include_tasks: test_cherry-pick.yml
   when: user_choice.user_input == "3"
 

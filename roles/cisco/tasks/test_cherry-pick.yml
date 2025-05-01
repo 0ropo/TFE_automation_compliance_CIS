@@ -1,0 +1,9 @@
+- name: cherrypick fzfdf
+  shell: |
+    cat ../../../rapport/{{ inventory_hostname }}_nok_temp.txt | ../../../fzf --multi --prompt="Choississez les commandes à corriger :"
+  register: user_selection
+
+- name: valeur de user_selection
+  debug:
+    var: user_selection.stdout_lines
+    
