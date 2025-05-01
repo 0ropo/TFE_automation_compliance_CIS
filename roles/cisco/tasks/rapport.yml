@@ -7,7 +7,6 @@
 - name: récupération de la configuration sur la machine
 
   cisco.ios.ios_command:
-     #provider: "{{ cli }}"
     commands: show running-config
   register: running_config
 
@@ -21,10 +20,8 @@
     dest: "{{ansible_config_file | dirname}}/config/{{ inventory_hostname }}_running_config.txt"
   
 - name: Destination du rapport CIS
-
   set_fact:
     host_config: "{{lookup('file','config/' + inventory_hostname + '_running_config.txt')}}"
-    #ref_cis: "{{lookup('file', (ansible_config_file | dirname) + '/cis_ios17.yml)'| from_yaml }}"
     ref_cis_ios17: "{{lookup('file', ansible_config_file | dirname ~ '/cis_ios17_complet.yml')| from_yaml }}"
 
 - name: Génération du rapport
@@ -35,3 +32,9 @@
 - name: Affichage du rapport
   debug:
     var: lookup('file', (ansible_config_file | dirname) + '/rapport/' + inventory_hostname + '_rapport.txt')
+  
+- name: commandes manquantes only
+  ansible.builtin.template:
+    src : "{{ ansible_config_file | dirname }}/roles/cisco/templates/liste_commandes_nok.jinja"
+    dest : "{{ ansible_config_file | dirname }}/rapport/{{ inventory_hostname }}_nok.txt"
+  
