@@ -9,12 +9,12 @@ Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
 {% if obj.commande | string in host_config %}
     La ligne : ({{obj.titre}}:{{obj.commande}}) de niveau {{obj.level}} est présente dans la config de l'appareil.✅
     {% if obj.level==1 %}
-        {% set count_level1 = count_level1 + 1 %}
+        {% set ns.count_level1 = ns.count_level1 + 1 %}
         {% else %}
-            {% set count_level2 = count_level2 + 1 %}
+            {% set ns.count_level2 = ns.count_level2 + 1 %}
     {% endif %}
 
-    {% set count_ok= count_ok + 1 %}
+    {% set ns.count_ok= ns.count_ok + 1 %}
 
     {% else %}
     La ligne : ({{obj.titre}}:{{obj.commande}}) n'est pas présente dans la config de l'appareil ❌
@@ -23,7 +23,7 @@ Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
 
 
 {% endfor %}
-Il y'a {{ count_ok }} titre_texte de présent sur {{ objs_numbers }} dans la config.
-Il y'a {{ count_level1 }} titre_texte de niveau 1 de présent sur {{ objs_numbers }}.
-Il y'a {{ count_level2 }} titre_texte de niveau 2 de présent sur {{ objs_numbers }}.
+Il y'a {{ ns.count_ok }} titre_texte de présent sur {{ objs_numbers }} dans la config.
+Il y'a {{ ns.count_level1 }} titre_texte de niveau 1 de présent sur {{ objs_numbers }}.
+Il y'a {{ ns.count_level2 }} titre_texte de niveau 2 de présent sur {{ objs_numbers }}.
 
