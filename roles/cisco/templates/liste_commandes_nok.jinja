@@ -1,6 +1,5 @@
 Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
 
-{% set ns = namespace(count_ok=0,count_ko,count_level1=0,count_level2=0) %}
 {% set objs_numbers = ref_cis_ios17 | length %}
 
 {% for titre_num, obj in ref_cis_ios17.items() %}
