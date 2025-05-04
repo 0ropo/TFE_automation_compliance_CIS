@@ -6,4 +6,10 @@
 - name: valeur de user_selection
   debug:
     var: user_selection.stdout_lines
-    
+
+- name: commandes choisies
+  set_fact:
+    com_choisies: "{{user_selection.stdout_lines | map('split',':')}}"
+- name: debug2
+  debug:
+    var: com_choisies
