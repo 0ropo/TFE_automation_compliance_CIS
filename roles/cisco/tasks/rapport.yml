@@ -19,22 +19,39 @@
     content: "{{ running_config.stdout[0] }}"
     dest: "{{ansible_config_file | dirname}}/config/{{ inventory_hostname }}_running_config.txt"
   
-- name: Destination du rapport CIS
-  set_fact:
-    host_config: "{{lookup('file','config/' + inventory_hostname + '_running_config.txt')}}"
-    ref_cis_ios17: "{{lookup('file', ansible_config_file | dirname ~ '/cis_ios17_complet.yml')| from_yaml }}"
-
-- name: Génération du rapport
-  ansible.builtin.template:
-    src : "{{ ansible_config_file | dirname }}/roles/cisco/templates/template_rapport.jinja"
-    dest : "{{ ansible_config_file | dirname }}/rapport/{{ inventory_hostname }}_rapport.txt"
-  
-- name: Affichage du rapport
-  debug:
-    var: lookup('file', (ansible_config_file | dirname) + '/rapport/' + inventory_hostname + '_rapport.txt')
-  
 - name: commandes manquantes only
   ansible.builtin.template:
     src : "{{ ansible_config_file | dirname }}/roles/cisco/templates/liste_commandes_nok.jinja"
     dest : "{{ ansible_config_file | dirname }}/rapport/{{ inventory_hostname }}_nok.txt"
   
+- name: Destination du rapport CIS
+  set_fact:
+    host_config: "{{lookup('file','config/' + inventory_hostname + '_running_config.txt')}}"
+    ref_cis_ios17: "{{lookup('file', ansible_config_file | dirname ~ '/cis_ios17_complet.yml')| from_yaml }}"
+
+- name: verbose ?
+  pause:
+    prompt: "Voulez-vous afficher la version vebose ? (y/n)"
+  register: verbose
+
+- name: rapport no verbose
+  ansible.builtin.template:
+    src : "{{ ansible_config_file | dirname }}/roles/cisco/templates/template_rapport.jinja"
+    dest : "{{ ansible_config_file | dirname }}/rapport/{{ inventory_hostname }}_rapport.txt"
+  when: verbose.user_input == "n"
+
+- name: rapport verbose
+  ansible.builtin.template:
+    src : "{{ ansible_config_file | dirname }}/roles/cisco/templates/template_rapport_verbose.jinja"
+    dest : "{{ ansible_config_file | dirname }}/rapport/{{ inventory_hostname }}_rapport_verbose.txt"
+  when: verbose.user_input == "y"
+
+- name: Affichage no verbose
+  debug:
+    var: lookup('file', (ansible_config_file | dirname) + '/rapport/' + inventory_hostname + '_rapport.txt')
+  when: verbose.user_input == "n"
+
+- name: Affichage verbose
+  debug:
+    var: lookup('file', (ansible_config_file | dirname) + '/rapport/' + inventory_hostname + '_rapport_verbose.txt')
+  when: verbose.user_input == "y"
