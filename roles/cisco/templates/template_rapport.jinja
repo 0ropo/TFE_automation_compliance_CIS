@@ -16,6 +16,7 @@ Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
 
     {% else %}
     La ligne : ({{obj.titre}}:{{obj.commande}}) n'est pas présente dans la config de l'appareil ❌
+    {% set _ = ns.update({'ko': ns.ko + 1}) %}
 {% endif %}
 
 

@@ -1,32 +1,42 @@
 Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
 
-{% set count_ok = 0 %}
-{% set count_ko = 0 %}
-{% set count_level1 = 0 %}
-{% set count_level2 = 0 %}
+{% set ns = {'ok': 0, 'ko': 0, 'level1': 0, 'level2': 0} %}
+
 {% set objs_numbers = ref_cis_ios17 | length %}
 
 {% for titre_num, obj in ref_cis_ios17.items() %}
-
+###{{ obj.titre }} - {{obj.titre_texte }}
+- Commande : ``{{obj.commande}}``
+- Niveau : {{obj.level}}
 {% if obj.commande | string in host_config %}
-    La ligne : ({{obj.titre}}:{{obj.commande}}) de niveau {{obj.level}} est présente dans la config de l'appareil.✅
 
-    {% if obj.level==1 %}
-        {% set count_level1 = count_level1 + 1 %}
+Présente dans la config ✅
+
+    {% if obj.level=='Level 1' %}
+        {% set _ = ns.update({'level1': ns.level1 + 1}) %}
         {% else %}
-            {% set count_level2 = count_level2 + 1 %}
+            {% set _ = ns.update({'level2': ns.level2 + 1}) %}
     {% endif %}
-
-    {% set count_ok= count_ok + 1 %}
+    {% set _ = ns.update({'ok': ns.ok + 1}) %}
 
     {% else %}
     La ligne : ({{obj.titre}}:{{obj.commande}}) n'est pas présente dans la config de l'appareil ❌
+    {% set _ = ns.update({'ko': ns.ko + 1}) %}
 {% endif %}
 
+- Description : {{obj.description}}
+- Remédiation : {{obj.remediation}}
+- Rational : {{obj.rationale}}
+- Impact : {{obj.impact}}
+- Audit : {{obj.audit}}
 
 
 {% endfor %}
-Il y'a {{ count_ok }} titre_texte de présent sur {{ objs_numbers }} dans la config.
-Il y'a {{ count_level1 }} titre_texte de niveau 1 de présent sur {{ objs_numbers }}.
-Il y'a {{ count_level2 }} titre_texte de niveau 2 de présent sur {{ objs_numbers }}.
+
+Résumé:
+
+✅ {{ ns.ok }} règles présentes sur {{ objs_numbers }}
+❌ {{ ns.ko }} règles absentes sur {{ objs_numbers }}
+Il y'a {{ ns.level1 }} règles de niveau 1
+Il y'a {{ ns.level2 }} règles de niveau 2
 
