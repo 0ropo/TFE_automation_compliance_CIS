@@ -11,6 +11,24 @@
   set_fact:
     com_choisies: "{{ com_choisies | default([]) + [[item.split(':')[0] | trim, item.split(':')[1] | trim]] }}"
   loop: "{{ user_selection.stdout_lines }}"
+
 - name: debug2
   debug:
     var: com_choisies
+
+- name: demande paramètres pour commande (laisser vide si pas de paramètres)
+  pause:
+    prompt: "Veuillez entrer un paramètre pour la commande {{ item[1] }}(laisser vide si pas de paramètres)"
+  loop: "{{ com_choisies }}"
+  loop_control:
+    label: "{{ item[1] }}"
+  register: user_params
+  
+
+- name: Concat commande et paramètres
+  set_fact:
+    commandes_param: "{{ com_choisies | map('regex_replace', '$', ' ' ~ user_params.user_input | default('')) | list }}"
+
+- name: Appliquer la modification sur la configuration
+  cisco.ios.ios_config:
+    commands: "{{ commandes_param }}"
