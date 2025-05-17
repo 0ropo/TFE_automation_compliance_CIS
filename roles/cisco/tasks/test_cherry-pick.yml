@@ -26,11 +26,11 @@
 
 - name: debug3
   debug:
-    var: user_inputs.results
+    var: user_params.results
 
 - name: Concat commande et paramètres
   set_fact:
-    commandes_param: "{{ com_choisies | zip(user_inputs.results | map(attribute='user_input')) | map('join', ' ') | list}}"
+    commandes_param: "{{ com_choisies | zip(user_params.results | map(attribute='user_input')) | map('join', ' ') | list}}"
 - name: debug
   debug:
     var: commandes_param
