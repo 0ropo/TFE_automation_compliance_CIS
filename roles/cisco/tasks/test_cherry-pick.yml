@@ -27,7 +27,7 @@
 
 - name: Concat commande et paramètres
   set_fact:
-    commandes_param: "{{ com_choisies | map('regex_replace', '$', ' ' ~ user_params.user_input | default('')) | list }}"
+    commandes_param: "{{ com_choisies[1] | map('regex_replace', '$', ' ' ~ user_params.user_input | default('')) | list }}"
 - name: debug
   debug:
     var: commandes_param
