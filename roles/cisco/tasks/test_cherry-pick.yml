@@ -23,11 +23,16 @@
   loop_control:
     label: "{{ item[1] }}"
   register: user_params
-  
+
 
 - name: Concat commande et paramètres
   set_fact:
     commandes_param: "{{ com_choisies | map('regex_replace', '$', ' ' ~ user_params.user_input | default('')) | list }}"
+- name: debug
+  debug:
+    var: commandes_param
+debug:
+  var: commandes_param
 
 - name: Appliquer la modification sur la configuration
   cisco.ios.ios_config:
