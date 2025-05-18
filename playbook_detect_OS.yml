@@ -16,7 +16,7 @@
   - name: trouvé pfsense
     debug:
       msg: "L'appareil est du type : pfsense"
-    when: ansible_network_os == 'ios'
+    when: ansible_network_os == 'pfsense'
 
   - name: Appareils Cisco
     include_role:
