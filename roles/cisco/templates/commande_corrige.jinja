@@ -7,6 +7,6 @@
   {% for p in params %}
     {% set final = final | regex_replace('\{[^}]+\}', p, 1)%}
   {% endfor %}
-  {% do result.append(final) %}
+  {% set result = result + [final] %}
 {% endfor %}
 {{ result }}
