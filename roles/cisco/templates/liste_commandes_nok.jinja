@@ -9,8 +9,8 @@ Commandes manquantes sur l'appareil Cisco : {{inventory_hostname}}
         {%set found = true %}
         {% endif %}
     {% endfor %}
-    
+
 {% if not found %}
-- {{obj.titre}}:{{obj.remediation}}
+- {{obj.titre}}:{{obj.commande}}
 {% endif %}
 {% endfor %}
