@@ -5,7 +5,7 @@
   {% set params = user_params.results[i].user_input.split()%}
   {% set final = remediation %}
   {% for p in params %}
-    {% set final = final | regex_replace('\{[^}]+\}', p, 1)%}
+    {% set final = final + ' ' + p%}
   {% endfor %}
   {% set result = result + [final] %}
 {% endfor %}
