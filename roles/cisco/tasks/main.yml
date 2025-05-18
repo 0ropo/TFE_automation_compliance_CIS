@@ -18,7 +18,7 @@
     prompt: "Voici les différentes options :\n 1. Génération du rapport de conformité \n 2. Correction automatique de la configuration\n 3. Cherry-pick sur les corrections\n 4. Quitter le script\n Veuillez entrer le numéro de l'option choisie (1, 2, 3 ou 4)"
   register: user_choice
 
-- name: récupération de la configuration sur la machine
+- name: récupération de la configuration machine
   include_tasks: rapport.yml
   when: user_choice.user_input == "1"
 
@@ -28,7 +28,7 @@
 #  register: correction_auto
 
 
-- name: Correction de tout le fichier de configuration sur la machine
+- name: Correction de toute la configuration
   include_tasks: correction.yml
   when: user_choice.user_input == "2"
 
@@ -37,7 +37,7 @@
 #    prompt: "Voulez-vous choisir les lignes à corriger dans la configuration ? (yes/no)"
 #  register: cherry_pickaef
 
-- name: Lancement du cherry-pick fzf
-  include_tasks: test_cherry-pick.yml
+- name: cherry-pick fzf
+  include_tasks: cherry-pick.yml
   when: user_choice.user_input == "3"
 

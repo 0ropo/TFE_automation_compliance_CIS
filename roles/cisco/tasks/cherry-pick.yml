@@ -1,31 +1,58 @@
 
+- name: charger règles cis
+  include_vars:
+    file: "{{ ansible_config_file | dirname }}/cis_ios15_complet.yml"
+    name: cis
 
-- name: Cherry-picking des commandes à ajouter en fonction de leurs numéros/titres
-  pause:
-    prompt: "Veuillez enter le numéro de la commande manquante à corriger(ex: 1.1.1,1.2.3)"
-  register: user_titre_num
+- name: cherrypick fzfdf
+  shell: |
+    cat {{ ansible_config_file | dirname }}/rapport/{{ inventory_hostname }}_nok.txt | {{ ansible_config_file | dirname }}/tools/fzf --multi --prompt="Choississez les commandes à corriger :"
+  register: user_selection
 
-
-- name: Convertir les titres en liste
-  set_fact:
-    titre_num: "{{ user_titre_num.user_input.split(',') | map('trim') | list }}"
-
-- name: Récupération de la commande à partir du titre
-  set_fact:
-    commandes: "{{titre_num | map('extract', cis_rules) | map(attribute='commande') | reject('equalto', None) | list }}"
-
-- name: Afficher les commandes users
+- name: valeur de user_selection
   debug:
-    msg: "{{ commandes }}"
+    var: user_selection.stdout_lines
 
-- name: Récupération des paramètres pour une commande (laisser vide si pas de paramètres)
+- name: commandes choisies
+  set_fact:
+    com_choisies: "{{ com_choisies | default([]) + [[item.split(':')[0] | trim, item.split(':')[1] | trim]] }}"
+  loop: "{{ user_selection.stdout_lines }}"
+
+- name: debug2
+  debug:
+    var: com_choisies
+
+- name: demande paramètres pour commande (laisser vide si pas de paramètres)
   pause:
-    prompt: "Veuillez entrer les paramètres de la commande (laisser vide si pas de paramètres)"
+    prompt: "Veuillez entrer un paramètre pour la commande {{ item[1] }}(laisser vide si pas de paramètres)"
+  loop: "{{ com_choisies }}"
+  loop_control:
+    label: "{{ item[1] }}"
   register: user_params
+
+- name: debug3
+  debug:
+    var: user_params.results
 
 - name: Concat commande et paramètres
   set_fact:
-    commandes_param: "{{ commandes | map('regex_replace', '$', ' ' ~ user_params.user_input | default('')) | list }}"
+    commandes_param: >-
+      {% set result = [] %}
+      {% for i in range(com_choisies | length) %}
+        {% set titre = com_choisies[i][0] %}}
+        {% set remediation = cis[titre].remediation %}
+        {% set params = user_params.results[i].user_input.split()%}
+        {% set final = remediation %}
+        {% for p in params %}
+          {% set final = final | regex_replace('\{[^}]+\',p,1)%}
+        {% endfor %}
+        {% do result.append(final) %}
+      {% endfor %}
+      {{ result }}
+- name: debug
+  debug:
+    var: commandes_param
+
 
 - name: Appliquer la modification sur la configuration
   cisco.ios.ios_config:
