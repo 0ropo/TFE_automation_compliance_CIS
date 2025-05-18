@@ -6,5 +6,5 @@ Commandes manquantes sur l'appareil Cisco : {{inventory_hostname}}
 {% for line in config_lines %}
     {% if not line.strip().startswith(obj.commande | string | lower) %}
         {{obj.titre}}:{{obj.remediation}}
-{% endif %}
+    {% endif %}
 {% endfor %}
