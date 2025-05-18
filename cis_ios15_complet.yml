@@ -241,7 +241,7 @@
   audit: 'sh run | sec line | incl login authentication
 
     sh run | incl aaa accounting commands'
-  remediation: 'line vty {line-number} [<em>ending-line-number]
+  remediation: 'line vty {line-number} [ending-line-number]
 
     login authentication {default | aaa_list_name}
 
