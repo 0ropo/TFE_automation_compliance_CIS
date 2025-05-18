@@ -13,6 +13,13 @@
       name: cisco
     when: ansible_network_os == 'ios'
 
+
+  - name: trouvé pfsense
+    debug:
+      msg: "L'appareil est du type : pfsense"
+    when: ansible_network_os == 'ios'
+
+
   - name: trouvé cisco
     debug:
       msg: "L'appareil est du type : Cisco"
@@ -24,8 +31,5 @@
     when: ansible_network_os == 'pfsense'
 
   
-  - name: trouvé pfsense
-    debug:
-      msg: "L'appareil est du type : pfsense"
-    when: ansible_network_os == 'ios'
+ 
 
