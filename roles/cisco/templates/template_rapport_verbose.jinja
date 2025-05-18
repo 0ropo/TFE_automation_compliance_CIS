@@ -6,7 +6,7 @@ Rapport de conformité CIS pour l'appareil Cisco : {{inventory_hostname}}
 
 {% for titre_num, obj in ref_cis_ios17.items() %}
 ###{{ obj.titre }} - {{obj.titre_texte }}
-- Commande : ``{{obj.commande}}``
+- Commande : ``{{obj.remediation}}``
 - Niveau : {{obj.level}}
 {% if obj.commande | string in host_config %}
 
@@ -20,7 +20,7 @@ Présente dans la config ✅
     {% set _ = ns.update({'ok': ns.ok + 1}) %}
 
     {% else %}
-    La ligne : ({{obj.titre}}:{{obj.commande}}) n'est pas présente dans la config de l'appareil ❌
+    La ligne : ({{obj.titre}}:{{obj.remediation}}) n'est pas présente dans la config de l'appareil ❌
     {% set _ = ns.update({'ko': ns.ko + 1}) %}
 {% endif %}
 

@@ -9,11 +9,15 @@
       msg: "L'appareil est du type : {{ansible_network_os}}"
   
   - name: Appareils Cisco
+    debug:
+      msg: "L'appareil est du type : Cisco"
     include_role:
       name: cisco
     when: ansible_network_os == 'ios'
     
   - name: Appareils Pfsense
+    debug:
+      msg: "L'appareil est du type : Pfsense"
     include_role:
       name: pfsense
     when: ansible_network_os == 'pfsense'
