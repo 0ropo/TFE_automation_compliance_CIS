@@ -1395,9 +1395,8 @@
   audit: 'sh run | incl domain-name
 
     sh crypto key mypubkey rsa'
-  remediation: 'ip domain-name {domain-name}
+  remediation: 'ip domain-name {domain-name}'
 
-    crypto key generate rsa general-keys modulus 2048'
   default_value: null
 2.1.1.1.4:
   titre: 2.1.1.1.4
