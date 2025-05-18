@@ -1,0 +1,12 @@
+{% set result = [] %}
+{% for i in range(com_choisies | length) %}
+  {% set titre = com_choisies[i][0] %}}
+  {% set remediation = cis[titre]["commande"] %}
+  {% set params = user_params.results[i].user_input.split()%}
+  {% set final = remediation %}
+  {% for p in params %}
+    {% set final = final + ' ' + p%}
+  {% endfor %}
+  {% set result = result + [final] %}
+{% endfor %}
+{{ result }}
