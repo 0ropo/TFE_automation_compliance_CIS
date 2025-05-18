@@ -1338,7 +1338,7 @@
   audit: 'show run | incl username
 
     show snmp community'
-  remediation: 'username {{em}LOCAL_USERNAME{/em}} secret
+  remediation: 'username {LOCAL_USERNAME} secret
 
     no snmp-server'
   default_value: null

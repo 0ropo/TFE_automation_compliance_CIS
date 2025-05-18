@@ -1189,7 +1189,7 @@
 
     access for snmp-server community.'
   audit: show run | incl snmp-server community
-  remediation: no snmp-server community {<em>write_community_string}
+  remediation: no snmp-server community {write_community_string}
   default_value: null
 1.5.5:
   titre: 1.5.5
@@ -1222,7 +1222,7 @@
 
     and data privatization (encryption) for additional benefits to the organization.'
   audit: show run | incl snmp-server community
-  remediation: snmp-server community <<em>community_string> ro
+  remediation: snmp-server community <community_string> ro
   default_value: null
 1.5.6:
   titre: 1.5.6
@@ -1252,8 +1252,8 @@
 
     segmented in a trusted management zone.'
   impact: null
-  audit: sh ip access-list <<em>snmp_acl_number>
-  remediation: 'access-list <<em>snmp_acl_number> permit
+  audit: sh ip access-list <snmp_acl_number>
+  remediation: 'access-list <snmp_acl_number> permit
 
     access-list deny any log'
   default_value: null
@@ -1345,7 +1345,7 @@
   audit: 'show snmp group
 
     show snmp user'
-  remediation: 'snmp-server group {<em>group_name} v3 priv
+  remediation: 'snmp-server group {group_name} v3 priv
 
     snmp-server user {user_name} {group_name} v3 auth sha'
   default_value: null
@@ -1362,7 +1362,7 @@
 
     for each router.'
   audit: sh run | incl hostname
-  remediation: hostname {<em>router_name}
+  remediation: hostname {router_name}
   default_value: null
 2.1.1.1.2:
   titre: 2.1.1.1.2
@@ -1395,9 +1395,9 @@
   audit: 'sh run | incl domain-name
 
     sh crypto key mypubkey rsa'
-  remediation: 'ip domain-name {<em>domain-name}
+  remediation: 'ip domain-name {domain-name}
 
-    crypto key generate rsa general-keys modulus <em>2048'
+    crypto key generate rsa general-keys modulus 2048'
   default_value: null
 2.1.1.1.4:
   titre: 2.1.1.1.4
@@ -1436,9 +1436,9 @@
   audit: 'sh ip ssh
 
     sh ip ssh'
-  remediation: 'ip ssh time-out [<em>60]
+  remediation: 'ip ssh time-out [60]
 
-    ip ssh authentication-retries [<em>3]'
+    ip ssh authentication-retries [3]'
   default_value: null
 2.1.1.2:
   titre: 2.1.1.2
@@ -1692,7 +1692,7 @@
 
     such policies by enabling the ''logging buffered'' command.'
   audit: show run | incl logging buffered
-  remediation: logging buffered [<em>log_buffer_size]
+  remediation: logging buffered [log_buffer_size]
   default_value: null
 2.2.3:
   titre: 2.2.3
@@ -1807,7 +1807,7 @@
 
     and time on entries sent to the logging host and enforces the logging process.'
   audit: sh run | incl service timestamps
-  remediation: service timestamps debug datetime {<em>msec} show-
+  remediation: service timestamps debug datetime {msec} show-
   default_value: null
 2.2.7:
   titre: 2.2.7
@@ -1921,7 +1921,7 @@
 
     authentication between NTP hosts.'
   audit: show run | include ntp server
-  remediation: ntp server {<em>ntp-server_ip_address}{key
+  remediation: ntp server {ntp-server_ip_address}{key
   default_value: null
 2.3.2:
   titre: 2.3.2
@@ -1981,9 +1981,9 @@
 
     provide termination points for routing protocol sessions.'
   audit: sh ip int brief | incl Loopback
-  remediation: 'interface loopback <<em>number>
+  remediation: 'interface loopback <number>
 
-    ip address <<em>loopback_ip_address>'
+    ip address <loopback_ip_address>'
   default_value: null
 2.4.2:
   titre: 2.4.2
@@ -2046,7 +2046,7 @@
   audit: 'sh run | incl ntp source
 
     sh run | incl tftp source-interface'
-  remediation: 'ntp source loopback {<em>loopback_interface_number}
+  remediation: 'ntp source loopback {loopback_interface_number}
 
     ip tftp source-interface loopback'
   default_value: null
@@ -2116,7 +2116,7 @@
     security
 
     perimeter and should be disabled.'
-  audit: sh ip int {<em>interface} | incl proxy-arp
+  audit: sh ip int {interface} | incl proxy-arp
   remediation: 'interface {interface}
 
     no ip proxy-arp'
@@ -2139,7 +2139,7 @@
     insecure and unnecessary features that increase attack surfaces such as ''tunnel
     interfaces''.'
   audit: sh ip int brief | incl tunnel
-  remediation: no interface tunnel {<em>instance}
+  remediation: no interface tunnel {instance}
   default_value: null
 3.1.4:
   titre: 3.1.4
@@ -2198,14 +2198,14 @@
     permitting and
 
     denying internal and external networks enforces these policies.'
-  audit: 'sh ip int {<em>interface} | incl verify source
+  audit: 'sh ip int {interface} | incl verify source
 
-    sh ip access-list {<em>name | number}'
-  remediation: 'interface {<em>interface_name}
+    sh ip access-list {name | number}'
+  remediation: 'interface {interface_name}
 
     ip verify unicast source reachable-via rx
 
-    ip access-list extended {<span><em>name | number}
+    ip access-list extended {<span>name | number}
 
     deny ip
 
@@ -2231,9 +2231,9 @@
 
     deny any any log
 
-    interface <external_<em>interface>
+    interface <external_interface>
 
-    access-group <<em>access-list> in'
+    access-group <access-list> in'
   default_value: null
 3.2.2:
   titre: 3.2.2
@@ -2267,7 +2267,7 @@
     enforces
 
     these policies by explicitly identifying groups permitted access.'
-  audit: sh run | sec interface {<em>external_interface}
+  audit: sh run | sec interface {external_interface}
   remediation: 'interface {external_interface}
 
     ip access-group {name | number} in'
@@ -2294,7 +2294,7 @@
 
     enforces these policies.'
   audit: sh run | sec key chain
-  remediation: key chain {<em>key-chain_name}
+  remediation: key chain {key-chain_name}
   default_value: null
 3.3.1.2:
   titre: 3.3.1.2
@@ -2312,7 +2312,7 @@
 
     routing protocols enforces these policies.'
   audit: sh run | sec key chain
-  remediation: key {<em>key-number}
+  remediation: key {key-number}
   default_value: null
 3.3.1.3:
   titre: 3.3.1.3
@@ -2330,7 +2330,7 @@
 
     protocols enforces these policies.'
   audit: sh run | sec key chain
-  remediation: key-string <<em>key-string>
+  remediation: key-string <key-string>
   default_value: null
 3.3.1.4:
   titre: 3.3.1.4
@@ -2351,9 +2351,9 @@
 
     these policies by restricting the exchanges between predefined network devices.'
   audit: sh run | sec router eigrp
-  remediation: 'router eigrp <<em>virtual-instance-name>
+  remediation: 'router eigrp <virtual-instance-name>
 
-    address-family ipv4 autonomous-system {<em>eigrp_as-'
+    address-family ipv4 autonomous-system {eigrp_as-'
   default_value: null
 3.3.1.5:
   titre: 3.3.1.5
@@ -2375,9 +2375,9 @@
 
     devices.'
   audit: sh run | sec router eigrp
-  remediation: 'router eigrp <<em>virtual-instance-name>
+  remediation: 'router eigrp <virtual-instance-name>
 
-    address-family ipv4 autonomous-system {<em>eigrp_as-
+    address-family ipv4 autonomous-system {eigrp_as-
 
     af-interface default'
   default_value: null
@@ -2463,10 +2463,10 @@
     restricting the exchanges between network devices.'
   audit: 'sh ip eigrp int
 
-    sh run int {<em>interface_name} | incl key-chain'
-  remediation: 'interface {<em>interface_name}
+    sh run int {interface_name} | incl key-chain'
+  remediation: 'interface {interface_name}
 
-    ip authentication key-chain eigrp {<em>eigrp_as-'
+    ip authentication key-chain eigrp {eigrp_as-'
   default_value: null
 3.3.1.9:
   titre: 3.3.1.9
@@ -2490,10 +2490,10 @@
     the exchanges between network devices.'
   audit: 'sh ip eigrp int
 
-    sh run int {<em>interface_name} | incl authentication mode'
-  remediation: 'interface {<em>interface_name}
+    sh run int {interface_name} | incl authentication mode'
+  remediation: 'interface {interface_name}
 
-    ip authentication mode eigrp {<em><span>eigrp_as-'
+    ip authentication mode eigrp {<span>eigrp_as-'
   default_value: null
 3.3.2.1:
   titre: 3.3.2.1
@@ -2513,9 +2513,9 @@
 
     devices.'
   audit: sh run | sec router ospf
-  remediation: 'router ospf <<em>ospf_process-id>
+  remediation: 'router ospf <ospf_process-id>
 
-    area <<em>ospf_area-id> authentication message-'
+    area <ospf_area-id> authentication message-'
   default_value: null
 3.3.2.2:
   titre: 3.3.2.2
@@ -2535,10 +2535,10 @@
     between
 
     network devices.'
-  audit: sh run int {<em>interface}
-  remediation: 'interface {<em>interface_name}
+  audit: sh run int {interface}
+  remediation: 'interface {interface_name}
 
-    ip ospf message-digest-key {<em>ospf_md5_key-id} md5'
+    ip ospf message-digest-key {ospf_md5_key-id} md5'
   default_value: null
 3.3.3.1:
   titre: 3.3.3.1
@@ -2559,7 +2559,7 @@
 
     authentication between network devices.'
   audit: sh run | sec key chain
-  remediation: key chain {<em>rip_key-chain_name}
+  remediation: key chain {rip_key-chain_name}
   default_value: null
 3.3.3.2:
   titre: 3.3.3.2
@@ -2579,7 +2579,7 @@
 
     between network devices.'
   audit: sh run | sec key chain
-  remediation: key {<em>key-number}
+  remediation: key {key-number}
   default_value: null
 3.3.3.3:
   titre: 3.3.3.3
@@ -2597,7 +2597,7 @@
 
     protocols enforces these policies.'
   audit: sh run | sec key chain
-  remediation: key-string <<em>key-string>
+  remediation: key-string <key-string>
   default_value: null
 3.3.3.4:
   titre: 3.3.3.4
@@ -2620,10 +2620,10 @@
     exchanges
 
     between network devices.'
-  audit: sh run int {<em>interface_name}
-  remediation: 'interface {<em>interface_name}
+  audit: sh run int {interface_name}
+  remediation: 'interface {interface_name}
 
-    ip rip authentication key-chain {<em>rip_key-'
+    ip rip authentication key-chain {rip_key-'
   default_value: null
 3.3.3.5:
   titre: 3.3.3.5
@@ -2641,8 +2641,8 @@
 
     enforces these policies by restricting the type of authentication between network
     devices.'
-  audit: sh run int <<em>interface>
-  remediation: 'interface <<em>interface_name>
+  audit: sh run int <interface>
+  remediation: 'interface <interface_name>
 
     ip rip authentication mode md5'
   default_value: null
@@ -2667,7 +2667,7 @@
     enforces these policies by restricting the type of authentication between network
     devices.'
   audit: sh run | sec router bgp
-  remediation: 'router bgp <<em>bgp_as-number>
+  remediation: 'router bgp <bgp_as-number>
 
-    neighbor <<em>bgp_neighbor-ip | <em>peer-group-'
+    neighbor <bgp_neighbor-ip | peer-group-'
   default_value: null
