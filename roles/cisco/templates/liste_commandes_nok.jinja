@@ -1,8 +1,10 @@
 Commandes manquantes sur l'appareil Cisco : {{inventory_hostname}}
 
-{% for titre_num, obj in ref_cis_ios17.items() %}
+{% set config_lines = host_config.lower().splitlines() %}
 
-{% if obj.commande | string not in host_config %}
-    {{obj.titre}}:{{obj.commande}}
+{% for titre_num, obj in ref_cis_ios17.items() %}
+{% for line in config_lines %}
+    {% if not line.strip().startswith(obj.commande | string | lower) %}
+        {{obj.titre}}:{{obj.remediation}}
 {% endif %}
 {% endfor %}
