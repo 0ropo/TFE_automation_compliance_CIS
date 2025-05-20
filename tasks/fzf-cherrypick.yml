@@ -1,39 +1,6 @@
-
-- name: charger règles cis
-  include_vars:
-    file: "{{ ansible_config_file | dirname }}/cis_ios15_complet.yml"
-    name: cis
-
 - name: cherrypick fzfdf
   shell: |
     cat {{ ansible_config_file | dirname }}/rapport/{{ inventory_hostname }}_nok.txt | {{ ansible_config_file | dirname }}/tools/fzf --multi --prompt="Choississez les commandes à corriger :"
   register: user_selection
 
-- name: valeur de user_selection
-  debug:
-    var: user_selection.stdout_lines
 
-- name: commandes choisies
-  set_fact:
-    com_choisies: "{{ com_choisies | default([]) + [[item.split(':')[0] | trim, item.split(':')[1] | trim]] }}"
-  loop: "{{ user_selection.stdout_lines }}"
-
-
-- name: demande paramètres pour commande (laisser vide si pas de paramètres)
-  pause:
-    prompt: "Veuillez entrer un paramètre pour la commande {{ item[1] }}(laisser vide si pas de paramètres)"
-  loop: "{{ com_choisies }}"
-  loop_control:
-    label: "{{ item[1] }}"
-  register: user_params
-
-
-
-- name: Concat commande et paramètres
-  set_fact:
-    commandes_param: "{{lookup('template', 'templates/commande_corrige.jinja') }}"
-
-
-- name: Appliquer la modification sur la configuration
-  cisco.ios.ios_config:
-    commands: "{{ commandes_param }}"
