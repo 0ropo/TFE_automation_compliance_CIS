@@ -11,6 +11,10 @@
     com_choisies: "{{ com_choisies | default([]) + [[item.split(':')[0] | trim, item.split(':')[1] | trim]] }}"
   loop: "{{ user_selection.stdout_lines }}"
 
+- name: debug2
+  debug:
+    var: com_choisies
+
 
 - name: demande paramètres pour commande (laisser vide si pas de paramètres)
   pause:
@@ -19,6 +23,10 @@
   loop_control:
     label: "{{ item[1] }}"
   register: user_params
+
+- name: debug3
+  debug:
+    var: user_params.results
 
 - name: Concat commande et paramètres
   set_fact:
