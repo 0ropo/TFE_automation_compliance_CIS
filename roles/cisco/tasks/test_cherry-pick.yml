@@ -1,3 +1,9 @@
+
+- name: charger règles cis
+  include_vars:
+    file: "{{ ansible_config_file | dirname }}/cis_ios15_complet.yml"
+    name: cis
+
 - name: cherrypick fzfdf
   include_tasks: "{{ ansible_config_file | dirname }}/tasks/fzf-cherrypick.yml"
   register: user_selection
