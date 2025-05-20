@@ -38,6 +38,6 @@
 #  register: cherry_pickaef
 
 - name: cherry-pick fzf
-  include_tasks: cherry-pick.yml
+  include_tasks: test_cherry-pick.yml
   when: user_choice.user_input == "3"
 
