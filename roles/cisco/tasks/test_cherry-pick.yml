@@ -31,8 +31,13 @@
   register: user_params
 
 - name: Concat commande et paramètres
+  ansible.builtin.template:
+    src: "{{ ansible_config_file | dirname }}/roles/cisco/templates/commande_corrige.jinja"
+    dest: "{{ ansible_config_file | dirname }}/roles/cisco/files/{{ inventory_hostname }}_correctif.txt"
+    
+- name: charger commandes
   set_fact:
-    commandes_param: "{{lookup('template', 'templates/commande_corrige.jinja' | from_yaml)}}"
+    commandes_param: "{{lookup('template', 'templates/commande_corrige.jinja')}}"
 
 
 - name: debug 3
