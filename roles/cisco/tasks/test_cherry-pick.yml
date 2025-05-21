@@ -30,9 +30,12 @@
     label: "{{ item[1] }}"
   register: user_params
 
-- name: debug3
+
+
+
+- name: debug 3
   debug:
-    var: user_params.results
+    var: commandes_param
 
 - name: Concat commande et paramètres
   set_fact:
