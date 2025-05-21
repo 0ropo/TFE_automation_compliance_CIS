@@ -4,6 +4,6 @@
     {% if user_params.results[i].user_input | length > 0%}
         {% set commande = regle.commande ~ ' ' ~ user_params.results[i].user_input%}
     {% endif %}
-    {% set result = result.append(commande | trim) %}
+    {% set _ = result.append(commande | trim) %}
 {% endfor %}
 {{ result | to_nice_yaml(indent=2)}}
