@@ -32,7 +32,7 @@
 
 - name: Concat commande et paramètres
   set_fact:
-    commandes_param: "{{lookup('template', 'templates/commande_corrige.jinja') | from_yaml }}"
+    commandes_param: "{{lookup('template', 'templates/commande_corrige.jinja')}}"
 
 
 - name: debug 3
