@@ -30,16 +30,15 @@
     label: "{{ item[1] }}"
   register: user_params
 
-
+- name: Concat commande et paramètres
+  set_fact:
+    commandes_param: "{{lookup('template', 'templates/commande_corrige.jinja') }}"
 
 
 - name: debug 3
   debug:
     var: commandes_param
 
-- name: Concat commande et paramètres
-  set_fact:
-    commandes_param: "{{lookup('template', 'templates/commande_corrige.jinja') }}"
 
 - name: Appliquer la modification sur la configuration
   cisco.ios.ios_config:
