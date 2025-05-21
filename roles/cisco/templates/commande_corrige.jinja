@@ -1,5 +1,5 @@
 {% set result = []%}
-{% for i in com_choisies | length%}
+{% for i in (com_choisies | length) %}
     {% set regle = cis[com_choisies[i][0]] %}
     {% if user_params.results[i].user_input | length > 0%}
         {%set commande = regle.commande ~ ' ' ~ user_params.results[i].user_input%}
