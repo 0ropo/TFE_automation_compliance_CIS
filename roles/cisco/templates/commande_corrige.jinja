@@ -6,4 +6,4 @@
     {% endif %}
     {% set result = result.append(commande | trim) %}
 {% endfor %}
-{{ result }}
+{{ result | to_nice_yaml()}}
