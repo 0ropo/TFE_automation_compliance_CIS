@@ -1,8 +1,9 @@
-{% for item in com_choisies %}
-{% set regle = cis[item[0]] %}
-{% if regle.remediation is defined %}
-{{regle.commande}} {% if user_params.results[loop.index0].user_input | length > 0%} {{user_params.results[loop.index0].user_input}} {% endif %}
-{% else %}
-Aucune remediation pour {{item[0]}}
-{% endif %}
+{% set result = []%}
+{% for i in com_choisies | length%}
+    {% set regle = cis[com_choisies[i][0]] %}
+    {% if user_params.results[i].user_input | length > 0%}
+        {%set commande = regle.commande ~ ' ' ~ user_params.results[i].user_input%}
+    {% endif %}
+    {% set result = result.append(commande | trim) %}
 {% endfor %}
+{{ result }}
