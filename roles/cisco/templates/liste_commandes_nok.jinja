@@ -7,7 +7,7 @@ Commandes manquantes sur l'appareil Cisco : {{inventory_hostname}}
         {%set found = true %}
     {%endif%}
 
-    {%-if not found-%}
-        {{obj.titre}}:{{obj.remediation}}
-    {%-endif-%}
+    {%if not found%}
+{{obj.titre}}:{{obj.remediation}}
+    {%endif%}
 {%endfor%}
