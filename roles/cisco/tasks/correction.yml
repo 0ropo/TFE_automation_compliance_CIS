@@ -9,7 +9,7 @@
     #commandes: "{{lookup('file', correctif_file) 
 - name: test création dico
   set_fact:
-    commandes: "{{lookup('file', correctif_file).splitlines()|map('split',':',1)| map('zip',['titre','commande'])|map('combine')|list}}"
+    commandes: "{{lookup('file', correctif_file) | map('split','\n',1) |map('split',':',1)| map('zip',['titre','commande'])|map('combine')|list}}"
 
 - name: debug correctif_file
   debug:
