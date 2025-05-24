@@ -1,12 +1,12 @@
 {% set result = [] %}
 {% for items in commandes %}
-  {% set cmd = item.commande %}}
+  {% set cmd = item.commande %}
   {% if '{' in cmd or '<' in cmd %}
     {% set param = all_params.get(item.titre,'') %}
-    {% set final = cmd | regex_replace('\{[^}]+\',param) | regex_replace('\<[^>]+\>',param)))%}
+    {% set final = cmd | regex_replace('\{[^}]+\}',param) | regex_replace('\<[^>]+\>',param))%}
   {% else %}
     {% set final = cmd %}
   {% endif %}
-  {% set _ = result.append(final.strip() | trim) %}
+  {% set _ = result.append(final.strip()) %}
 {% endfor %}
 {{ result | to_nice_yaml }}

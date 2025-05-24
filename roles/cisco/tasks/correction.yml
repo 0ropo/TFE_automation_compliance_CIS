@@ -4,21 +4,59 @@
     dest: "{{ ansible_config_file | dirname }}/configs/backup/backup_{{ inventory_hostname }}_running_config.txt"
 
 
-- name: Création du fichier de correction
-  ansible.builtin.template:
-    src: "{{ ansible_config_file | dirname }}/roles/cisco/templates/template_correctif.jinja"
-    dest : "{{ ansible_config_file | dirname }}/correctif/{{ inventory_hostname }}_correctif.txt"
-
-- name: Récupération du fichier des commandes manquantes sur la machine
+- name: récup fichier de correction
   set_fact:
-    missing_commands: "{{ lookup('file', (ansible_config_file | dirname) + '/correctif/' + inventory_hostname + '_correctif.txt') }}"
+    correctif_file: "{{ ansible_config_file | dirname }}/correctif/{{ inventory_hostname }}_nok.txt"
+    commandes: "{{lookup('file', correctif_file)|splitlines|map('split',':',1)|map('zip',['titre','commande'])|map('combine')|list}}"
+
+- name: récup fichier param 
+  include_vars:
+    file: "correctif/param/{{ inventory_hostname }}_param.txt"
+    name: param_defined
+  ignore_errors: yes
+
+- name: nouveaux params
+  set_fact:
+    new_params: {}
+
+- name: verif commandes manquantes
+  block:
+    - name: user prompt commande manquante 
+      pause:
+        prompt: " Entrez un paramètre pour : {{item.commande}} (laisser vide si pas de paramètres)"
+      register: user_input
+    
+    - name: ajouteur le paramètre au fichier 
+      set_fact:
+        new_params: "{{ new_params | combine({item.titre: user_input.user_input}) }}"
+    
+  when: 
+    - item.titre not in param_defined
+    - "{" in item.commande or "<" in item.commande
+  loop: "{{commandes}}"
+  loop_control:
+    label: "{{item.titre}}"
+
+- name: sauver params
+  copy:
+    content: "{{ new_params | to_nice_yaml}}"
+    dest: "{{ ansible_config_file | dirname }}/correctif/param/{{ inventory_hostname }}_param.txt"
+
+- name: commande concat 
+  ansible.builtin.template:
+    src: "templates/template_correctif_auto.jinja"
+    dest: "{{ ansible_config_file | dirname }}/correctif/{{ inventory_hostname }}_commandes_param.txt"
+
+- name: charger les commandes finales
+  set_fact:
+    missing_commands: "{{ lookup('file', 'correctif/' + inventory_hostname + '_commandes_param.txt') | trim | from_yaml }}"
 
 - name: Demander la confirmation pour appliquer les modifs sur la config
   pause:
-    prompt: "Êtes-vous certain d'appliquer les modifications sur la configuration ? (yes/no)"
+    prompt: "Êtes-vous certain d'appliquer les modifications sur la configuration ? (y/n)"
   register: validation
 
 - name: Correction de la configuration
-  cisco.ios.ios_command:
-    commands: "{{missing_commands.splitlines()}}"
-  when: validation.user_input == "yes"
+  cisco.ios.ios_config:
+    lines: "{{missing_commands}}"
+  when: validation.user_input == "y" and validation.user_input is defined
