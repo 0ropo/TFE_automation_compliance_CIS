@@ -8,9 +8,6 @@
   include_tasks: "{{ ansible_config_file | dirname }}/tasks/fzf-cherrypick.yml"
   register: user_selection
 
-
-
-
 - name: commandes choisies
   set_fact:
     com_choisies: "{{ com_choisies | default([]) + [[item.split(':')[0] | trim, item.split(':')[1] | trim]] }}"
