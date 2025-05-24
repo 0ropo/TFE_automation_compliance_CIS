@@ -29,7 +29,7 @@
 #    commandes: "{{lookup('file', correctif_file) | map('split','\n',1) |map('split',':',1)| map('zip',['titre','commande'])|map('combine')|list}}"
 #    commandes: "{{correctif_file.content | b64decode |  map('split','\n',1) |map('split',':',1)| map('zip',['titre','commande'])|map('combine')|list}}"
     commandes: "{{ commandes | default([]) + [[item.split(':')[0] | trim, item.split(':')[1] | trim]] }}"
-  loop: "{{ correctif_file.content | b64decode}}"
+  loop: "{{ correctif_file.content | b64decode | regex_findall('^[0-9.]+:.*$', multiline=True) }}"
 
 - name: récup fichier param 
   include_vars:
