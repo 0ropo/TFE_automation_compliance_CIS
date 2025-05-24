@@ -2,10 +2,13 @@
   copy:
     src: "{{ ansible_config_file | dirname }}/config/{{ inventory_hostname }}_running_config.txt"
     dest: "{{ ansible_config_file | dirname }}/config/backup/backup_{{ inventory_hostname }}_running_config.txt"
+
 - name: récup fichier de correction
   set_fact:
     correctif_file: "{{ ansible_config_file | dirname }}/correctif/{{ inventory_hostname }}_nok.txt"
     #commandes: "{{lookup('file', correctif_file) 
+- name: test création dico
+  set_fact:
     commandes: "{{lookup('file', correctif_file).splitlines()|map('split',':',1)| map('zip',['titre','commande'])|map('combine')|list}}"
 
 - name: debug correctif_file
