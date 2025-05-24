@@ -19,16 +19,13 @@
     src: "{{ ansible_config_file | dirname }}/correctif/{{ inventory_hostname }}_nok.txt"
   register: correctif_file
 
-- name: debug correctif_file
-  debug:
-    var: correctif_file
 
 
 - name: test création dico
   set_fact:
 #    commandes: "{{lookup('file', correctif_file) | map('split','\n',1) |map('split',':',1)| map('zip',['titre','commande'])|map('combine')|list}}"
 #    commandes: "{{correctif_file.content | b64decode |  map('split','\n',1) |map('split',':',1)| map('zip',['titre','commande'])|map('combine')|list}}"
-    commandes: "{{ commandes | default([]) + [{'titre':item.split(':')[0] | trim, 'commande':item.split(':')[1] | trim]] }}"
+    commandes: "{{ commandes | default([]) + [{'titre':item.split(':')[0] | trim, 'commande':item.split(':')[1] | trim}] }}"
   loop: "{{ correctif_file.content | b64decode | regex_findall('^[0-9.]+:.*$', multiline=True) }}"
 
 - name: debug commandes
