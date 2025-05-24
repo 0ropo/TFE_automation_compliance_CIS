@@ -24,16 +24,21 @@
     new_params: {}
 
 - name: verif commandes manquantes
-  block:
-    - name: user prompt commande manquante 
-      pause:
-        prompt: " Entrez un paramètre pour : {{item.commande}} (laisser vide si pas de paramètres)"
-      register: user_input
-    
-    - name: ajouteur le paramètre au fichier 
-      set_fact:
-        new_params: "{{ new_params | combine({item.titre: user_input.user_input}) }}"
-    
+
+- name: user prompt commande manquante 
+  pause:
+    prompt: " Entrez un paramètre pour : {{item.commande}} (laisser vide si pas de paramètres)"
+  register: user_input
+  when: 
+    - item.titre not in param_defined
+    - "{" in item.commande or "<" in item.commande 
+  loop: "{{commandes}}"
+  loop_control:
+    label: "{{item.titre}}"
+
+- name: ajouteur le paramètre au fichier 
+  set_fact:
+    new_params: "{{ new_params | combine({item.titre: user_input.user_input}) }}"
   when: 
     - item.titre not in param_defined
   loop: "{{commandes}}"
