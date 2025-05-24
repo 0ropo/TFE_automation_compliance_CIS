@@ -9,6 +9,10 @@
     correctif_file: "{{ ansible_config_file | dirname }}/correctif/{{ inventory_hostname }}_nok.txt"
     commandes: "{{lookup('file', correctif_file)|splitlines|map('split',':',1)|map('zip',['titre','commande'])|map('combine')|list}}"
 
+- name: debug correctif_file
+  debug:
+    var: correctif_file
+
 - name: récup fichier param 
   include_vars:
     file: "correctif/param/{{ inventory_hostname }}_param.txt"
@@ -32,7 +36,6 @@
     
   when: 
     - item.titre not in param_defined
-    - "{" in item.commande or "<" in item.commande
   loop: "{{commandes}}"
   loop_control:
     label: "{{item.titre}}"

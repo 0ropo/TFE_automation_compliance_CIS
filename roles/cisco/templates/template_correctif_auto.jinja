@@ -1,5 +1,5 @@
 {% set result = [] %}
-{% for items in commandes %}
+{% for item in commandes %}
   {% set cmd = item.commande %}
   {% if '{' in cmd or '<' in cmd %}
     {% set param = all_params.get(item.titre,'') %}
