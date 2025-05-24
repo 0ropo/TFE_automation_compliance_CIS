@@ -3,14 +3,14 @@
     src: "{{ ansible_config_file | dirname }}/config/{{ inventory_hostname }}_running_config.txt"
     dest: "{{ ansible_config_file | dirname }}/config/backup/backup_{{ inventory_hostname }}_running_config.txt"
 
-- name: récup fichier de correction
-  set_fact:
-    correctif_file: "{{ ansible_config_file | dirname }}/correctif/{{ inventory_hostname }}_nok.txt"
+- command: "cat{{ ansible_config_file | dirname }}/correctif/{{ inventory_hostname }}_nok.txt"
+  register: content
     #commandes: "{{lookup('file', correctif_file) 
 
 - name: debug correctif_file
   debug:
-    var: correctif_file
+    msg: "test"
+  loop: "content.stdout_lines"
 
 - name: test création dico
   set_fact:
