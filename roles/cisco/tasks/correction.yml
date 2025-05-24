@@ -1,4 +1,10 @@
-- name: Création du fichier de correction de la configuration
+- name: backup config 
+  copy:
+    src: "{{ ansible_config_file | dirname }}/configs/{{ inventory_hostname }}_running_config.txt"
+    dest: "{{ ansible_config_file | dirname }}/configs/backup/backup_{{ inventory_hostname }}_running_config.txt"
+
+
+- name: Création du fichier de correction
   ansible.builtin.template:
     src: "{{ ansible_config_file | dirname }}/roles/cisco/templates/template_correctif.jinja"
     dest : "{{ ansible_config_file | dirname }}/correctif/{{ inventory_hostname }}_correctif.txt"
@@ -12,7 +18,6 @@
     prompt: "Êtes-vous certain d'appliquer les modifications sur la configuration ? (yes/no)"
   register: validation
 
-// à modifier
 - name: Correction de la configuration
   cisco.ios.ios_command:
     commands: "{{missing_commands.splitlines()}}"

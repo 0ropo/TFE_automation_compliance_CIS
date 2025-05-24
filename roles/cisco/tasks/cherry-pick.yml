@@ -5,13 +5,11 @@
     name: cis
 
 - name: cherrypick fzfdf
-  shell: |
-    cat {{ ansible_config_file | dirname }}/rapport/{{ inventory_hostname }}_nok.txt | {{ ansible_config_file | dirname }}/tools/fzf --multi --prompt="Choississez les commandes à corriger :"
+  include_tasks: "{{ ansible_config_file | dirname }}/tasks/fzf-cherrypick.yml"
   register: user_selection
 
-- name: valeur de user_selection
-  debug:
-    var: user_selection.stdout_lines
+
+
 
 - name: commandes choisies
   set_fact:
@@ -22,6 +20,7 @@
   debug:
     var: com_choisies
 
+
 - name: demande paramètres pour commande (laisser vide si pas de paramètres)
   pause:
     prompt: "Veuillez entrer un paramètre pour la commande {{ item[1] }}(laisser vide si pas de paramètres)"
@@ -30,18 +29,17 @@
     label: "{{ item[1] }}"
   register: user_params
 
-- name: debug3
-  debug:
-    var: user_params.results
-
 - name: Concat commande et paramètres
   set_fact:
-    commandes_param: "{{lookup('template', 'templates/commande_corrige.jinja') }}"
-- name: debug
+    commandes_param: "{{lookup('template', 'templates/commande_corrige.jinja')| trim |from_yaml }}"
+
+
+- name: debug 3
   debug:
     var: commandes_param
 
 
 - name: Appliquer la modification sur la configuration
   cisco.ios.ios_config:
-    commands: "{{ commandes_param }}"
+    commands: "{{ item }}"
+  loop: "{{commandes_param}}"
