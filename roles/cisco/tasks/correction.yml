@@ -6,7 +6,7 @@
   set_fact:
     correctif_file: "{{ ansible_config_file | dirname }}/correctif/{{ inventory_hostname }}_nok.txt"
     #commandes: "{{lookup('file', correctif_file) 
-    commandes: "{{lookup('file', correctif_file | split('\n')|map('split',':',1)| map('zip',['titre','commande'])|map('combine')|list}}"
+    commandes: "{{lookup('file', correctif_file) | split('\n')|map('split',':',1)| map('zip',['titre','commande'])|map('combine')|list}}"
 
 - name: debug correctif_file
   debug:
