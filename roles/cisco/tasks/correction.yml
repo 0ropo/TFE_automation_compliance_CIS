@@ -23,7 +23,6 @@
   set_fact:
     new_params: {}
 
-- name: verif commandes manquantes
 
 - name: user prompt commande manquante 
   pause:
