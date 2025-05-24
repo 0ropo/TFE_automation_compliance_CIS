@@ -1,7 +1,7 @@
 - name: backup config 
   copy:
-    src: "{{ ansible_config_file | dirname }}/configs/{{ inventory_hostname }}_running_config.txt"
-    dest: "{{ ansible_config_file | dirname }}/configs/backup/backup_{{ inventory_hostname }}_running_config.txt"
+    src: "{{ ansible_config_file | dirname }}/config/{{ inventory_hostname }}_running_config.txt"
+    dest: "{{ ansible_config_file | dirname }}/config/backup/backup_{{ inventory_hostname }}_running_config.txt"
 
 
 - name: récup fichier de correction
