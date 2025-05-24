@@ -3,7 +3,7 @@
   {% set cmd = item.commande %}
   {% if '{' in cmd or '<' in cmd %}
     {% set param = all_params.get(item.titre,'') %}
-    {% set final = cmd | regex_replace('\{[^}]+\}',param) | regex_replace('\<[^>]+\>',param))%}
+    {% set final = cmd | regex_replace('\{[^}]+\}',param) | regex_replace('\<[^>]+\>',param)%}
   {% else %}
     {% set final = cmd %}
   {% endif %}
