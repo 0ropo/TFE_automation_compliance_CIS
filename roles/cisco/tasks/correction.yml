@@ -1,3 +1,9 @@
+- name: charger règles cis
+  include_vars:
+    file: "{{ ansible_config_file | dirname }}/cis_ios15_complet.yml"
+    name: cis
+
+
 - name: backup config 
   copy:
     src: "{{ ansible_config_file | dirname }}/config/{{ inventory_hostname }}_running_config.txt"
@@ -21,8 +27,9 @@
 - name: test création dico
   set_fact:
 #    commandes: "{{lookup('file', correctif_file) | map('split','\n',1) |map('split',':',1)| map('zip',['titre','commande'])|map('combine')|list}}"
-    commandes: "{{correctif_file.content | b64decode |  map('split','\n',1) |map('split',':',1)| map('zip',['titre','commande'])|map('combine')|list}}"
-
+#    commandes: "{{correctif_file.content | b64decode |  map('split','\n',1) |map('split',':',1)| map('zip',['titre','commande'])|map('combine')|list}}"
+    commandes: "{{ commandes | default([]) + [[item.split(':')[0] | trim, item.split(':')[1] | trim]] }}"
+  loop: "{{ correctif_file.content | b64decode}}"
 
 - name: récup fichier param 
   include_vars:
