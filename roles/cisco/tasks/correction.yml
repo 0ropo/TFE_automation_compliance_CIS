@@ -62,6 +62,9 @@
   loop: "{{commandes}}"
   loop_control:
     label: "{{item.titre}}"
+- name: debug2
+  debug:
+    var: user_input
 
 - name: ajouteur le paramètre au fichier 
   set_fact:
