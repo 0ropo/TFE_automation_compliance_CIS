@@ -28,26 +28,29 @@
     commandes: "{{ commandes | default([]) + [{'titre':item.split(':')[0] | trim, 'commande':item.split(':')[1] | trim}] }}"
   loop: "{{ correctif_file.content | b64decode | regex_findall('^[0-9.]+:.*$', multiline=True) }}"
 
-- name: debug commandes
-  debug:
-    var: commandes  
+- name: test existance fichier param 
+  stat:
+    path:  "{{ ansible_config_file | dirname }}/correctif/param/{{ inventory_hostname }}_param.txt"
+  register: param_defined
 
 - name: récup fichier param 
   include_vars:
-    file: "correctif/param/{{ inventory_hostname }}_param.txt"
-    name: param_defined
+    file: "{{ ansible_config_file | dirname }}/correctif/param/{{ inventory_hostname }}_param.txt"
+    name: param_file
+  when: param_defined.stat.exists
   ignore_errors: yes
 
-- name: nouveaux params
-  set_fact:
-    new_params: {}
-
+- name: init param file si vide
+  copy:
+    content: "{}"
+    dest: "{{ ansible_config_file | dirname }}/correctif/param/{{ inventory_hostname }}_param.txt"
+  when: not param_defined.stat.exists
 
 - name: user prompt commande manquante 
   pause:
     prompt: " Entrez un paramètre pour : {{item.commande}} (laisser vide si pas de paramètres)"
   register: user_input
-  when: item.titre not in param_defined and ("{" in item.commande or "<" in item.commande )
+  when: item.titre not in param_file and ("{" in item.commande or "<" in item.commande )
   loop: "{{commandes}}"
   loop_control:
     label: "{{item.titre}}"
@@ -55,7 +58,7 @@
 - name: ajouteur le paramètre au fichier 
   set_fact:
     new_params: "{{ new_params | combine({item.titre: user_input.user_input}) }}"
-  when: item.titre not in param_defined and ("{" in item.commande or "<" in item.commande )
+  when: item.titre not in param_file and ("{" in item.commande or "<" in item.commande )
   loop: "{{commandes}}"
   loop_control:
     label: "{{item.titre}}"
