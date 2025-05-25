@@ -40,11 +40,19 @@
   when: param_defined.stat.exists
   ignore_errors: yes
 
-- name: init param file si vide
-  copy:
-    content: "{}"
-    dest: "{{ ansible_config_file | dirname }}/correctif/param/{{ inventory_hostname }}_param.txt"
+- name: création + init param 
+  block:
+    - name: init param file si vide
+      copy:
+        content: "{}"
+        dest: "{{ ansible_config_file | dirname }}/correctif/param/{{ inventory_hostname }}_param.txt"
+    
+    - name: init 
+      include_vars:
+        file: "{{ ansible_config_file | dirname }}/correctif/param/{{ inventory_hostname }}_param.txt"
+        name: param_file
   when: not param_defined.stat.exists
+
 
 - name: user prompt commande manquante 
   pause:
