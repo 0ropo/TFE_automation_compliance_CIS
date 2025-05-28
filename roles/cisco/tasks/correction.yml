@@ -71,7 +71,7 @@
   set_fact:
     new_params: "{{ new_params | default([])| combine({item.titre: item.user_input}) }}"
   when: item.titre not in param_file and ("{" in item.commande or "<" in item.commande )
-  loop: "{{param_input}}"
+  loop: "{{param_input.results}}"
   loop_control:
     label: "{{item.titre}}"
 
