@@ -56,12 +56,12 @@
 
 - name: user prompt commande manquante 
   pause:
-    prompt: " Entrez un paramètre pour : {{item.commande}} (laisser vide si pas de paramètres)"
+    prompt: " Entrez un paramètre pour : {{item.item.commande}} (laisser vide si pas de paramètres)"
   register: param_input
-  when: item.titre not in param_file and ("{" in item.commande or "<" in item.commande )
+  when: item.item.titre not in param_file and ("{" in item.item.commande or "<" in item.item.commande )
   loop: "{{commandes}}"
   loop_control:
-    label: "{{item.titre}}"
+    label: "{{item.item.titre}}"
 
 - name: debug2
   debug:
@@ -70,7 +70,7 @@
 - name: ajouteur le paramètre au fichier 
   set_fact:
     new_params: "{{ new_params | default([])| combine({item.item.titre: item.user_input}) }}"
-  when: item.titre not in param_file and ("{" in item.commande or "<" in item.commande )
+  when: item.item.titre not in param_file and ("{" in item.item.commande or "<" in item.item.commande )
   loop: "{{param_input.results}}"
   loop_control:
     label: "{{item.titre}}"
