@@ -25,4 +25,6 @@
 {% endif %}
   {% set _ = result.append(final.strip()) %}
 {% endfor %}
-{{ result }}
+{% for cmd in result %}
+{{ cmd}}
+{% endfor %}
