@@ -57,7 +57,7 @@
 - name: séparation commandes avec ou sans param
   set_fact:
     commandes_with_param: "{{ commandes | selectattr('commande', 'match', '.*[{<}].*') | list}}"
-    commandes_with_param: "{{ commandes | rejectattr('commande', 'match', '.*[{<}].*') | list}}"
+    commandes_without_param: "{{ commandes | rejectattr('commande', 'match', '.*[{<}].*') | list}}"
 
 - name: user prompt commande manquante 
   pause:
@@ -68,10 +68,6 @@
   loop_control:
     label: "{{item.titre}}"
 
-- name: debug2
-  debug:
-    var: param_input.results
-
 - name: ajouteur le paramètre au fichier 
   set_fact:
     new_params: "{{ new_params | default([])| combine({item.item.titre: item.user_input}) }}"
@@ -79,6 +75,11 @@
   loop: "{{param_input.results}}"
   loop_control:
     label: "{{item.item.titre}}"
+
+- name: debug2
+  debug:
+    var: new_params
+
 
 - name: sauver params
   copy:
