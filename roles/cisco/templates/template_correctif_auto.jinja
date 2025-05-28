@@ -1,4 +1,5 @@
 {% set result = [] %}
+
 {% set all_params = param_file | default({}) %}
 
 {% if new_params is defined %}
@@ -11,20 +12,15 @@
 
 {% if '{' in cmd or '<' in cmd %}
   {% set param_value = all_params.get(titre,'') %}
-  {% if param_value == ''%}
-    {% set final = "# error: missing param for " + titre + ": " + cmd %}
-  {% else %}
+
     {% set final = cmd %}
     {% set final = final | regex_replace('\{[^}]*\}',param_value)%}
     {% set final = final | regex_replace('\<[^>]*\>',param_value)%}
     {% set final = final | regex_replace('\{[^}]+\}',param_value)%}
     {% set final = final | regex_replace('\<[^>]+\>',param_value)%}
-  {% endif %}
 {% else %}
   {% set final = cmd %}
 {% endif %}
   {% set _ = result.append(final.strip()) %}
 {% endfor %}
-{% for cmd in result %}
-{{ cmd}}
-{% endfor %}
+{{result | to_nice_yaml}}
