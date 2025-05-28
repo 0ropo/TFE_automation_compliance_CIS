@@ -9,6 +9,8 @@
   {% set titre = item.titre %}
   {% set cmd = item.commande %}
 
+{% if '{' ub cmd or '<' in cmd %}
+  {% set param_value = all_params.get(titre,'') %}
   {% if param_value == ''%}
     {%set final = "error: missing param for" + titre  + ":" + cmd%}
   {% else %}
@@ -18,6 +20,7 @@
     {% set final = final | regex_replace('\{[^}]+\',param_value)%}
     {% set final = final | regex_replace('\<[^>]+\',param_value)%}
   {% endif %}
+{% endif %}
   {% set _ = result.append(final.strip()) %}
 {% endfor %}
 {{ result | to_nice_yaml }}
