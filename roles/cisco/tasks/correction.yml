@@ -62,13 +62,14 @@
   loop: "{{commandes}}"
   loop_control:
     label: "{{item.titre}}"
+
 - name: debug2
   debug:
     var: user_input
 
 - name: ajouteur le paramètre au fichier 
   set_fact:
-    new_params: "{{ new_params | combine({item.titre: user_input.user_input}) }}"
+    new_params: "{{ new_params | default({})| combine({item.titre: user_input.user_input}) }}"
   when: item.titre not in param_file and ("{" in item.commande or "<" in item.commande )
   loop: "{{commandes}}"
   loop_control:

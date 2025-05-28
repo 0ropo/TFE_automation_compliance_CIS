@@ -1,0 +1,6 @@
+- name: init param 
+  set_fact:
+    new_params: {}
+
+- name: param input user
+  vars

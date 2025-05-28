@@ -1,18 +1,10 @@
 
-#- name: Tâche connexion appareil cisco
-#  connection:local
-#  become: yes
-
-
 - name: récupération de la configuration sur la machine
 
   cisco.ios.ios_command:
     commands: show running-config
   register: running_config
 
-- name: affichage du show run
-  debug:
-    var: running_config 
 
 - name: Sauvegarde de la config 
   copy:
@@ -20,7 +12,7 @@
     dest: "{{ansible_config_file | dirname}}/config/{{ inventory_hostname }}_running_config.txt"
   
 
-- name: Destination du rapport CIS
+- name:  declaration des variables
   set_fact:
     host_config: "{{lookup('file','config/' + inventory_hostname + '_running_config.txt')}}"
     ref_cis_ios17: "{{lookup('file', ansible_config_file | dirname ~ '/cis_ios17_complet.yml')| from_yaml }}"
@@ -47,13 +39,12 @@
     src : "{{ ansible_config_file | dirname }}/roles/cisco/templates/liste_commandes_nok.jinja"
     dest : "{{ ansible_config_file | dirname }}/correctif/{{ inventory_hostname }}_nok.txt"
   
-
-- name: Affichage no verbose
+- name: affichage no verbose
   debug:
     var: lookup('file', (ansible_config_file | dirname) + '/rapport/' + inventory_hostname + '_rapport.txt')
   when: verbose.user_input == "n"
 
-- name: Affichage verbose
+- name: affichage verbose
   debug:
     var: lookup('file', (ansible_config_file | dirname) + '/rapport/' + inventory_hostname + '_rapport_verbose.txt')
   when: verbose.user_input == "y"
