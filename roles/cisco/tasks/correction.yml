@@ -71,7 +71,7 @@
 - name: ajouteur le paramètre au fichier 
   set_fact:
     new_params: "{{ new_params | default([])| combine({item.item.titre: item.user_input}) }}"
-  when: item.item.titre not in param_file
+  when: item.item.titre not in param_file and (item.user_input | default('') | length > 0)
   loop: "{{param_input.results}}"
   loop_control:
     label: "{{item.item.titre}}"
