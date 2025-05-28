@@ -68,6 +68,7 @@
   loop_control:
     label: "{{item.titre}}"
 
+
 - name: ajouteur le paramètre au fichier 
   set_fact:
     new_params: "{{ new_params | default([])| combine({item.item.titre: item.user_input}) }}"
