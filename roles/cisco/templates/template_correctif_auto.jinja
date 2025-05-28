@@ -18,9 +18,10 @@
     {% set final = final | regex_replace('\<[^>]*\>',param_value)%}
     {% set final = final | regex_replace('\{[^}]+\}',param_value)%}
     {% set final = final | regex_replace('\<[^>]+\>',param_value)%}
+    {% set _ = result.append(final.strip()) %}
+
 {#% else %#}
  {#% set final = cmd %#}
 {% endif %}
-  {% set _ = result.append(final.strip()) %}
 {% endfor %}
 {{result | to_nice_yaml}}
