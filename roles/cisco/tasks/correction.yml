@@ -69,7 +69,7 @@
 
 - name: ajouteur le paramètre au fichier 
   set_fact:
-in  when: item.titre not in param_file and ("{" in item.commande or "<" in item.commande )
+  when: item.titre not in param_file and ("{" in item.commande or "<" in item.commande )
   loop: "{{commandes}}"
   loop_control:
     label: "{{item.titre}}"
