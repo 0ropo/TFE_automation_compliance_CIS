@@ -86,6 +86,7 @@
   copy:
     content: "{{ new_params | to_nice_yaml}}"
     dest: "{{ ansible_config_file | dirname }}/correctif/param/{{ inventory_hostname }}_param.txt"
+  when: new_params is defined and new_params | length > 0
 
 - name: commande concat 
   ansible.builtin.template:
