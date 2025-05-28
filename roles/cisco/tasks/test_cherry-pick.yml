@@ -8,8 +8,7 @@
   include_tasks: "{{ ansible_config_file | dirname }}/tasks/fzf-cherrypick.yml"
   register: user_selection
 
-- debug:
-    var: user_selection
+
 
 
 - name: commandes choisies
