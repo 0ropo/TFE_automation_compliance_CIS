@@ -9,7 +9,7 @@
   {% set titre = item.titre %}
   {% set cmd = item.commande %}
 
-{% if '{' ub cmd or '<' in cmd %}
+{% if '{' in cmd or '<' in cmd %}
   {% set param_value = all_params.get(titre,'') %}
   {% if param_value == ''%}
     {%set final = "error: missing param for" + titre  + ":" + cmd%}
