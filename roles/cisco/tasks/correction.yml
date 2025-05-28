@@ -28,6 +28,7 @@
     commandes: "{{ commandes | default([]) + [{'titre':item.split(':')[0] | trim, 'commande':item.split(':')[1] | trim}] }}"
   loop: "{{ correctif_file.content | b64decode | regex_findall('^[0-9.]+:.*$', multiline=True) }}"
 
+
 - name: test existance fichier param 
   stat:
     path:  "{{ ansible_config_file | dirname }}/correctif/param/{{ inventory_hostname }}_param.txt"
@@ -53,13 +54,17 @@
         name: param_file
   when: not param_defined.stat.exists
 
+- name: séparation commandes avec ou sans param
+  set_fact:
+    commandes_with_param: "{{ commandes | selectattr('commande', 'match', '.*[{<}].*') | list}}"
+    commandes_with_param: "{{ commandes | rejectattr('commande', 'match', '.*[{<}].*') | list}}"
 
 - name: user prompt commande manquante 
   pause:
-    prompt: " Entrez un paramètre pour : {{item.item.commande}} (laisser vide si pas de paramètres)"
+    prompt: " Entrez un paramètre pour : {{item.commande}} (laisser vide si pas de paramètres)"
   register: param_input
-  when: item.item.titre not in param_file and ("{" in item.item.commande or "<" in item.item.commande )
-  loop: "{{commandes}}"
+  when: item.titre not in param_file
+  loop: "{{commandes_with_param}}"
   loop_control:
     label: "{{item.item.titre}}"
 
@@ -70,10 +75,10 @@
 - name: ajouteur le paramètre au fichier 
   set_fact:
     new_params: "{{ new_params | default([])| combine({item.item.titre: item.user_input}) }}"
-  when: item.item.titre not in param_file and ("{" in item.item.commande or "<" in item.item.commande )
+  when: item.item.titre not in param_file
   loop: "{{param_input.results}}"
   loop_control:
-    label: "{{item.titre}}"
+    label: "{{item.item.titre}}"
 
 - name: sauver params
   copy:
