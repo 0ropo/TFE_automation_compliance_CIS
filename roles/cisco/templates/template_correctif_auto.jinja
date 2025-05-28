@@ -15,11 +15,13 @@
     {%set final = "error: missing param for" + titre  + ":" + cmd%}
   {% else %}
     {% set final = cmd %}
-    {% set final = final | regex_replace('\{[^}]*\',param_value)%}
-    {% set final = final | regex_replace('\<[^>]*\',param_value)%}
+    {% set final = final | regex_replace('\{[^}]*\}',param_value)%}
+    {% set final = final | regex_replace('\<[^>]*\>',param_value)%}
     {% set final = final | regex_replace('\{[^}]+\',param_value)%}
     {% set final = final | regex_replace('\<[^>]+\',param_value)%}
   {% endif %}
+{% else %}
+  {% set final = cmd %}
 {% endif %}
   {% set _ = result.append(final.strip()) %}
 {% endfor %}
