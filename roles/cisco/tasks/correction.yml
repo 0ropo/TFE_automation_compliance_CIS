@@ -73,11 +73,6 @@
   loop_control:
     label: "{{item.item.titre}}"
 
-- name: debug2
-  debug:
-    var: new_params
-
-
 - name: sauver params
   copy:
     content: "{{ new_params | to_nice_yaml}}"
@@ -92,10 +87,6 @@
 - name: charger les commandes finales
   set_fact:
     missing_commands: "{{ lookup('file', 'correctif/' + inventory_hostname + '_commandes_param.txt') | trim | from_yaml }}"
-
-- name: debug
-  debug:
-    var: missing_commands
 
 - name: Demander la confirmation pour appliquer les modifs sur la config
   pause:
