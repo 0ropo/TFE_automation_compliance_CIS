@@ -8,23 +8,19 @@
   copy:
     src: "{{ ansible_config_file | dirname }}/config/{{ inventory_hostname }}_running_config.txt"
     dest: "{{ ansible_config_file | dirname }}/config/backup/backup_{{ inventory_hostname }}_running_config.txt"
+- name: dire que backup fait
+  debug:
+    msg: "Backup de la configuration faite dans {{ ansible_config_file | dirname }}/config/backup/backup_{{ inventory_hostname }}_running_config.txt"
 
-#- name: récup fichier de correction
-#  set_fact:
-#    correctif_file: "{{ ansible_config_file | dirname }}/correctif/{{ inventory_hostname }}_nok.txt"
-#    #commandes: "{{lookup('file', correctif_file) 
-
-- name: test slurp
+- name: slurp
   slurp:
     src: "{{ ansible_config_file | dirname }}/correctif/{{ inventory_hostname }}_nok.txt"
   register: correctif_file
 
 
 
-- name: test création dico
+- name: création dico
   set_fact:
-#    commandes: "{{lookup('file', correctif_file) | map('split','\n',1) |map('split',':',1)| map('zip',['titre','commande'])|map('combine')|list}}"
-#    commandes: "{{correctif_file.content | b64decode |  map('split','\n',1) |map('split',':',1)| map('zip',['titre','commande'])|map('combine')|list}}"
     commandes: "{{ commandes | default([]) + [{'titre':item.split(':')[0] | trim, 'commande':item.split(':')[1] | trim}] }}"
   loop: "{{ correctif_file.content | b64decode | regex_findall('^[0-9.]+:.*$', multiline=True) }}"
 
@@ -96,6 +92,10 @@
 - name: charger les commandes finales
   set_fact:
     missing_commands: "{{ lookup('file', 'correctif/' + inventory_hostname + '_commandes_param.txt') | trim | from_yaml }}"
+
+- name: debug
+  debug:
+    var: missing_commands
 
 - name: Demander la confirmation pour appliquer les modifs sur la config
   pause:
