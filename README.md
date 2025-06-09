@@ -1,6 +1,6 @@
 ![Ansible](https://img.shields.io/badge/ansible-automation-blue)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Status](https://img.shields.io/badge/status-stable-brightgreen)
+![WIP](https://img.shields.io/badge/status-work--in--progress-orange)
 
 > **Automatisation de la conformité des équipements de différents technologies avec Ansible**  
 > Travail de fin d’études – EPHEC 2025
