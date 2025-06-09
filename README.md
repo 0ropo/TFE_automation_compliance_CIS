@@ -7,11 +7,11 @@
 
 ## Prérequis
 
-- Configurer vos machines en connexion SSH par clé publique.
+- Configurer vos machines en connexion **SSH par clé publique**.
 
-- Ajouter vos machines dans le fichier hosts.yml dans le dossier inventory et chiffrer le fichier avec Ansible Vault dans le cas ou vous utilisez un mot de passe au lieu d'une clé. Voici un exemple du contenu attendu:
+- Ajouter vos machines dans le fichier `hosts.yml` dans le dossier `inventory` et chiffrer le fichier avec **Ansible Vault** dans le cas ou vous utilisez un mot de passe au lieu d'une clé. Voici un exemple du contenu attendu:
 
-- S'assurer que le module cisco.ios est bien installé avec Ansible-Galaxy.
+- S'assurer que la collection `cisco.ios` est bien installée avec Ansible-Galaxy.
 
 - S'assurer que le fichier de référence contenant les bonnes pratiques CIS soit sous ce format et que pour un titre, on ait qu'une seule commande:
 
@@ -31,13 +31,13 @@
   default_value: null
 ```
 
-Commande d'installtion du module cisco.ios:
+Commande d'installtion de la collection `cisco.ios`:
 
 ```
 ansible-galaxy collection install cisco.ios
 ```
 
-Exemple de la déclaration d'un routeur R1 dans le fichier hosts.yml:
+Exemple de la déclaration d'un routeur R1 dans le fichier `hosts.yml`:
 ```
 routers:
   children:
