@@ -1,6 +1,6 @@
 - name: Détection de la technologie 
   hosts: routers
-  gather_facts: yes
+  gather_facts: false
 
   tasks:
   - name: Affichage de la technologie
@@ -10,7 +10,7 @@
   - name: trouvé cisco
     debug:
       msg: "L'appareil est du type : Cisco"
-    when: ansible_network_os == 'ios'
+    when: ansible_network_os == 'cisco.ios.ios'
     
 
   - name: trouvé pfsense
@@ -21,7 +21,7 @@
   - name: Appareils Cisco
     include_role:
       name: cisco
-    when: ansible_network_os == 'ios'
+    when: ansible_network_os == 'cisco.ios.ios'
 
   - name: Appareils Pfsense
     include_role:

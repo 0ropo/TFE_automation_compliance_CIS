@@ -1,0 +1,9 @@
+
+
+
+    
+                                
+                                
+            - hostname R2
+- ip domain-name formation.lab2
+- '! error: missing param for 2.2.3: logging console {severity}'

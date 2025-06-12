@@ -11,3 +11,6 @@ test
 roles/cisco/templates/temp
 test_cherry-pick.yml
 temp
+config
+correctif
+rapport

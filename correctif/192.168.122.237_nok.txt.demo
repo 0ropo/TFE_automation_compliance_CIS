@@ -1,0 +1,4 @@
+2.1.1.1.1:hostname {hostname}
+2.1.1.1.2:ip domain-name {name}
+2.2.3:logging console {severity}
+

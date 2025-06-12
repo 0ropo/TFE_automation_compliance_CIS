@@ -1,0 +1,225 @@
+Commandes manquantes sur l'appareil Cisco : 192.168.122.237
+
+                
+    
+1.1.2:aaa authentication login {default | aaa_list_name} [passwd-
+    
+1.1.3:aaa authentication enable default {method1} enable
+    
+1.1.4:line vty {line-number} [ending-line-number]
+login authentication {default | aaa_list_name}
+    
+1.1.5:(config)ip http secure-server
+(config)ip http authentication {default | _aaa\_list\_name_}
+aaa accounting commands 15 {default | list-name | guarantee-
+    
+1.1.7:aaa accounting connection {default | list-name | guarantee-
+    
+1.1.8:aaa accounting exec {default | list-name | guarantee-first}
+    
+1.1.9:aaa accounting network {default | list-name | guarantee-
+    
+1.1.10:aaa accounting system {default | list-name | guarantee-
+                
+    
+1.2.3:line aux 0
+no exec
+    
+1.2.4:access-list <vty_acl_number> permit tcp
+access-list <vty_acl_number> permit tcp host <vty_acl_host>
+deny ip any any log
+    
+1.2.5:line vty <line-number> <ending-line-number>
+access-class <vty_acl_number> in
+line aux 0
+exec-timeout <timeout_in_minutes> <timeout_in_seconds>
+line con 0
+exec-timeout <timeout_in_minutes> <timeout_in_seconds>
+line vty {line_number} [ending_line_number]
+exec-timeout <<span>timeout_in_minutes>
+    
+1.2.9:line aux 0
+transport input none
+                
+    
+1.3.1:banner exec c
+    
+1.3.2:banner login c
+    
+1.3.3:banner motd c
+    
+1.3.4:ip admission auth-proxy-banner http {banner-text | filepath}
+                
+                
+    
+1.4.3:username {LOCAL_USERNAME} secret
+no snmp-server
+    
+1.5.2:no snmp-server community {private}
+    
+1.5.3:no snmp-server community {public}
+no snmp-server community {write_community_string}
+    
+1.5.5:snmp-server community <community_string> ro
+    
+1.5.6:access-list <snmp_acl_number> permit
+access-list deny any log
+    
+1.5.7:snmp-server host {ip_address} {trap_community_string}
+    
+1.5.8:snmp-server enable traps snmp authentication linkup linkdown
+snmp-server group {group_name} v3 priv
+snmp-server user {user_name} {group_name} v3 auth sha
+    
+1.6.1:(config)login block-for {**seconds**} attempts {**tries**} within
+(config)login quiet-mode access class {**acl-name | acl-number**}
+(config)login delay {**seconds**}
+    
+1.6.2:(config)auto secure {management | forwarding} {no-interact | full}
+(config)enable password {password | [encryption-type ] encrypted-
+security authentication failure rate {**threshold-rate**} log
+    
+1.6.3:ank {username@REALM}
+ank {username/instance@REALM
+ark {SERVICE/HOSTNAME@REALM}
+(config)kerberos local-realm {kerberos-realm}
+(config)kerberos server {kerberos-realm {hostname | ip-address}}
+(config)kerberos realm {dns-domain | host} {kerberos-realm}
+    
+1.6.4:(config)ip admission name {Name} proxy http
+(config)interface {type slot/port}
+(config)ip access-group {Name}
+(config)ip admission name
+(config)ip admission max-login-attempts {number}
+                
+    
+2.1.1.1.2:ip domain-name {domain-name}
+crypto key generate rsa general-keys modulus 2048
+ip ssh time-out [60]
+ip ssh authentication-retries [3]
+                
+                
+    
+2.1.3:ip dhcp bootp ignore
+    
+2.1.4:<strong>no service dhcp</strong>
+    
+2.1.5:no ip identd
+    
+2.1.6:service tcp-keepalives-in
+    
+2.1.7:service tcp-keepalives-out
+    
+2.1.8:no service pad
+    
+2.2.1:archive
+log config
+logging enable
+end
+    
+2.2.2:logging buffered [log_buffer_size]
+    
+2.2.3:logging console critical
+    
+2.2.4:logging host {syslog_server}
+    
+2.2.5:logging trap informational
+                
+    
+2.2.7:logging source-interface loopback
+    
+2.2.8:login on-failure log
+login on-success log
+end
+    
+2.3.1.1:ntp authenticate
+    
+2.3.1.2:ntp authentication-key {ntp_key_id} md5 {ntp_key_hash}
+    
+2.3.1.3:ntp trusted-key {ntp_key_id}
+                
+                
+    
+2.4.1:interface loopback <number>
+ip address <loopback_ip_address>
+    
+2.4.2:ip radius source-interface loopback
+aaa group server tacacs+ {group_name} hostname(config-sg-
+ip tacacs source-interface {loopback_interface_number}
+    
+2.4.3:ntp source loopback {loopback_interface_number}
+ip tftp source-interface loopback
+    
+3.1.1:no ip source-route
+    
+3.1.2:interface {interface}
+no ip proxy-arp
+    
+3.1.3:no interface tunnel {instance}
+    
+3.1.4:interface {interface_name}
+ip verify unicast source reachable-via rx allow-default
+ip access-list extended {<span>name | number}
+deny ip
+deny ip 127.0.0.0 0.255.255.255 any log
+deny ip 10.0.0.0 0.255.255.255 any log
+deny ip 0.0.0.0 0.255.255.255 any log
+deny ip 172.16.0.0 0.15.255.255 any log
+deny ip 192.168.0.0 0.0.255.255 any log
+deny ip 192.0.2.0 0.0.0.255 any log
+deny ip 169.254.0.0 0.0.255.255 any log
+deny ip 224.0.0.0 31.255.255.255 any log
+deny ip host 255.255.255.255 any log
+permit {protocol} {source_ip}
+deny any any log
+interface <external_interface>
+access-group <access-list> in
+interface {external_interface}
+ip access-group {name | number} in
+    
+3.3.1.1:key chain {key-chain_name}
+                
+    
+3.3.1.3:key-string <key-string>
+    
+3.3.1.4:router eigrp <virtual-instance-name>
+address-family ipv4 autonomous-system {eigrp_as-
+    
+3.3.1.5:router eigrp <virtual-instance-name>
+address-family ipv4 autonomous-system {eigrp_as-
+af-interface default
+    
+3.3.1.6:router eigrp <virtual-instance-name>
+address-family ipv4 autonomous-system {eigrp_as-
+af-interface {interface-name}
+authentication key-chain {eigrp_key-
+    
+3.3.1.7:router eigrp <virtual-instance-name>
+address-family ipv4 autonomous-system {eigrp_as-
+af-interface {interface-name}
+authentication mode md5
+    
+3.3.1.8:interface {interface_name}
+ip authentication key-chain eigrp {eigrp_as-
+    
+3.3.1.9:interface {interface_name}
+ip authentication mode eigrp {<span>eigrp_as-
+router ospf <ospf_process-id>
+area <ospf_area-id> authentication message-
+    
+3.3.2.2:interface {interface_name}
+ip ospf message-digest-key {ospf_md5_key-id} md5
+    
+3.3.3.1:key chain {rip_key-chain_name}
+                
+    
+3.3.3.3:key-string <key-string>
+    
+3.3.3.4:interface {interface_name}
+ip rip authentication key-chain {rip_key-
+    
+3.3.3.5:interface <interface_name>
+ip rip authentication mode md5
+    
+3.3.4.1:router bgp <bgp_as-number>
+neighbor <bgp_neighbor-ip | peer-group-

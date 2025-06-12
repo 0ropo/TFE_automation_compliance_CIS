@@ -1,0 +1,333 @@
+Rapport de conformité CIS pour l'appareil Cisco : 192.168.122.237
+
+
+
+    La ligne : (1.1.1:aaa new-model) de niveau Level 1 est présente dans la config de l'appareil.✅
+                        
+    
+
+
+    La ligne : (1.1.2:aaa authentication login) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.1.3:aaa authentication enable default) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.1.4:login authentication for) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.1.5:login authentication for) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.1.7:aaa accounting connection) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.1.8:aaa accounting exec) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.1.9:aaa accounting network) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.1.10:aaa accounting system) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.2.1:privilege 1) de niveau Level 1 est présente dans la config de l'appareil.✅
+                        
+    
+
+
+    La ligne : (1.2.3:no exec) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.2.4:access-list) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.2.5:access-class) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.2.9:transport input none) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.2.10:http Secure-server) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.3.1:banner-text) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.3.2:banner-text) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.3.3:banner-text) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.3.4:banner-text) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.4.1:password) de niveau Level 1 est présente dans la config de l'appareil.✅
+                        
+    
+
+
+    La ligne : (1.4.2:service password-encryption) de niveau Level 1 est présente dans la config de l'appareil.✅
+                        
+    
+
+
+    La ligne : (1.4.3:username secret) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.5.2:private) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.5.3:public) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.5.5:snmp-server community) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.5.6:access-list) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.5.7:snmp-server host) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.5.8:snmp-server enable traps snmp) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.6.1:) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.6.2:) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.6.3:) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (1.6.4:) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.1.1.1.1:hostname) de niveau Level 1 est présente dans la config de l'appareil.✅
+                        
+    
+
+
+    La ligne : (2.1.1.1.2:ip domain-name) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.1.1.2:ip ssh version) de niveau Level 1 est présente dans la config de l'appareil.✅
+                        
+    
+
+
+    La ligne : (2.1.2:no cdp run) de niveau Level 1 est présente dans la config de l'appareil.✅
+                        
+    
+
+
+    La ligne : (2.1.3:no ip bootp server) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.1.4:no service dhcp) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.1.5:no ip identd) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.1.6:service tcp-keepalives-in) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.1.7:service tcp-keepalives-out) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.1.8:no service pad) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.2.1:logging enable) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.2.2:buffer size) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.2.3:logging console critical) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.2.4:logging host) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.2.5:logging trap informational) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.2.6:service timestamps debug datetime) de niveau Level 1 est présente dans la config de l'appareil.✅
+                        
+    
+
+
+    La ligne : (2.2.7:logging source interface) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.2.8:login success/failure logging) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.3.1.1:ntp authenticate) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.3.1.2:ntp authentication-key) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.3.1.3:ntp trusted-key) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.3.1.4:key) de niveau Level 2 est présente dans la config de l'appareil.✅
+                        
+    
+
+
+    La ligne : (2.3.2:ip address) de niveau Level 1 est présente dans la config de l'appareil.✅
+                        
+    
+
+
+    La ligne : (2.4.1:interface loopback) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.4.2:source-interface) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (2.4.3:ntp source) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (3.1.1:no ip source-route) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (3.1.2:no ip proxy-arp) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (3.1.3:no interface tunnel) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (3.1.4:ip verify unicast source reachable-via) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (3.3.1.1:key chain) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (3.3.1.2:key) de niveau Level 2 est présente dans la config de l'appareil.✅
+                        
+    
+
+
+    La ligne : (3.3.1.3:key-string) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (3.3.1.4:address-family ipv4 autonomous-system) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (3.3.1.5:af-interface default) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (3.3.1.6:authentication key-chain) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (3.3.1.7:authentication mode md5) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (3.3.1.8:ip authentication key-chain eigrp) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (3.3.1.9:ip authentication mode eigrp) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (3.3.2.2:ip ospf message-digest-key md5) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (3.3.3.1:key chain) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (3.3.3.2:key) de niveau Level 2 est présente dans la config de l'appareil.✅
+                        
+    
+
+
+    La ligne : (3.3.3.3:key-string) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (3.3.3.4:ip rip authentication key-chain) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (3.3.3.5:ip rip authentication mode) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+    La ligne : (3.3.4.1:neighbor password) n'est pas présente dans la config de l'appareil ❌
+    
+
+
+✅ 12 règles présentes sur 78
+❌ 66 règles absentes sur 78
+Il y'a 9 règles de niveau 1
+Il y'a 3 règles de niveau 2
+
