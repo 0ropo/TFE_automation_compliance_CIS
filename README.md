@@ -46,10 +46,18 @@ routers:
         R1_ip:
   vars:
     ansible_connection: network_cli
-    ansible_network_os: ios  
-    ansible_user: enable_password
-    ansible_ssh_pass: ssh_password
+    ansible_network_os: cisco.ios.ios (if cisco else see Ansible Documentations)  
+    ansible_user: user_for_ssh
+    ansible_ssh_pass: ssh_password ou private_key_file: location_private_key 
 ```
+
+## Chiffrement des fichiers sensibles 
+
+Pour certains fichiers sensibles, il est nécessaires de chiffre ces fichiers avec Ansible-vault, exemple avec le fichier hosts.yml qui contient les credentials de connexion:
+```
+ansible-vault encrypt hosts.yml
+```
+
 
 ## Initialisation du projet
 
@@ -61,5 +69,5 @@ cd TFE_automation_compliance_CIS
 ## Lancer le playbook principal
 
 ```
-ansible-playbook playbook_detect_OS.yml
+ansible-playbook playbook_detect_OS.yml --ask-vault-pass ou --vault-password-file /path/to/my/vault-password-file 
 ```
