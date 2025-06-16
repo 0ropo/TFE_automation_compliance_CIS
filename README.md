@@ -9,11 +9,11 @@
 
 - Configurer vos machines en connexion **SSH par clé publique**.
 
-- Ajouter vos machines dans le fichier `hosts.yml` dans le dossier `inventory` et chiffrer le fichier avec **Ansible Vault** dans le cas ou vous utilisez un mot de passe au lieu d'une clé. Voici un exemple du contenu attendu:
+- Configurer le fichier ansible.cfg pour lui indiquer le chemin vers votre inventaire.
 
 - S'assurer que la collection `cisco.ios` est bien installée avec Ansible-Galaxy.
 
-- S'assurer que le fichier de référence contenant les bonnes pratiques CIS soit sous ce format et que pour un titre, on ait qu'une seule commande:
+- S'assurer que le fichier de référence soit appelé "cis_ios17_complet.yml" et qu'il contient les bonnes pratiques CIS soit sous le format suivant et que pour un titre, on ait qu'une seule commande:
 
 
 ```
@@ -31,12 +31,44 @@
   default_value: null
 ```
 
+- Remarque si plusieurs commandes de remédiation sont présentes pour un même titre dans le pdf CIS:
+```
+2.2.1:
+remédiation:
+  hostname(config)#archive
+  hostname(config-archive)#log config
+  hostname(config-archive-log-cfg)#logging enable
+  hostname(config-archive-log-cfg)#end
+```
+
+Je vous conseille de créer un numéro séparé pour chaque commande dans le fichier de référence comme ceci:  
+'''
+2.2.1.1:
+  titre: 2.2.1.1
+  ...
+  commande: archive
+  ...
+2.2.1.2:
+  titre: 2.2.1.2
+  ...
+  commande: log config
+  ...
+2.2.1.3:
+  titre: 2.2.1.3
+  commande: logging enable
+  ...
+etc,
+'''
+
+
 Commande d'installtion de la collection `cisco.ios`:
 
 ```
 ansible-galaxy collection install cisco.ios
 ```
 
+- Ajouter vos machines dans le fichier `hosts.yml` dans le dossier `inventory` et chiffrer le fichier avec **Ansible Vault** dans le cas ou vous utilisez un mot de passe au lieu d'une clé. Voici un exemple du contenu attendu:
+- 
 Exemple de la déclaration d'un routeur R1 dans le fichier `hosts.yml`:
 ```
 routers:
@@ -46,10 +78,19 @@ routers:
         R1_ip:
   vars:
     ansible_connection: network_cli
-    ansible_network_os: ios  
-    ansible_user: enable_password
-    ansible_ssh_pass: ssh_password
+    ansible_network_os: cisco.ios.ios (if cisco else see Ansible Documentations)  
+    ansible_user: user_for_ssh
+    ansible_ssh_pass: ssh_password ou private_key_file: location_private_key
+    ansible_network_cli_ssh_type: libssh (dans le cas ou vous utilisez un routeur cisco IOS 15 et que la clé utilise du ssh-rsa)
 ```
+
+## Chiffrement des fichiers sensibles 
+
+Pour certains fichiers sensibles, il est nécessaire de chiffrer ces fichiers avec Ansible-vault, exemple avec le fichier hosts.yml qui contient les credentials de connexion:
+```
+ansible-vault encrypt hosts.yml
+```
+
 
 ## Initialisation du projet
 
@@ -61,5 +102,5 @@ cd TFE_automation_compliance_CIS
 ## Lancer le playbook principal
 
 ```
-ansible-playbook playbook_detect_OS.yml
+ansible-playbook playbook_detect_OS.yml --ask-vault-pass ou --vault-password-file /path/to/my/vault-password-file (si vous utilisez un fichier contenant des mots de passes ansible-vault)
 ```
