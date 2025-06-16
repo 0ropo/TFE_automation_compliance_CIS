@@ -42,7 +42,7 @@ remédiation:
 ```
 
 Je vous conseille de créer un numéro séparé pour chaque commande dans le fichier de référence comme ceci:  
-'''
+```
 2.2.1.1:
   titre: 2.2.1.1
   ...
@@ -58,7 +58,7 @@ Je vous conseille de créer un numéro séparé pour chaque commande dans le fic
   commande: logging enable
   ...
 etc,
-'''
+```
 
 
 Commande d'installtion de la collection `cisco.ios`:
