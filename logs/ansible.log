@@ -20081,3 +20081,37 @@ device
 2025-06-16 13:46:09,447 p=46773 u=user n=ansible | PLAY RECAP **********************************************************************
 2025-06-16 13:46:09,447 p=46773 u=user n=ansible | 192.168.122.237            : ok=18   changed=1    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
 2025-06-16 13:46:09,547 p=46779 u=user n=ansible | shutdown complete
+2025-06-16 16:50:45,048 p=48700 u=user n=ansible | Encryption successful
+2025-06-16 16:53:30,240 p=48802 u=user n=ansible | PLAY [Détection de la technologie] **********************************************
+2025-06-16 16:53:30,246 p=48802 u=user n=ansible | TASK [Gathering Facts] **********************************************************
+2025-06-16 16:53:30,582 p=48804 u=user n=ansible | network_os is set to cisco.ios.ios
+2025-06-16 16:53:30,583 p=48804 u=user n=ansible | [WARNING]: Ignoring timeout(10) for cisco.ios.ios_facts
+
+2025-06-16 16:53:33,456 p=48802 u=user n=ansible | ok: [192.168.122.237]
+2025-06-16 16:53:33,461 p=48802 u=user n=ansible | TASK [Affichage de la technologie] **********************************************
+2025-06-16 16:53:33,779 p=48802 u=user n=ansible | ok: [192.168.122.237] => 
+  msg: 'L''appareil est du type : cisco.ios.ios'
+2025-06-16 16:53:33,782 p=48802 u=user n=ansible | TASK [trouvé cisco] *************************************************************
+2025-06-16 16:53:34,113 p=48802 u=user n=ansible | ok: [192.168.122.237] => 
+  msg: 'L''appareil est du type : Cisco'
+2025-06-16 16:53:34,116 p=48802 u=user n=ansible | TASK [trouvé pfsense] ***********************************************************
+2025-06-16 16:53:34,135 p=48802 u=user n=ansible | skipping: [192.168.122.237]
+2025-06-16 16:53:34,137 p=48802 u=user n=ansible | TASK [Appareils Cisco] **********************************************************
+2025-06-16 16:53:34,167 p=48802 u=user n=ansible | TASK [cisco : options taches utilisateur] ***************************************
+2025-06-16 16:53:34,491 p=48850 u=user n=ansible | [cisco : options taches utilisateur]
+Voici les différentes options :
+ 1. Génération du rapport de conformité 
+ 2. Correction automatique de la configuration
+ 3. Cherry-pick sur les corrections
+ 4. Quitter le script
+ Veuillez entrer le numéro de l'option choisie (1, 2, 3 ou 4):
+2025-06-16 16:53:37,411 p=48850 u=user n=ansible | Press 'C' to continue the play or 'A' to abort 
+2025-06-16 16:53:40,981 p=48802 u=user n=ansible | fatal: [192.168.122.237]: FAILED! => 
+  msg: user requested abort!
+2025-06-16 16:53:40,981 p=48802 u=user n=ansible | NO MORE HOSTS LEFT **************************************************************
+2025-06-16 16:53:40,981 p=48802 u=user n=ansible | PLAY RECAP **********************************************************************
+2025-06-16 16:53:40,981 p=48802 u=user n=ansible | 192.168.122.237            : ok=3    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2025-06-16 16:54:04,463 p=48808 u=user n=ansible | persistent connection idle timeout triggered, timeout value is 30 secs.
+See the timeout setting options in the Network Debug and Troubleshooting Guide.
+2025-06-16 16:54:04,564 p=48808 u=user n=ansible | shutdown complete
+2025-06-16 16:54:22,567 p=48875 u=user n=ansible | Encryption successful
