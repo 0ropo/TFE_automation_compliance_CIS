@@ -1,16 +1,16 @@
 Building configuration...
 
   
-Current configuration : 3415 bytes
+Current configuration : 1603 bytes
 !
-! Last configuration change at 14:47:12 UTC Thu Jun 12 2025 by ansible
+! Last configuration change at 10:28:21 UTC Mon Jun 16 2025 by ansible
 !
 version 15.6
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
 !
-hostname Router
+hostname R2
 !
 boot-start-marker
 boot-end-marker
@@ -40,6 +40,7 @@ no ip icmp rate-limit unreachable
 !
 !
 no ip domain lookup
+ip domain name formation.lab2
 ip cef
 no ipv6 cef
 !
@@ -108,40 +109,13 @@ no ip http secure-server
 ip ssh version 2
 ip ssh pubkey-chain
   username ansible
-   key-hash ssh-rsa 7CE48FF48D648995625C30A668919A5B 
+   key-hash ssh-rsa C5744B683A32ED147F83F52508F36CD4 user@gns3-cl
 !
 !
 !
 !
 control-plane
 !
-banner exec ^C
-**************************************************************************
-* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
-* education. IOSv is provided as-is and is not supported by Cisco's      *
-* Technical Advisory Center. Any use or disclosure, in whole or in part, *
-* of the IOSv Software or Documentation to any third party for any       *
-* purposes is expressly prohibited except as otherwise authorized by     *
-* Cisco in writing.                                                      *
-**************************************************************************^C
-banner incoming ^C
-**************************************************************************
-* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
-* education. IOSv is provided as-is and is not supported by Cisco's      *
-* Technical Advisory Center. Any use or disclosure, in whole or in part, *
-* of the IOSv Software or Documentation to any third party for any       *
-* purposes is expressly prohibited except as otherwise authorized by     *
-* Cisco in writing.                                                      *
-**************************************************************************^C
-banner login ^C
-**************************************************************************
-* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
-* education. IOSv is provided as-is and is not supported by Cisco's      *
-* Technical Advisory Center. Any use or disclosure, in whole or in part, *
-* of the IOSv Software or Documentation to any third party for any       *
-* purposes is expressly prohibited except as otherwise authorized by     *
-* Cisco in writing.                                                      *
-**************************************************************************^C
 !
 line con 0
  exec-timeout 0 0

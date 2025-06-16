@@ -96,4 +96,6 @@
 - name: Correction de la configuration
   cisco.ios.ios_config:
     lines: "{{missing_commands}}"
+    match: line
+    diff_against: running
   when: validation.user_input == "y" and validation.user_input is defined

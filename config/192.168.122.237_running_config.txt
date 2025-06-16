@@ -1,16 +1,16 @@
 Building configuration...
 
   
-Current configuration : 1591 bytes
+Current configuration : 1603 bytes
 !
-! Last configuration change at 20:27:02 UTC Thu Jun 12 2025
+! Last configuration change at 10:28:21 UTC Mon Jun 16 2025 by ansible
 !
 version 15.6
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
 !
-hostname R1
+hostname R2
 !
 boot-start-marker
 boot-end-marker
@@ -40,7 +40,7 @@ no ip icmp rate-limit unreachable
 !
 !
 no ip domain lookup
-ip domain name formation.lab
+ip domain name formation.lab2
 ip cef
 no ipv6 cef
 !

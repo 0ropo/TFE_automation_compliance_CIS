@@ -1,6 +1,6 @@
 - name: Détection de la technologie 
-  hosts: routers
-  gather_facts: false
+  hosts: all
+  gather_facts: true
 
   tasks:
   - name: Affichage de la technologie
